@@ -21,4 +21,12 @@ npm run test:e2e       # Playwright (uses installed Microsoft Edge; run build fi
 npm run lighthouse     # Lighthouse performance / accessibility / SEO / best practices
 npm run check          # everything above except Lighthouse
 ```
-Deployment is documented in `docs/DEPLOYMENT.md`. Nothing here deploys automatically.
+## Deploying to a VPS
+Full guide: `docs/DEPLOYMENT.md` (nginx + systemd, no Docker). Short version, on the VPS:
+```
+git clone https://github.com/sapradeep123/siddhransV2.git /opt/siddhrans/app && cd /opt/siddhrans/app
+SITE_URL=https://siddhrans.com scripts/deploy/release.sh      # build + publish release + switch symlink
+scripts/deploy/smoke-test.sh https://siddhrans.com            # verify
+scripts/deploy/rollback.sh                                    # if needed
+```
+Templates: `deploy/nginx/siddhrans.conf`, `deploy/systemd/siddhrans-contact.service`, `deploy/siddhrans-contact.env.example`. Nothing here deploys automatically.

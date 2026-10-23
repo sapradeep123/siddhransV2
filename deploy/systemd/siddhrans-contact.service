@@ -1,0 +1,28 @@
+# Contact API for the Siddhrans website. Install as /etc/systemd/system/siddhrans-contact.service
+#   sudo systemctl daemon-reload && sudo systemctl enable --now siddhrans-contact
+# Adjust WorkingDirectory to where the repository is cloned. Secrets live ONLY in /etc/siddhrans-contact.env.
+[Unit]
+Description=Siddhrans website contact API
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/siddhrans/app
+EnvironmentFile=/etc/siddhrans-contact.env
+ExecStart=/usr/bin/node server/index.mjs
+Restart=on-failure
+RestartSec=3
+User=siddhrans
+Group=siddhrans
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
+MemoryMax=200M
+
+[Install]
+WantedBy=multi-user.target
