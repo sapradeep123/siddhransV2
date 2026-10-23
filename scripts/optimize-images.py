@@ -2,7 +2,7 @@
 import io, os, sys, urllib.request
 from PIL import Image
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SRC, OUT = os.path.join(ROOT, 'assets-src'), os.path.join(ROOT, 'design-preview', 'img')
+SRC, OUT = os.path.join(ROOT, 'assets-src'), os.path.join(ROOT, 'public', 'img')
 # name -> (pexels id, optional crop box as fractions l,t,r,b)
 IMAGES = {
   'hero-robotics': (32778341, None), 'factory-corridor': (34718930, None), 'pharma-line': (37650270, None),
@@ -11,7 +11,7 @@ IMAGES = {
   'fibre-patch': (4373998, None), 'substation': (25537595, None), 'solar-farm': (35105444, None),
   'vitals-monitor': (28782186, None), 'lab-porthole': (37839843, None),
 }
-WIDTHS = [480, 960, 1600]
+WIDTHS = [480, 720, 960, 1600]
 for name, (pid, crop) in IMAGES.items():
     p = os.path.join(SRC, f'pexels-{pid}.jpg')
     if not os.path.exists(p):

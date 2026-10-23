@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from '@/components/Link';
-import { Art, Cta, PageHero, Photo, Sheet, Tag } from '@/components/ui';
+import { Art, Cta, PageHero, Photo, RawSvg, Sheet, Tag } from '@/components/ui';
+import { interfaceSchematics } from '@/components/svgart';
 import type { PhotoName } from '@/content/images';
 import type { IllustrationKind } from '@/components/svgart';
 
@@ -10,16 +11,16 @@ export const metadata: Metadata = {
   alternates: { canonical: '/industries/' },
 };
 
-interface Industry { id: string; title: string; photo?: PhotoName; pos?: string; ill?: IllustrationKind; delivered: string[]; solutions: string[]; }
+interface Industry { id: string; title: string; photo?: PhotoName; pos?: string; ill?: IllustrationKind; ui?: keyof typeof interfaceSchematics; delivered: string[]; solutions: string[]; }
 const industries: Industry[] = [
-  { id: 'education', title: 'Education & training', ill: 'chart', delivered: ['Siddhrans LMS', 'Online training programmes'], solutions: [] },
-  { id: 'talent', title: 'Talent & placement', ill: 'flow', delivered: ['Talent Sandalwood', 'Talent Workforce', 'Talent Sports Force'], solutions: [] },
+  { id: 'education', title: 'Education & training', ui: 'lms', delivered: ['Siddhrans LMS', 'Online training programmes'], solutions: [] },
+  { id: 'talent', title: 'Talent & placement', ui: 'talent', delivered: ['Talent Sandalwood', 'Talent Workforce', 'Talent Sports Force'], solutions: [] },
   { id: 'healthcare', title: 'Healthcare & medical electronics', photo: 'vitals-monitor', pos: '50% 35%', delivered: ['Dialysis management system'], solutions: ['Handheld Bluetooth ECG (capability example)', 'Medical-kit & asset readiness (proposed solution)'] },
   { id: 'logistics', title: 'Logistics & cold chain', ill: 'logistics', delivered: ['Cargo management system'], solutions: ['Cold-chain condition monitoring (capability example)', 'Smart warehouse & logistics (capability example)'] },
   { id: 'manufacturing', title: 'Manufacturing & pharma', photo: 'pharma-line', delivered: [], solutions: ['Vibration & machine-health monitoring (designed system)', 'Smart-factory quality intelligence (designed system)', 'Secure laboratory access & occupancy (capability example)'] },
   { id: 'energy', title: 'Energy, utilities & buildings', photo: 'solar-farm', pos: '60% 50%', delivered: [], solutions: ['Gas-meter digitisation retrofit (proposed solution)', 'IoT HVAC energy management (proposed solution)', 'Theatre air-cooler optimisation (proposed solution)'] },
   { id: 'water', title: 'Water & environment', photo: 'water-treatment', delivered: [], solutions: ['Water-quality monitoring (capability example)', 'Industrial safety & environmental alerts (capability example)'] },
-  { id: 'retail', title: 'Retail, events & business operations', ill: 'sensor', delivered: ['GST Billing', 'Point of Sale', 'Restaurant', 'Catering', 'Gym Master', 'Salon', 'Film Event', 'Inventory management', 'Project Management System'], solutions: [] },
+  { id: 'retail', title: 'Retail, events & business operations', ui: 'ops', delivered: ['GST Billing', 'Point of Sale', 'Restaurant', 'Catering', 'Gym Master', 'Salon', 'Film Event', 'Inventory management', 'Project Management System'], solutions: [] },
 ];
 
 export default function Industries() {
@@ -35,7 +36,7 @@ export default function Industries() {
         <div style={{ marginTop: 40 }}>
           {industries.map((i, k) => (
             <div id={i.id} key={i.id} className="two rv" style={{ padding: '36px 0', borderTop: k === 0 ? '1.5px solid var(--ink)' : '1px solid var(--rule)', alignItems: 'center' }}>
-              <div className="ph" style={{ aspectRatio: '16/10' }}>{i.photo ? <Photo name={i.photo} pos={i.pos} sizes="(min-width:960px) 45vw, 100vw" /> : <Art kind={i.ill ?? 'sensor'} />}</div>
+              <div className="ph" style={{ aspectRatio: '16/10' }}>{i.photo ? <Photo name={i.photo} pos={i.pos} sizes="(min-width:960px) 45vw, 100vw" /> : i.ui ? <RawSvg html={interfaceSchematics[i.ui]} /> : <Art kind={i.ill ?? 'sensor'} />}</div>
               <div>
                 <h3 style={{ fontSize: 'clamp(22px,2.4vw,30px)', marginBottom: 14 }}>{i.title}</h3>
                 {i.delivered.length > 0 && (<><Tag kind="delivered">Systems built</Tag><ul className="ticks one" style={{ margin: '10px 0 18px' }}>{i.delivered.map((d) => <li key={d}>{d}</li>)}</ul></>)}

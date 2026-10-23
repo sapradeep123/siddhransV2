@@ -1,0 +1,11 @@
+{
+  "name": "siddhrans-contact-api",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "SMTP-backed contact endpoint for the Siddhrans website (no database)",
+  "main": "index.mjs",
+  "scripts": { "start": "node index.mjs" },
+  "dependencies": { "nodemailer": "^10.2.1" },
+  "engines": { "node": ">=20.9" }
+}

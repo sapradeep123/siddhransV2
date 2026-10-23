@@ -7,13 +7,14 @@
     "dev": "next dev",
     "build": "next build",
     "typecheck": "tsc --noEmit",
-    "serve": "serve out -l 4173 --no-clipboard",
+    "serve": "node scripts/serve-static.mjs out",
     "api": "node server/index.mjs",
     "test:api": "node --test server/contact.test.mjs",
     "test:e2e": "playwright test",
     "lighthouse": "node scripts/lighthouse.mjs",
     "verify:logo": "node scripts/verify-logo.mjs",
-    "check": "npm run typecheck && npm run build && npm run verify:logo && npm run test:api && npm run test:e2e"
+    "check": "npm run typecheck && npm run build && npm run verify:logo && npm run test:api && npm run test:e2e",
+    "screenshots": "node scripts/screenshots.mjs"
   },
   "dependencies": {
     "next": "^16.4.2",
@@ -31,5 +32,8 @@
     "chrome-launcher": "^1.2.2",
     "lighthouse": "^13.5.0",
     "typescript": "^7.0.2"
+  },
+  "engines": {
+    "node": ">=20.9"
   }
 }

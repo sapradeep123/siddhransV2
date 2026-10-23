@@ -7,7 +7,7 @@ import Reveal from '@/components/Reveal';
 import { site } from '@/content/site';
 
 // Fonts are downloaded at build time and self-hosted: no runtime request to Google.
-const archivo = Archivo({ subsets: ['latin'], axes: ['wdth'], variable: '--font-archivo', display: 'swap' });
+const archivo = Archivo({ subsets: ['latin'], variable: '--font-archivo', display: 'swap' });
 const hanken = Hanken_Grotesk({ subsets: ['latin'], variable: '--font-hanken', display: 'swap' });
 const plex = IBM_Plex_Mono({ subsets: ['latin'], weight: ['400', '500'], variable: '--font-plex', display: 'swap' });
 

@@ -8,7 +8,7 @@ export default defineConfig({
   expect: { timeout: 8_000 },
   fullyParallel: true,
   reporter: [['list'], ['json', { outputFile: 'reports/e2e.json' }]],
-  webServer: { command: 'node scripts/serve-static.mjs out', url: 'http://127.0.0.1:4173/', reuseExistingServer: true, timeout: 30_000 },
+  webServer: { command: 'node scripts/serve-static.mjs out', url: 'http://127.0.0.1:4173/', reuseExistingServer: false, timeout: 30_000, env: { API_PROXY: 'http://127.0.0.1:8787' } },
   projects: [
     { name: 'desktop', use: { ...use, viewport: { width: 1440, height: 900 } } },
     { name: 'tablet', use: { ...use, viewport: { width: 820, height: 1180 }, hasTouch: true } },

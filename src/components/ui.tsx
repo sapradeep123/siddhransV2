@@ -27,7 +27,7 @@ export function Photo({ name, sizes = '100vw', priority = false, pos, className,
     <img
       className={className}
       src={`/img/${name}-960.webp`}
-      srcSet={`/img/${name}-480.webp 480w, /img/${name}-960.webp 960w, /img/${name}-1600.webp 1600w`}
+      srcSet={`/img/${name}-480.webp 480w, /img/${name}-720.webp 720w, /img/${name}-960.webp 960w, /img/${name}-1600.webp 1600w`}
       sizes={sizes}
       width={W}
       height={Math.round((W * h) / w)}
