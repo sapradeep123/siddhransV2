@@ -2,6 +2,7 @@
 // Run behind nginx at /api/contact. Configuration comes from environment variables (see .env.example).
 import http from 'node:http';
 import nodemailer from 'nodemailer';
+import { buildEnquiryEmail } from './email.mjs';
 
 const AREAS = ['Enterprise software', 'AI & automation', 'Cybersecurity', 'Cloud & infrastructure', 'Embedded systems & industrial IoT', 'Managed services', 'Something else'];
 const EMAIL = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
@@ -71,7 +72,7 @@ function readBody(req) {
   });
 }
 
-export function createContactServer({ transport, mailTo, mailFrom, limiter = createRateLimiter(), trustProxy = false, log = () => {} } = {}) {
+export function createContactServer({ transport, mailTo, mailFrom, siteUrl = 'https://siddhrans.com', limiter = createRateLimiter(), trustProxy = false, log = () => {}, now = () => new Date() } = {}) {
   if (!transport || !mailTo || !mailFrom) throw new Error('transport, mailTo and mailFrom are required');
   return http.createServer(async (req, res) => {
     const url = new URL(req.url ?? '/', 'http://localhost');
@@ -93,12 +94,10 @@ export function createContactServer({ transport, mailTo, mailFrom, limiter = cre
     const { data, errors, ok } = validate(input);
     if (!ok) return send(res, 400, { ok: false, errors });
 
-    const text = [
-      `Name: ${data.name}`, `Email: ${data.email}`, `Organisation: ${data.org || '-'}`, `Phone: ${data.phone || '-'}`, `Area of interest: ${data.area}`,
-      '', data.message, '', '--', 'Sent from the Siddhrans website enquiry form. Consent to be contacted was given by the sender.',
-    ].join('\n');
+    const { subject, html, text } = buildEnquiryEmail(data, { siteUrl, receivedAt: now() });
+    const replyName = data.name.replace(/["<>\\]/g, '').trim() || data.email;
     try {
-      await transport.sendMail({ from: mailFrom, to: mailTo, replyTo: `"${data.name.replace(/"/g, '')}" <${data.email}>`, subject: `Website enquiry: ${data.area}`, text });
+      await transport.sendMail({ from: mailFrom, to: mailTo, replyTo: `"${replyName}" <${data.email}>`, subject, text, html });
       log('sent');
       return send(res, 200, { ok: true });
     } catch (e) {

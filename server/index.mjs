@@ -10,6 +10,7 @@ const server = createContactServer({
   transport: buildTransport(env),
   mailTo,
   mailFrom,
+  siteUrl: env.SITE_URL ?? 'https://siddhrans.com', // public origin for the logo and links in the email
   limiter: createRateLimiter({ max: Number(env.RATE_LIMIT_MAX ?? 5), windowMs: Number(env.RATE_WINDOW_MS ?? 15 * 60 * 1000) }),
   trustProxy: env.TRUST_PROXY === 'true',
   log: (m) => console.log(new Date().toISOString(), m),

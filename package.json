@@ -9,7 +9,7 @@
     "typecheck": "tsc --noEmit",
     "serve": "node scripts/serve-static.mjs out",
     "api": "node server/index.mjs",
-    "test:api": "node --test server/contact.test.mjs",
+    "test:api": "node --test server/contact.test.mjs server/email.test.mjs",
     "test:e2e": "playwright test",
     "lighthouse": "node scripts/lighthouse.mjs",
     "verify:logo": "node scripts/verify-logo.mjs",
