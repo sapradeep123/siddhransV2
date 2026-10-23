@@ -3,6 +3,9 @@ import AxeBuilder from '@axe-core/playwright';
 import { createHash } from 'node:crypto';
 import { LOGO_SHA256, PAGES } from './pages';
 
+// Domain the site was built for (same variable as scripts/deploy/release.sh); defaults to the source default.
+const SITE_URL = (process.env.SITE_URL ?? 'https://siddhrans.com').replace(/\/$/, '');
+
 /** Scroll through the page so lazy images load, then wait for decode. */
 async function settle(page: Page) {
   await page.evaluate(async () => {
@@ -48,7 +51,7 @@ test.describe('every page', () => {
       await page.goto(path);
       const meta = (sel: string) => page.locator(sel).first().getAttribute('content');
       expect(((await meta('meta[name="description"]')) ?? '').length).toBeGreaterThan(50);
-      expect(await page.locator('link[rel="canonical"]').getAttribute('href')).toMatch(/^https:\/\/siddhrans\.com\//);
+      expect(((await page.locator('link[rel="canonical"]').getAttribute('href')) ?? '').startsWith(`${SITE_URL}/`), 'canonical uses SITE_URL').toBe(true);
       expect(await meta('meta[property="og:title"]')).toBeTruthy();
       expect(await meta('meta[property="og:image"]')).toMatch(/og-default\.jpg$/);
       expect(await page.locator('html').getAttribute('lang')).toBe('en-IN');
@@ -98,9 +101,9 @@ test('in-page anchors point at existing elements', async ({ page }) => {
 
 test('robots.txt and sitemap.xml list every page', async ({ request }) => {
   const robots = await (await request.get('/robots.txt')).text();
-  expect(robots).toContain('Sitemap: https://siddhrans.com/sitemap.xml');
+  expect(robots).toContain(`Sitemap: ${SITE_URL}/sitemap.xml`);
   const sm = await (await request.get('/sitemap.xml')).text();
-  for (const p of PAGES) expect(sm, p).toContain(`https://siddhrans.com${p}`);
+  for (const p of PAGES) expect(sm, p).toContain(`${SITE_URL}${p}`);
 });
 
 test.describe('original logo', () => {
