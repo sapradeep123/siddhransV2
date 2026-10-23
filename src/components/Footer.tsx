@@ -1,39 +1,35 @@
-import Link from '@/components/Link';
 import { site } from '@/content/site';
 import { services } from '@/content/services';
-import { Logo } from './ui';
+import { Button, Logo } from './ui';
 
 export default function Footer() {
   return (
-    <footer className="ftr">
-      <div className="wrap">
-        <div className="top">
+    <footer className="footer">
+      <div className="container">
+        <div className="footer__top">
           <div>
-            <Logo width="min(100%, 430px)" eager={false} />
-            <p style={{ margin: '18px 0 0', color: 'var(--ink-2)', maxWidth: '40ch' }}>
-              {site.tagline}. {site.city}, {site.country}.
-            </p>
+            <div className="logoplate"><Logo width="100%" eager={false} /></div>
+            <p style={{ margin: '22px 0 24px', maxWidth: '38ch', fontSize: 17 }}>{site.tagline}. {site.city}, {site.country}.</p>
+            <Button href="/contact/" variant="yellow">Start a conversation</Button>
           </div>
           <div>
-            <h2 className="fh">Capabilities</h2>
+            <h2>Capabilities</h2>
+            <ul>{services.map((s) => (<li key={s.slug}><a href={`/services/${s.slug}/`}>{s.short}</a></li>))}</ul>
+          </div>
+          <div>
+            <h2>Explore</h2>
             <ul>
-              {services.map((s) => (<li key={s.slug}><Link href={`/services/${s.slug}/`}>{s.short}</Link></li>))}
+              <li><a href="/services/">Services overview</a></li>
+              <li><a href="/products/">Products &amp; solutions</a></li>
+              <li><a href="/industries/">Industries</a></li>
+              <li><a href="/engineering-use-cases/">Engineering use cases</a></li>
+              <li><a href="/case-studies/">Case studies</a></li>
+              <li><a href="/about/">About &amp; leadership</a></li>
+              <li><a href="/privacy/">Privacy notice</a></li>
             </ul>
           </div>
           <div>
-            <h2 className="fh">Explore</h2>
-            <ul>
-              <li><Link href="/services/">Services overview</Link></li>
-              <li><Link href="/products/">Products &amp; solutions</Link></li>
-              <li><Link href="/industries/">Industries</Link></li>
-              <li><Link href="/engineering-use-cases/">Engineering use cases</Link></li>
-              <li><Link href="/case-studies/">Case studies</Link></li>
-              <li><Link href="/about/">About &amp; leadership</Link></li>
-              <li><Link href="/privacy/">Privacy notice</Link></li>
-            </ul>
-          </div>
-          <div>
-            <h2 className="fh">Contact</h2>
+            <h2>Contact</h2>
             <ul>
               <li><a href={`tel:${site.phone.tel}`}>{site.phone.display}</a></li>
               <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
@@ -41,9 +37,9 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <div className="base">
+        <div className="footer__base">
           <span>© {new Date().getFullYear()} {site.name}</span>
-          <span>Photographs are licensed stock images used for illustration, not Siddhrans project photographs. <Link href="/image-credits/">Image credits</Link></span>
+          <span>Photographs are licensed stock images used for illustration, not Siddhrans project photographs. Interface visuals are concept designs. <a href="/image-credits/">Image credits</a></span>
         </div>
       </div>
     </footer>

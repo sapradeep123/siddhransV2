@@ -2,21 +2,22 @@
 
 Run on 2026-10-23 against the production build (`npm run build` → `out/`), served locally with the same security headers and compression that `docs/DEPLOYMENT.md` specifies. Browser: installed Microsoft Edge (Chromium) via Playwright 1.64.
 
-## Summary
+## Summary (visual redesign, 2026-10-23)
 | Check | Result |
 |---|---|
-| TypeScript (`tsc --noEmit`) | pass |
-| Next.js production build (22 static pages) | pass |
-| Logo integrity (`npm run verify:logo`) | **pass**: `public/` and `out/` copies match SHA-256 `9bfd52b5aa328b90dc5c0ca9a7e7b8966746787ea22b5688e6f902e56fb7dfa7`; the committed git blob matches too |
-| Contact API unit tests (`node --test`) | **9 / 9 pass** |
-| Playwright end-to-end suite | **279 passed, 0 failed, 3 skipped** (93 tests × desktop 1440, tablet 820, mobile 390) |
-| axe-core accessibility (WCAG 2 A/AA, 2.1 A/AA, **2.2 AA**, best-practice rules), all 18 pages × 3 viewports | **0 violations** |
-| Lighthouse, desktop, 9 key pages | Performance 99–100, Accessibility 100, Best Practices 100, SEO 100 |
-| Lighthouse, mobile (simulated slow 4G, 4× CPU), 9 key pages | Performance **90–99**, Accessibility 100, Best Practices 100, SEO 100 |
+| TypeScript, production build (22 static pages) | pass |
+| Logo integrity (`npm run verify:logo`) | pass, SHA-256 `9bfd52b5aa328b90dc5c0ca9a7e7b8966746787ea22b5688e6f902e56fb7dfa7` |
+| Contact API unit tests | 9 / 9 pass |
+| Playwright end-to-end (desktop 1440, tablet 820, mobile 390) | **279 passed, 0 failed, 3 skipped** |
+| axe-core (WCAG 2 A/AA, 2.1, **2.2 AA**, best practice), 18 pages x 3 viewports | **0 violations** |
+| Lighthouse desktop (9 pages) | Performance 99-100; Accessibility, Best Practices, SEO 100 (one page 96 best-practices at times) |
+| Lighthouse mobile (simulated slow 4G, 4x CPU) | Performance **86-91**, Accessibility 100, SEO 100. **Below the 90 target on most pages**: LCP 3.4-4.3 s, driven by transfer size (about 450-700 KB, including the unmodifiable 113 KB logo PNG) |
+| Visual review in Edge at 1440 / 820 / 390 | done, defects fixed (see below); videos recorded |
 
-Full Lighthouse table: `docs/LIGHTHOUSE.md` (mobile LCP 2.0–3.6 s, CLS 0, TBT ≤ 50 ms; pages transfer 370–600 KB). Scores vary by a few points between runs.
+Full Lighthouse table: `docs/LIGHTHOUSE.md`.
 
-The 3 skips are intentional: the mobile-menu test does not apply at desktop width (1), and the full-stack form test runs once, on desktop (2).
+### Visual defects found during review and fixed
+Hidden content on products/case studies (JS-gated reveal) rebuilt as progressive enhancement; distorted parallax images (missing object-fit); horizontal overflow from the ticker; oversized hero headline; footer logo plate collapsed; unreadable concept-UI text and low-contrast chips; case-study layout shift; phone mockups unreadable; about-page band collapsed; contact panel too dark; floating chips crowding the mobile hero.
 
 ## What the end-to-end suite covers
 - **Every page** (10 pages + 8 service pages): HTTP 200, exactly one `h1`, unique title, no horizontal overflow, no broken images, every image has `alt`, **no console errors or warnings, no failed or 4xx/5xx requests**.

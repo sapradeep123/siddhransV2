@@ -1,24 +1,33 @@
-import Link from '@/components/Link';
-import type { ReactNode } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
 import { photoAlt, photoCaption, photoDims, type PhotoName } from '@/content/images';
 import { illustration, type IllustrationKind } from './svgart';
 import { site } from '@/content/site';
 
 export const Arrow = () => (
-  <svg className="ar" viewBox="0 0 18 10" aria-hidden="true"><path d="M0 5h16M12 1l4 4-4 4" /></svg>
+  <svg viewBox="0 0 18 12" aria-hidden="true" focusable="false"><path d="M0 6h16M11 1l5 5-5 5" /></svg>
 );
 
-/** Official logo, exactly as supplied. The PNG is never altered; CSS hides only its transparent margin. */
-export function Logo({ width, eager = true }: { width?: number | string; eager?: boolean }) {
+type Variant = 'yellow' | 'green' | 'ghost' | 'ghost-dark' | 'dark';
+export function Button({ href, variant = 'yellow', children, small = false, className = '' }: { href: string; variant?: Variant; children: ReactNode; small?: boolean; className?: string }) {
+  const arrow = variant === 'ghost' || variant === 'ghost-dark' ? null : <span className="arr"><Arrow /></span>;
   return (
-    <Link className="logo" href="/" aria-label="Siddhrans InfoTech — home" style={width ? ({ ['--lw' as string]: typeof width === 'number' ? `${width}px` : width } as React.CSSProperties) : undefined}>
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/brand/Siddhrans_Logo.png" width={2200} height={1109} alt="Siddhrans InfoTech — Easy Success with Excellent Consulting" decoding="async" loading={eager ? 'eager' : 'lazy'} />
-    </Link>
+    <a className={`btn btn--${variant}${small ? ' btn--sm' : ''} ${className}`.trim()} href={href}>
+      {children}{arrow}
+    </a>
   );
 }
 
-/** Responsive licensed stock photograph (WebP, 480/960/1600). */
+/** Official logo, exactly as supplied. The PNG is never altered; CSS hides only its transparent margin. */
+export function Logo({ width, eager = true, link = true }: { width?: number | string; eager?: boolean; link?: boolean }) {
+  const style = width ? ({ ['--lw' as string]: typeof width === 'number' ? `${width}px` : width } as CSSProperties) : undefined;
+  const img = (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img src="/brand/Siddhrans_Logo.png" width={2200} height={1109} alt="Siddhrans InfoTech — Easy Success with Excellent Consulting" decoding="async" {...(eager ? { fetchPriority: 'high' as const } : { loading: 'lazy' as const })} />
+  );
+  return link ? <a className="logo" href="/" aria-label="Siddhrans InfoTech — home" style={style}>{img}</a> : <span className="logo" style={style}>{img}</span>;
+}
+
+/** Responsive licensed stock photograph (WebP, 480/720/960/1600). */
 export function Photo({ name, sizes = '100vw', priority = false, pos, className, alt }: { name: PhotoName; sizes?: string; priority?: boolean; pos?: string; className?: string; alt?: string }) {
   const [w, h] = photoDims[name];
   const W = 960;
@@ -38,70 +47,71 @@ export function Photo({ name, sizes = '100vw', priority = false, pos, className,
   );
 }
 
+/** Framed photograph with the mandatory "illustrative image" caption (never a Siddhrans project photo). */
+export function PhotoCard({ name, sizes, priority, pos, className = '', style, cap = true, alt, shade = false }: { name: PhotoName; sizes?: string; priority?: boolean; pos?: string; className?: string; style?: CSSProperties; cap?: boolean; alt?: string; shade?: boolean }) {
+  return (
+    <div className={`photo ${shade ? 'shade' : ''} ${className}`.trim()} style={style}>
+      <Photo name={name} sizes={sizes} priority={priority} pos={pos} alt={alt} />
+      {cap && <span className="photo__cap"><b>Illustrative image</b> · {photoCaption[name]}</span>}
+    </div>
+  );
+}
+
 /** Original line illustration (static markup built from string literals only). */
 export function Art({ kind, light = false, label }: { kind: IllustrationKind; light?: boolean; label?: string }) {
   return <span style={{ display: 'contents' }} dangerouslySetInnerHTML={{ __html: illustration(kind, light, label) }} />;
 }
-
 export function RawSvg({ html }: { html: string }) {
   return <span style={{ display: 'contents' }} dangerouslySetInnerHTML={{ __html: html }} />;
 }
 
-/** Caption that marks a photograph as illustrative stock, never a project photo. */
-export const Fig = ({ name }: { name: PhotoName }) => (
-  <div className="cap-fig"><b>Illustrative image</b> · {photoCaption[name]} (stock photograph)</div>
+type PillKind = 'built' | 'cap' | 'eng' | 'design' | 'prop' | 'concept';
+export const Pill = ({ kind = 'cap', children }: { kind?: PillKind; children: ReactNode }) => (
+  <span className={`pill pill--${kind}`}>{children}</span>
 );
 
-export const Sheet = ({ n, a, b }: { n: string; a: string; b: string }) => (
-  <div className="sheet-head mono"><b>§ {n}</b><span>{a}</span><i></i><span>{b}</span></div>
-);
-
-type TagKind = 'delivered' | 'cap' | 'eng' | 'design' | 'prop' | '';
-export const Tag = ({ kind = '', children }: { kind?: TagKind; children: ReactNode }) => (
-  <span className={`tag ${kind}`.trim()}>{children}</span>
-);
-
-export const Cta = ({ title, label = 'Talk to an engineer' }: { title: string; label?: string }) => (
-  <section className="cta-band" style={{ padding: 0 }}>
-    <div className="wrap" style={{ paddingTop: 'clamp(56px,8vw,104px)', paddingBottom: 'clamp(56px,8vw,104px)' }}>
-      <div><h2>{title}</h2></div>
-      <div className="acts">
-        <Link className="btn solid" href="/contact/">{label} <Arrow /></Link>
-        <a className="btn" href={`tel:${site.phone.tel}`}>Call {site.phone.display}</a>
-      </div>
-    </div>
-  </section>
-);
+export const Eyebrow = ({ children }: { children: ReactNode }) => <span className="eyebrow">{children}</span>;
 
 export const Crumbs = ({ items }: { items: { href?: string; label: string }[] }) => (
-  <nav className="crumbs mono" aria-label="Breadcrumb">
+  <nav className="crumbs" aria-label="Breadcrumb">
     {items.map((c, i) => (
       <span key={c.label}>
-        {c.href ? <Link href={c.href}>{c.label}</Link> : <span aria-current="page">{c.label}</span>}
+        {c.href ? <a href={c.href}>{c.label}</a> : <span aria-current="page">{c.label}</span>}
         {i < items.length - 1 ? ' / ' : ''}
       </span>
     ))}
   </nav>
 );
 
-/** Inner-page hero with photograph. */
-export function PageHero({ photo, pos, crumbs, children, eager = true }: { photo: PhotoName; pos?: string; crumbs: { href?: string; label: string }[]; children: ReactNode; eager?: boolean }) {
+/** Inner-page hero with a full-bleed photograph. */
+export function PageHero({ photo, pos, crumbs, children }: { photo: PhotoName; pos?: string; crumbs: { href?: string; label: string }[]; children: ReactNode }) {
   return (
-    <div className="page-photo">
-      <div className="bg"><Photo name={photo} priority={eager} pos={pos} alt="" /></div>
-      <div className="wrap">
+    <header className="phero">
+      <PhotoCard name={photo} priority pos={pos} sizes="100vw" alt="" cap={false} />
+      <span className="photo__cap hero-cap"><b>Illustrative image</b> · {photoCaption[photo]}</span>
+      <div className="container">
         <Crumbs items={crumbs} />
         {children}
       </div>
-      <Fig name={photo} />
-    </div>
+    </header>
   );
 }
 
-export const Ruler = ({ items }: { items: readonly (readonly [string, string])[] }) => (
-  <ol className="ruler rv" style={{ ['--cols' as string]: Math.min(items.length, 8) } as React.CSSProperties}>
-    {items.map(([t, d], i) => (
-      <li key={t}><small>{String(i + 1).padStart(2, '0')}</small><h3>{t}</h3><p>{d}</p></li>
-    ))}
-  </ol>
+export const BigCta = ({ title, label = 'Talk to an engineer' }: { title: string; label?: string }) => (
+  <section className="bigcta" aria-label="Contact us">
+    <div className="container bigcta__in">
+      <h2 className="h-xl">{title}</h2>
+      <div className="bigcta__acts">
+        <Button href="/contact/">{label}</Button>
+        <Button href={`tel:${site.phone.tel}`} variant="ghost">Call {site.phone.display}</Button>
+      </div>
+    </div>
+  </section>
+);
+
+export const SecHead = ({ eyebrow, title, lede, row = false }: { eyebrow: string; title: ReactNode; lede?: ReactNode; row?: boolean }) => (
+  <div className={`sec-head${row ? ' sec-head--row' : ''}`}>
+    <div style={{ display: 'grid', gap: 18 }}><Eyebrow>{eyebrow}</Eyebrow><h2 className="h-xl">{title}</h2></div>
+    {lede && <p className="lede">{lede}</p>}
+  </div>
 );

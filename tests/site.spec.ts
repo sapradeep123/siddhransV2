@@ -137,21 +137,21 @@ test.describe('navigation', () => {
     const targets = [['Services', /\/services\/$/], ['Solutions', /\/products\/$/], ['Industries', /\/industries\/$/], ['Engineering Use Cases', /\/engineering-use-cases\/$/], ['Case Studies', /\/case-studies\/$/], ['About', /\/about\/$/]] as const;
     for (const [label, url] of targets) {
       await page.goto('/');
-      if (isMobile || (page.viewportSize()?.width ?? 0) <= 1140) await page.getByRole('button', { name: 'Open menu' }).click();
-      await page.getByRole('navigation', { name: 'Primary' }).getByRole('link', { name: label, exact: true }).click();
+      if (isMobile || (page.viewportSize()?.width ?? 0) <= 1180) await page.getByRole('button', { name: 'Open menu' }).click();
+      await page.getByRole('navigation', { name: 'Primary' }).getByRole('link', { name: new RegExp(`${label}$`) }).first().click();
       await expect(page).toHaveURL(url);
       await expect(page.locator('h1')).toBeVisible();
     }
   });
 
   test('mobile menu opens, traps nothing, closes with Escape and marks the current page', async ({ page }) => {
-    test.skip((page.viewportSize()?.width ?? 2000) > 1140, 'menu is collapsed only below 1141px');
+    test.skip((page.viewportSize()?.width ?? 2000) > 1180, 'menu is collapsed only below 1181px');
     await page.goto('/about/');
     const btn = page.getByRole('button', { name: 'Open menu' });
     await expect(btn).toHaveAttribute('aria-expanded', 'false');
     await btn.click();
     await expect(page.getByRole('button', { name: 'Close menu' })).toHaveAttribute('aria-expanded', 'true');
-    await expect(page.getByRole('navigation', { name: 'Primary' }).getByRole('link', { name: 'About' })).toHaveAttribute('aria-current', 'page');
+    await expect(page.getByRole('navigation', { name: 'Primary' }).getByRole('link', { name: /About$/ })).toHaveAttribute('aria-current', 'page');
     await page.keyboard.press('Escape');
     await expect(page.getByRole('button', { name: 'Open menu' })).toHaveAttribute('aria-expanded', 'false');
     await expect(page.getByRole('button', { name: 'Open menu' })).toBeFocused();
@@ -179,7 +179,7 @@ test.describe('navigation', () => {
   test('unknown routes show the custom 404 page', async ({ page }) => {
     const res = await page.goto('/does-not-exist/');
     expect(res?.status()).toBe(404);
-    await expect(page.getByRole('heading', { name: /could not be found/i })).toBeVisible();
+    await expect(page.getByRole('heading', { name: /not found/i })).toBeVisible();
   });
 });
 
@@ -263,7 +263,7 @@ test('use-case library filters by status and keeps an accurate count', async ({ 
   const n = await page.locator('article.uc').count();
   expect(n).toBe(5);
   await expect(page.getByTestId('uc-count')).toHaveText(`Showing ${n} of 20`);
-  for (const t of await page.locator('article.uc .tag').allTextContents()) expect(t).toBe('Proposed solution');
+  for (const t of await page.locator('article.uc .pill').allTextContents()) expect(t).toBe('Proposed solution');
   await page.getByRole('button', { name: 'All' }).click();
   await expect(page.locator('article.uc')).toHaveCount(20);
 });
@@ -281,10 +281,10 @@ test.describe('content guardrails (claims that must never appear publicly)', () 
   }
 
   test('every photograph is captioned as illustrative stock, never a project photo', async ({ page }) => {
-    for (const p of ['/', '/services/', '/about/', '/contact/', '/services/embedded-systems-industrial-iot/']) {
+    for (const p of ['/', '/services/', '/about/', '/products/', '/case-studies/', '/services/embedded-systems-industrial-iot/']) {
       await page.goto(p);
-      expect(await page.locator('.cap-fig').count(), p).toBeGreaterThan(0);
-      for (const t of await page.locator('.cap-fig').allTextContents()) expect(t).toMatch(/Illustrative image/);
+      expect(await page.locator('.photo__cap').count(), p).toBeGreaterThan(0);
+      for (const t of await page.locator('.photo__cap').allTextContents()) expect(t).toMatch(/Illustrative image/);
     }
     await page.goto('/');
     await expect(page.locator('footer')).toContainText('not Siddhrans project photographs');

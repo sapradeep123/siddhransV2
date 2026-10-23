@@ -4,21 +4,21 @@ Run against the built static site (`out/`) served locally, using Microsoft Edge,
 
 | Form factor | Page | Perf | A11y | Best practices | SEO | LCP (ms) | CLS | TBT (ms) | Transfer (KB) |
 |---|---|---|---|---|---|---|---|---|---|
-| mobile | / | 99 | 100 | 100 | 100 | 1999 | 0 | 24 | 414 |
-| mobile | /services/ | 90 | 100 | 100 | 100 | 3599 | 0 | 37 | 603 |
-| mobile | /services/embedded-systems-industrial-iot/ | 93 | 100 | 100 | 100 | 3231 | 0 | 47 | 471 |
-| mobile | /engineering-use-cases/ | 91 | 100 | 100 | 100 | 3441 | 0 | 38 | 491 |
-| mobile | /products/ | 95 | 100 | 100 | 100 | 2889 | 0 | 26 | 377 |
-| mobile | /industries/ | 91 | 100 | 100 | 100 | 3458 | 0 | 47 | 599 |
-| mobile | /case-studies/ | 95 | 100 | 100 | 100 | 2895 | 0 | 28 | 371 |
-| mobile | /about/ | 95 | 100 | 100 | 100 | 2971 | 0 | 28 | 394 |
-| mobile | /contact/ | 90 | 100 | 100 | 100 | 3615 | 0 | 44 | 437 |
-| desktop | / | 100 | 100 | 100 | 100 | 706 | 0 | 0 | 533 |
-| desktop | /services/ | 99 | 100 | 100 | 100 | 869 | 0 | 0 | 719 |
-| desktop | /services/embedded-systems-industrial-iot/ | 100 | 100 | 100 | 100 | 666 | 0 | 0 | 489 |
-| desktop | /engineering-use-cases/ | 100 | 100 | 100 | 100 | 791 | 0 | 0 | 671 |
-| desktop | /products/ | 100 | 100 | 100 | 100 | 612 | 0 | 0 | 397 |
-| desktop | /industries/ | 100 | 100 | 100 | 100 | 768 | 0 | 0 | 626 |
-| desktop | /case-studies/ | 100 | 100 | 100 | 100 | 595 | 0 | 0 | 388 |
-| desktop | /about/ | 100 | 100 | 100 | 100 | 609 | 0 | 0 | 435 |
-| desktop | /contact/ | 100 | 100 | 100 | 100 | 768 | 0 | 0 | 506 |
+| mobile | / | 88 | 100 | 100 | 100 | 3831 | 0 | 15 | 579 |
+| mobile | /services/ | 88 | 100 | 100 | 100 | 3985 | 0 | 25 | 556 |
+| mobile | /services/embedded-systems-industrial-iot/ | 89 | 100 | 100 | 100 | 3762 | 0 | 23 | 574 |
+| mobile | /engineering-use-cases/ | 86 | 100 | 100 | 100 | 4284 | 0 | 16 | 699 |
+| mobile | /products/ | 89 | 100 | 100 | 100 | 3760 | 0.007 | 56 | 507 |
+| mobile | /industries/ | 86 | 100 | 100 | 100 | 4284 | 0 | 21 | 683 |
+| mobile | /case-studies/ | 86 | 100 | 100 | 100 | 4214 | 0 | 33 | 564 |
+| mobile | /about/ | 87 | 100 | 100 | 100 | 3984 | 0 | 121 | 509 |
+| mobile | /contact/ | 90 | 100 | 100 | 100 | 3536 | 0 | 69 | 442 |
+| desktop | / | 99 | 100 | 100 | 100 | 833 | 0 | 0 | 670 |
+| desktop | /services/ | 100 | 100 | 100 | 100 | 808 | 0 | 0 | 599 |
+| desktop | /services/embedded-systems-industrial-iot/ | 100 | 100 | 100 | 100 | 795 | 0 | 0 | 623 |
+| desktop | /engineering-use-cases/ | 99 | 100 | 100 | 100 | 871 | 0 | 0 | 816 |
+| desktop | /products/ | 100 | 100 | 100 | 100 | 709 | 0 | 0 | 483 |
+| desktop | /industries/ | 99 | 100 | 100 | 100 | 870 | 0 | 0 | 743 |
+| desktop | /case-studies/ | 99 | 100 | 100 | 100 | 836 | 0 | 0 | 626 |
+| desktop | /about/ | 99 | 100 | 100 | 100 | 831 | 0 | 0 | 597 |
+| desktop | /contact/ | 100 | 100 | 100 | 100 | 710 | 0 | 0 | 436 |

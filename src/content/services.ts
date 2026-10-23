@@ -37,7 +37,7 @@ export const services: Service[] = [
   {
     slug: 'enterprise-software-engineering', n: '01', title: 'Enterprise Software Engineering', short: 'Enterprise Software',
     intro: 'Every organisation runs on processes its software was never built for. We build the systems that fit the work: applications, portals, workflow and operational systems, engineered, database-backed and in production use.',
-    status: 'built', photo: 'code-screen', tileBlurb: 'Portals, mobile, LMS, billing, workflow.',
+    status: 'built', photo: 'dev-team', tileBlurb: 'Portals, mobile, LMS, billing, workflow.',
     stepsTitle: 'From business problem to production system',
     steps: [['Discover', 'Understand the process and the people who run it.'], ['Design', 'Model the data, workflow and integrations.'], ['Build', 'Engineer the application, database and reporting.'], ['Operate', 'Support, upgrade and enhance what we build.']],
     listTitle: 'What we engineer',
@@ -48,7 +48,7 @@ export const services: Service[] = [
   {
     slug: 'ai-ml-intelligent-automation', n: '02', title: 'AI, ML & Intelligent Automation', short: 'AI, ML & Intelligent Automation',
     intro: 'AI earns its place when it is wired into data, process and oversight. That integration, not the model, is the engineering problem. We build AI into real workflows, with people in the loop.',
-    status: 'capability', photo: 'ai-network', photoPos: '50% 55%', tileBlurb: 'Copilots, document intelligence, analytics.',
+    status: 'capability', photo: 'data-wall', tileBlurb: 'Copilots, document intelligence, analytics.',
     stepsTitle: 'How applied AI is put together',
     steps: [['Data & documents', 'Enterprise sources feed the system.'], ['Retrieval & models', 'Knowledge retrieval plus machine learning.'], ['Agents & copilots', 'Task execution for multi-step work.'], ['Workflow action', 'Results flow into systems and approvals.'], ['Human oversight', 'Exceptions and control stay with people.']],
     listTitle: 'What we engineer with AI',
@@ -59,7 +59,7 @@ export const services: Service[] = [
   {
     slug: 'rpa-business-automation', n: '03', title: 'RPA & Business Automation', short: 'RPA & Business Automation',
     intro: 'Automate the work that should not require human repetition. RPA here is not "bots"; it is the discipline of turning a process into a controlled system.',
-    status: 'capability', photo: 'factory-corridor', ill: 'flow', tileBlurb: 'Workflow, approvals, system-to-system flows.',
+    status: 'capability', photo: 'automation-line', ill: 'flow', tileBlurb: 'Workflow, approvals, system-to-system flows.',
     stepsTitle: 'Turning a process into a controlled system',
     steps: [['Process', 'Map the work as it actually happens.'], ['Rules', 'Write down the decisions the work depends on.'], ['Workflow', 'Sequence steps, owners and approvals.'], ['Integration', 'Connect the systems the work passes through.'], ['Automation', 'Let the system carry the repetition.'], ['Exception', 'People handle only what needs judgement.']],
     listTitle: 'Where it applies',
@@ -70,7 +70,7 @@ export const services: Service[] = [
   {
     slug: 'cybersecurity', n: '04', title: 'Cybersecurity & Secure Engineering', short: 'Cybersecurity',
     intro: 'Security as an engineering discipline. We treat protection as layers of concrete controls, not a product badge, and it decides whether the other disciplines can be trusted.',
-    status: 'capability', photo: 'fibre-patch', tileBlurb: 'Assess, harden, monitor, remediate.',
+    status: 'capability', photo: 'access-reader', tileBlurb: 'Assess, harden, monitor, remediate.',
     stepsTitle: 'Defence in layers',
     steps: [['Identity & access', 'Authentication, access controls, secure access.'], ['Endpoint & OS', 'Server and OS hardening, patch and vulnerability management.'], ['Network', 'Firewall and security configuration, network isolation.'], ['Application', 'Secure engineering, controlled environments.'], ['Data', 'Secure databases, backup, access discipline.'], ['Monitoring', 'Logging, monitoring, audit trails.'], ['Recovery', 'Disaster recovery, security remediation.']],
     listTitle: 'Scope',
@@ -81,7 +81,7 @@ export const services: Service[] = [
   {
     slug: 'cloud-infrastructure', n: '05', title: 'Cloud, Server & Infrastructure', short: 'Cloud & Infrastructure',
     intro: 'The layer everything else depends on: administered, modernised and watched, not just installed. We design, migrate and operate on-premise and cloud infrastructure.',
-    status: 'capability', photo: 'datacentre-aisle', tileBlurb: 'Servers, migration, backup, availability.',
+    status: 'capability', photo: 'fibre-patch', tileBlurb: 'Servers, migration, backup, availability.',
     stepsTitle: 'From assessment to optimisation',
     steps: [['Assess', 'Inventory servers, OS versions, risks.'], ['Architect', 'Design the target state, on-premise or cloud.'], ['Migrate', 'Move systems, data and services safely.'], ['Secure', 'Harden, patch and control access.'], ['Operate', 'Administer production day to day.'], ['Monitor', 'Watch health, backups and capacity.'], ['Optimise', 'Improve performance and cost.']],
     listTitle: 'Administration & engineering',
@@ -91,7 +91,7 @@ export const services: Service[] = [
   {
     slug: 'data-analytics-integration', n: '06', title: 'Data, Analytics & Integration', short: 'Data, Analytics & Integration',
     intro: 'From systems of record to decisions. Data work starts where our software already lives: billing, inventory, training and operational records.',
-    status: 'evidenced', photo: 'code-screen', ill: 'chart', photoPos: '70% 40%', tileBlurb: 'APIs, dashboards, reporting.',
+    status: 'evidenced', photo: 'analyst-dashboards', ill: 'chart', tileBlurb: 'APIs, dashboards, reporting.',
     stepsTitle: 'From records to action',
     steps: [['Systems', 'Billing, POS, LMS, inventory and talent platforms create the records.'], ['Data', 'Extraction, cleaning and transformation into usable structures.'], ['Integration', 'APIs and system-to-system flows that remove re-keying.'], ['Intelligence', 'Dashboards, analytics and reporting over live operations.'], ['Action', 'Decisions, alerts and automated follow-through.']],
     listTitle: 'Capability',
@@ -114,7 +114,7 @@ export const services: Service[] = [
   {
     slug: 'managed-technology-services', n: '08', title: 'Managed Technology Services', short: 'Managed Technology Services',
     intro: 'An extended engineering team, not a ticket queue. The team that built the system is the team best placed to run it.',
-    status: 'capability', photo: 'datacentre-aisle', ill: 'loop', photoPos: '30% 50%', tileBlurb: 'Run, support, improve.',
+    status: 'capability', photo: 'dev-pair', ill: 'loop', tileBlurb: 'Run, support, improve.',
     stepsTitle: 'Plan, build, run, support, improve',
     steps: [['Plan', 'Define the outcome and the architecture.'], ['Build', 'Engineer and integrate.'], ['Run', 'Administer production day to day.'], ['Support', 'Application, database and incident support.'], ['Improve', 'Continuous improvement feeds the next plan.']],
     listTitle: 'What we take responsibility for',

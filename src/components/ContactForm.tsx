@@ -1,5 +1,4 @@
 'use client';
-import Link from '@/components/Link';
 import { useRef, useState, type FormEvent } from 'react';
 import { site } from '@/content/site';
 import { Arrow } from './ui';
@@ -56,16 +55,16 @@ export default function ContactForm({ defaultArea }: { defaultArea?: string }) {
 
   if (state === 'sent') {
     return (
-      <div className="status" style={{ display: 'block' }} role="status" data-testid="sent">
+      <div className="status" role="status" data-testid="sent">
         <b>Thank you. Your enquiry has been sent.</b>
-        <p style={{ margin: '8px 0 0' }}>We will reply to the email address you gave us. If it is urgent, call <a href={`tel:${site.phone.tel}`}>{site.phone.display}</a>.</p>
+        <p style={{ margin: '8px 0 0' }}>We will reply to the email address you gave us. If it is urgent, call <a href={`tel:${site.phone.tel}`} style={{ textDecoration: 'underline' }}>{site.phone.display}</a>.</p>
       </div>
     );
   }
 
   return (
     <form id="enquiry" ref={ref} onSubmit={onSubmit} noValidate aria-labelledby="f-h">
-      <h2 id="f-h" style={{ fontSize: 28, marginBottom: 26 }}>Send an enquiry</h2>
+      <h2 id="f-h">Send an enquiry</h2>
       <div className="row">
         <div className={`field${bad('name')}`}>
           <label htmlFor="n">Name</label>
@@ -98,16 +97,16 @@ export default function ContactForm({ defaultArea }: { defaultArea?: string }) {
       <div className={`consent field${bad('consent')}`}>
         <input type="checkbox" id="c" name="consent" aria-invalid={inv('consent')} aria-describedby={errors.consent ? 'c-e' : undefined} />
         <label htmlFor="c" style={{ font: '400 15px/1.5 var(--f-body)', margin: 0 }}>
-          I agree that {site.short} may use these details to reply to my enquiry. They are not shared or used for marketing. <Link href="/privacy/">Privacy notice</Link>
+          I agree that {site.short} may use these details to reply to my enquiry. They are not shared or used for marketing. <a href="/privacy/" style={{ textDecoration: 'underline' }}>Privacy notice</a>
         </label>
       </div>
-      {errors.consent && <div className="err" id="c-e" role="alert" style={{ display: 'block', margin: '-10px 0 18px 34px' }}>{errors.consent}</div>}
-      <button className="btn solid" type="submit" disabled={state === 'sending'} aria-busy={state === 'sending'}>
-        {state === 'sending' ? 'Sending…' : <>Send enquiry <Arrow /></>}
+      {errors.consent && <div className="err" id="c-e" role="alert" style={{ margin: '-4px 0 18px 34px' }}>{errors.consent}</div>}
+      <button className="btn btn--green" type="submit" disabled={state === 'sending'} aria-busy={state === 'sending'}>
+        {state === 'sending' ? 'Sending…' : 'Send enquiry'}<span className="arr"><Arrow /></span>
       </button>
       {state === 'error' && (
-        <div className="status err-box" style={{ display: 'block', borderColor: '#A4261A', background: '#FBEAE8' }} role="alert" data-testid="send-error">
-          {serverMsg} You can also email <a href={`mailto:${site.email}`}>{site.email}</a> or call <a href={`tel:${site.phone.tel}`}>{site.phone.display}</a>.
+        <div className="status" style={{ borderColor: '#E7A29B', background: '#FDECEA' }} role="alert" data-testid="send-error">
+          {serverMsg} You can also email <a href={`mailto:${site.email}`} style={{ textDecoration: 'underline' }}>{site.email}</a> or call <a href={`tel:${site.phone.tel}`} style={{ textDecoration: 'underline' }}>{site.phone.display}</a>.
         </div>
       )}
       <p className="fine" style={{ marginTop: 20 }}>Enquiries are sent by email to Siddhrans and are not stored on this website.</p>

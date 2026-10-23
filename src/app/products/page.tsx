@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
-import Link from '@/components/Link';
-import { Arrow, Cta, PageHero, RawSvg, Sheet, Tag } from '@/components/ui';
-import { interfaceSchematics } from '@/components/svgart';
+import ProductExplorer from '@/components/ProductExplorer';
+import { Laptop, LmsUI, Phone, PhoneTalentUI } from '@/components/concept';
+import { Reveal, Stagger, StaggerItem } from '@/components/motion';
+import { BigCta, Button, Crumbs, Eyebrow, PhotoCard, Pill, SecHead } from '@/components/ui';
 
 export const metadata: Metadata = {
   title: 'Products & Solutions',
@@ -9,65 +10,85 @@ export const metadata: Metadata = {
   alternates: { canonical: '/products/' },
 };
 
-const fams: { key: keyof typeof interfaceSchematics; group: string; items: [string, string][] }[] = [
-  { key: 'lms', group: 'Education & training', items: [['Siddhrans LMS', 'Programme and batch management, content delivery, assessment and result workflows, reporting.'], ['Online training programmes', 'Online training delivery.']] },
-  { key: 'talent', group: 'Talent & placement', items: [['Talent Sandalwood', 'Film and creative-industry talent: profiles, search, placement workflow.'], ['Talent Workforce', 'Staffing and workforce placement.'], ['Talent Sports Force', 'Sports talent and placement.']] },
-  { key: 'ops', group: 'Business operations', items: [['GST Billing', 'GST-compliant billing and records.'], ['Point of Sale', ''], ['Restaurant', ''], ['Catering', ''], ['Gym Master', ''], ['Project Management System', '']] },
-  { key: 'sector', group: 'Sector systems', items: [['Salon', ''], ['Cargo', ''], ['Dialysis', ''], ['Film Event', ''], ['Inventory management', '']] },
-];
 const EXAM = ['Candidate', 'Exam lab & candidate device', 'Secure boot & endpoint controls', 'Identity & authentication', 'Controlled, isolated network', 'Examination server & platform', 'Secure data & database', 'Result processing', 'Audit logging, monitoring & recovery'];
 
 export default function Products() {
   return (
     <>
-      <PageHero photo="code-screen" crumbs={[{ href: '/', label: 'Home' }, { label: 'Products & Solutions' }]}>
-        <h1>Software we have <mark>built</mark>. Solutions we can engineer.</h1>
-        <p className="lede" style={{ maxWidth: '60ch' }}>Fifteen named systems built since 2016 — full-stack, database-backed, workflow-driven — and solution architectures that combine software, infrastructure and security.</p>
-      </PageHero>
-
-      <section id="systems" aria-labelledby="h-sy"><div className="wrap">
-        <Sheet n="01" a="Systems built" b="Since 2016" />
-        <h2 id="h-sy" style={{ maxWidth: '22ch' }}>Fifteen named systems, four families.</h2>
-        <div className="fams rv">
-          {fams.map((f) => (
-            <div className="fam" key={f.key}>
-              <RawSvg html={interfaceSchematics[f.key]} />
-              <div>
-                <span className="mono">{f.group}</span>
-                <ul>{f.items.map(([n, d]) => <li key={n}>{n}{d && <small>{d}</small>}</li>)}</ul>
-              </div>
+      <header className="hero" style={{ paddingBottom: 0 }}>
+        <div className="hero__bg" aria-hidden="true"><div className="hero__grid" /></div>
+        <div className="container hero__inner" style={{ paddingBottom: 'clamp(70px,8vw,120px)' }}>
+          <div className="hero__copy">
+            <Crumbs items={[{ href: '/', label: 'Home' }, { label: 'Products & Solutions' }]} />
+            <h1 className="h-xl" style={{ margin: '20px 0 22px' }}>Software we have <span className="hl">built</span>. Solutions we can engineer.</h1>
+            <p className="lede">Fifteen named systems built since 2016: full-stack, database-backed, workflow-driven. Plus solution architectures that combine software, infrastructure and security.</p>
+            <div className="hero__actions" style={{ marginTop: 34 }}>
+              <Button href="#showcase">Explore the showcase</Button>
+              <Button href="/case-studies/" variant="ghost">Read the case studies</Button>
             </div>
-          ))}
+          </div>
+          <div style={{ position: 'relative', paddingBottom: '9%' }}>
+            <div style={{ width: '90%' }}><Laptop><LmsUI /></Laptop></div>
+            <div style={{ position: 'absolute', right: 0, bottom: 0, width: '24%' }}><Phone><PhoneTalentUI /></Phone></div>
+          </div>
         </div>
-        <p className="fine" style={{ marginTop: 22 }}>Interface drawings are generic schematics, not screenshots of these products. Client names are not listed. Descriptions are shown only where the company profile provides them.</p>
-      </div></section>
+      </header>
 
-      <section id="case-studies" style={{ background: 'var(--white)', borderTop: '1px solid var(--rule)', borderBottom: '1px solid var(--rule)' }} aria-labelledby="h-cs"><div className="wrap">
-        <Sheet n="02" a="Case studies" b="Delivered platforms" />
-        <h2 id="h-cs" style={{ maxWidth: '22ch' }}>Two platforms, in detail.</h2>
-        <p className="lede" style={{ marginTop: 18 }}>The Siddhrans LMS and the Talent platforms are described in full on the <Link href="/case-studies/" style={{ textDecoration: 'underline', textDecorationColor: 'var(--yellow)', textDecorationThickness: 3, textUnderlineOffset: 4 }}>case studies page</Link>.</p>
-        <div style={{ marginTop: 28 }}><Link className="btn" href="/case-studies/">Read the case studies <Arrow /></Link></div>
-      </div></section>
+      <section className="sec sec--navy diag-top" id="systems" aria-labelledby="h-sy" style={{ marginTop: 0 }}>
+        <div className="container">
+          <Reveal id="showcase"><SecHead row eyebrow="Product showcase" title={<span id="h-sy">Fifteen named systems, four families.</span>} lede="Choose a family to see the kind of interface and workflow it provides. Every interface is a concept design with placeholder data, shown to illustrate the software, not a screenshot of a delivered product." /></Reveal>
+          <Reveal delay={0.05}><ProductExplorer /></Reveal>
+        </div>
+      </section>
 
-      <section aria-labelledby="h-ex"><div className="wrap">
-        <Sheet n="03" a="Integrated solution" b="Proposed" />
-        <div className="cols2" style={{ alignItems: 'end' }}>
-          <div><Tag kind="prop">Proposed solution</Tag><h2 id="h-ex" style={{ marginTop: 18, maxWidth: '20ch' }}>Securing the complete examination environment.</h2></div>
-          <p className="lede" style={{ margin: 0 }}>One use case where the whole company shows up: software, infrastructure and security engineered as a single chain. Presented as a solution architecture, not a completed deployment.</p>
+      <section className="sec sec--white" aria-labelledby="h-eng">
+        <div className="container">
+          <Reveal><SecHead row eyebrow="How it is engineered" title={<span id="h-eng">The same engineering core under every system.</span>} lede="From the company profile: full-stack, database-backed, workflow-driven software in production use." /></Reveal>
+          <Stagger className="cardgrid">
+            {[['Full-stack', 'Web and mobile front ends, application logic and data layer engineered together.'], ['Database-backed', 'Structured, queryable records instead of spreadsheets and paper.'], ['Workflow-driven', 'Approvals, assessments, placements and billing modelled as explicit workflows.']].map(([t, d], i) => (
+              <StaggerItem key={t}><div className="card" style={{ height: '100%' }}><small>{String(i + 1).padStart(2, '0')}</small><h3>{t}</h3><p>{d}</p></div></StaggerItem>
+            ))}
+          </Stagger>
         </div>
-        <div className="exam rv">{EXAM.map((e) => <div key={e}>{e}</div>)}</div>
-        <div className="two" style={{ marginTop: 48 }}>
-          <div><h3>Where each discipline enters</h3>
-            <ul className="ticks one" style={{ marginTop: 14 }}>
-              <li><b>Software engineering:</b> examination platform and result processing, built on our delivered LMS engineering.</li>
-              <li><b>Cloud &amp; infrastructure:</b> exam servers, controlled networks, hardened labs, backup.</li>
-              <li><b>Cybersecurity:</b> secure boot, identity controls, isolation, monitoring.</li>
-              <li><b>Data &amp; analytics:</b> secure records, audit trails, operational analytics.</li>
-            </ul></div>
-          <div className="notebox" style={{ marginTop: 0 }}><b>Status. </b>Proposed solution: an integration of delivered examination-platform engineering with our infrastructure and security capability, presented as a solution architecture and not as a completed deployment.</div>
+      </section>
+
+      <section className="sec sec--mist" id="case-studies" aria-labelledby="h-cs">
+        <div className="container">
+          <Reveal><SecHead row eyebrow="Case studies" title={<span id="h-cs">Two platforms, in detail.</span>} lede="How the learning platform and the talent platforms came about, what they cover, and what they enabled." /></Reveal>
+          <Stagger className="cardgrid" style={{ gridTemplateColumns: 'repeat(2,1fr)' }}>
+            <StaggerItem>
+              <a className="casecard" href="/case-studies/#lms"><PhotoCard name="lecture-hall" sizes="(min-width:960px) 48vw, 100vw" pos="50% 40%" /><Pill kind="built">Systems built</Pill><h3>Siddhrans LMS</h3><p>Training delivery, structured end to end: programmes, content, assessment and results.</p><span className="linkarrow" style={{ color: '#fff', alignSelf: 'flex-start' }}>Read the case study</span></a>
+            </StaggerItem>
+            <StaggerItem>
+              <a className="casecard" href="/case-studies/#talent"><PhotoCard name="interview-panel" sizes="(min-width:960px) 48vw, 100vw" pos="50% 40%" /><Pill kind="built">Systems built</Pill><h3>Talent platforms</h3><p>One engineering pattern, three talent markets: film, staffing and sports.</p><span className="linkarrow" style={{ color: '#fff', alignSelf: 'flex-start' }}>Read the case study</span></a>
+            </StaggerItem>
+          </Stagger>
         </div>
-      </div></section>
-      <Cta title="Looking for a system like one of these?" />
+      </section>
+
+      <section className="sec sec--dark diag-both" aria-labelledby="h-ex">
+        <div className="container">
+          <Reveal>
+            <div className="sec-head sec-head--row">
+              <div style={{ display: 'grid', gap: 18 }}><Eyebrow>Integrated solution</Eyebrow><div><Pill kind="prop">Proposed solution</Pill></div><h2 id="h-ex" className="h-xl">Securing the complete examination environment.</h2></div>
+              <p className="lede">One use case where the whole company shows up: software, infrastructure and security engineered as a single chain. Presented as a solution architecture, not a completed deployment.</p>
+            </div>
+          </Reveal>
+          <div className="exam" role="list" aria-label="Examination environment chain">
+            {EXAM.map((e, i) => (<div className="exam__s" role="listitem" key={e} data-n={String(i + 1).padStart(2, '0')} style={{ ['--i' as string]: i } as React.CSSProperties}>{e}</div>))}
+          </div>
+          <div className="two" style={{ marginTop: 'clamp(36px,5vw,64px)' }}>
+            <ul className="tickgrid tickgrid--one">
+              <li><span><b>Software engineering:</b> examination platform and result processing, built on our delivered LMS engineering.</span></li>
+              <li><span><b>Cloud &amp; infrastructure:</b> exam servers, controlled networks, hardened labs, backup.</span></li>
+              <li><span><b>Cybersecurity:</b> secure boot, identity controls, isolation, monitoring.</span></li>
+              <li><span><b>Data &amp; analytics:</b> secure records, audit trails, operational analytics.</span></li>
+            </ul>
+            <div className="notice" style={{ marginTop: 0 }}><b>Status. </b>Proposed solution: an integration of delivered examination-platform engineering with our infrastructure and security capability, presented as a solution architecture and not as a completed deployment.</div>
+          </div>
+        </div>
+      </section>
+      <BigCta title="Looking for a system like one of these?" />
     </>
   );
 }

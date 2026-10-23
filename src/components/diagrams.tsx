@@ -1,18 +1,5 @@
 import { RawSvg } from './ui';
-import { chainIcons, stackSvg } from './svgart';
-
-export const StackFigure = () => (
-  <div className="stack-fig" style={{ maxWidth: 520, marginLeft: 'auto' }}><RawSvg html={stackSvg} /></div>
-);
-
-export const StackLegend = () => (
-  <ol className="legend" aria-label="Layers in the diagram">
-    <li><b>01</b>AI, ML &amp; Intelligent Automation</li><li><b>02</b>RPA &amp; Business Automation</li>
-    <li><b>03</b>Enterprise Software Engineering</li><li><b>04</b>Data, Analytics &amp; Integration</li>
-    <li><b>05</b>Cloud, Server &amp; Infrastructure</li><li><b>06</b>Embedded Systems &amp; Industrial IoT</li>
-    <li className="sec"><b>SEC</b>Security, through every layer</li><li className="sec"><b>MGD</b>Managed services keep every layer running</li>
-  </ol>
-);
+import { chainIcons } from './svgart';
 
 const CHAIN: [keyof typeof chainIcons, string, string][] = [
   ['sense', 'Sense', 'Temperature, vibration, level, flow, optical and environmental signals.'],
@@ -21,10 +8,34 @@ const CHAIN: [keyof typeof chainIcons, string, string][] = [
   ['analyse', 'Analyse', 'Rules and machine-learning models over live and historical readings.'],
   ['act', 'Act', 'Dashboards, alerts, audit logs and automated follow-through.'],
 ];
+
+/** Sense → Control → Connect → Analyse → Act, with an animated signal pulse travelling the line. */
 export const SignalChain = () => (
-  <div className="chain rv">
+  <div className="chain">
+    <div className="chain__line" aria-hidden="true" />
     {CHAIN.map(([k, t, d]) => (
-      <div key={k}><RawSvg html={chainIcons[k]} /><b>{t}</b><span>{d}</span></div>
+      <div className="chain__node" key={k}><i><RawSvg html={chainIcons[k]} /></i><b>{t}</b><span>{d}</span></div>
+    ))}
+  </div>
+);
+
+/** Plan / Build / Run / Support / Improve. */
+export const LoopFigure = () => (
+  <>
+    <div className="loopfig">
+      {[['Plan', 'Define the outcome and the architecture.'], ['Build', 'Engineer and integrate.'], ['Run', 'Administer production day to day.'], ['Support', 'Application, database and incident support.'], ['Improve', 'Optimise performance, reliability and cost.']].map(([t, d], i) => (
+        <div className="loopfig__item" key={t}><small>{String(i + 1).padStart(2, '0')}</small><b>{t}</b><span>{d}</span></div>
+      ))}
+    </div>
+    <div className="loopback mono"><span>Continuous improvement feeds the next plan</span><i /></div>
+  </>
+);
+
+/** Numbered approach steps (works for any count up to 8). */
+export const Steps = ({ items }: { items: readonly (readonly [string, string])[] }) => (
+  <div className="loopfig" style={{ ['--cols' as string]: Math.min(items.length, 5) } as React.CSSProperties}>
+    {items.map(([t, d], i) => (
+      <div className="loopfig__item" key={t}><small>{String(i + 1).padStart(2, '0')}</small><b>{t}</b><span>{d}</span></div>
     ))}
   </div>
 );

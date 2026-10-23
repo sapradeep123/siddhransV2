@@ -10,11 +10,15 @@ export const metadata: Metadata = {
 
 export default function Privacy() {
   return (
-    <div className="page-head grid-bg" style={{ borderBottom: 0 }}>
-      <div className="wrap" style={{ maxWidth: 860 }}>
-        <Crumbs items={[{ href: '/', label: 'Home' }, { label: 'Privacy notice' }]} />
-        <h1 style={{ fontSize: 'clamp(34px,4.6vw,60px)', marginBottom: 28 }}>Privacy notice</h1>
-        <div className="prose">
+    <>
+      <header className="shero">
+        <div className="container">
+          <Crumbs items={[{ href: '/', label: 'Home' }, { label: 'Privacy notice' }]} />
+          <h1 className="h-xl">Privacy notice</h1>
+        </div>
+      </header>
+      <section className="sec sec--white" style={{ paddingTop: 'clamp(40px,5vw,72px)' }}>
+        <div className="container prose" style={{ maxWidth: 860 }}>
           <p>This notice explains what {site.name} does with the details you send through the enquiry form on this website.</p>
           <h2>What we collect</h2>
           <p>Only what you type into the form: your name, work email, organisation and phone number (both optional), the area you are interested in, and your message. This website does not use advertising cookies, and it does not set tracking or analytics cookies.</p>
@@ -28,7 +32,7 @@ export default function Privacy() {
           <p>{site.name}, {site.city}, {site.country}.</p>
           <p className="fine">Last updated 23 October 2026. This notice describes the website&apos;s behaviour as built and should be reviewed by the company before launch.</p>
         </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
 }

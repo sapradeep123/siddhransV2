@@ -1,15 +1,15 @@
 import type { Metadata, Viewport } from 'next';
-import { Archivo, Hanken_Grotesk, IBM_Plex_Mono } from 'next/font/google';
+import { Bricolage_Grotesque, Instrument_Sans, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import Reveal from '@/components/Reveal';
+import { MotionProvider, RevealInit } from '@/components/motion';
 import { site } from '@/content/site';
 
 // Fonts are downloaded at build time and self-hosted: no runtime request to Google.
-const archivo = Archivo({ subsets: ['latin'], variable: '--font-archivo', display: 'swap' });
-const hanken = Hanken_Grotesk({ subsets: ['latin'], variable: '--font-hanken', display: 'swap' });
-const plex = IBM_Plex_Mono({ subsets: ['latin'], weight: ['400', '500'], variable: '--font-plex', display: 'swap' });
+const display = Bricolage_Grotesque({ subsets: ['latin'], variable: '--font-display', display: 'swap', weight: ['500', '600', '700', '800'] });
+const body = Instrument_Sans({ subsets: ['latin'], variable: '--font-body', display: 'swap' });
+const mono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono', display: 'swap', weight: ['400', '500'] });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   twitter: { card: 'summary_large_image', title: `${site.short} — ${site.tagline}`, description: site.description, images: ['/og/og-default.jpg'] },
 };
 
-export const viewport: Viewport = { themeColor: '#14171B', width: 'device-width', initialScale: 1 };
+export const viewport: Viewport = { themeColor: '#050A14', width: 'device-width', initialScale: 1 };
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -45,12 +45,14 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-IN" className={`${archivo.variable} ${hanken.variable} ${plex.variable}`}>
+    <html lang="en-IN" className={`${display.variable} ${body.variable} ${mono.variable}`}>
       <body>
-        <Header />
-        <main id="main">{children}</main>
-        <Footer />
-        <Reveal />
+        <MotionProvider>
+          <Header />
+          <main id="main">{children}</main>
+          <Footer />
+          <RevealInit />
+        </MotionProvider>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </body>
     </html>
