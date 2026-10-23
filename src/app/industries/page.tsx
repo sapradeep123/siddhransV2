@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Tablet, PosUI } from '@/components/concept';
 import { ParallaxFrame, Reveal } from '@/components/motion';
-import { BigCta, Button, Photo, PageHero, Pill, SecHead } from '@/components/ui';
+import { Button, Photo, PageHero, Pill, SecHead } from '@/components/ui';
 import type { PhotoName } from '@/content/images';
 
 export const metadata: Metadata = {
@@ -50,7 +50,6 @@ export default function Industries() {
           <p className="fine" style={{ marginTop: 22 }}>Photographs are licensed stock images used for illustration, not Siddhrans project photographs. The point-of-sale interface is a concept design with placeholder data. See <a href="/engineering-use-cases/" style={{ textDecoration: 'underline' }}>engineering use cases</a>.</p>
         </div>
       </section>
-      <BigCta title="Tell us about your industry and your problem." />
     </>
   );
 }

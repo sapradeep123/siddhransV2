@@ -37,7 +37,7 @@ const jsonLd = {
   logo: `${site.url}/brand/Siddhrans_Logo.png`,
   description: site.description,
   foundingDate: String(site.founded),
-  telephone: site.phone.tel,
+  telephone: site.phones.map((p) => p.tel),
   email: site.email,
   address: { '@type': 'PostalAddress', addressLocality: site.city, addressCountry: 'IN' },
   founder: { '@type': 'Person', name: 'Gururaj N' },

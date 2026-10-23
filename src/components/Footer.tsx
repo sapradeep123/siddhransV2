@@ -1,45 +1,55 @@
 import { site } from '@/content/site';
 import { services } from '@/content/services';
-import { Button, Logo } from './ui';
+import { Arrow, Button, Logo } from './ui';
+
+const PRIMARY = ['enterprise-software-engineering', 'ai-ml-intelligent-automation', 'cybersecurity', 'cloud-infrastructure', 'embedded-systems-industrial-iot'];
+const EXPLORE: [string, string][] = [['Products & Solutions', '/products/'], ['Industries', '/industries/'], ['Case Studies', '/case-studies/'], ['Engineering Use Cases', '/engineering-use-cases/'], ['About', '/about/'], ['Contact', '/contact/']];
 
 export default function Footer() {
+  const primary = PRIMARY.map((slug) => services.find((s) => s.slug === slug)!);
   return (
-    <footer className="footer">
+    <footer className="footer" id="site-footer">
       <div className="container">
-        <div className="footer__top">
+        <section className="fcta" aria-labelledby="fcta-h">
           <div>
+            <p className="eyebrow">Work with Siddhrans</p>
+            <h2 id="fcta-h" className="h-xl">Let&apos;s engineer what comes next.</h2>
+            <p className="lede">From intelligent software to connected infrastructure, let&apos;s build technology that moves your business forward.</p>
+          </div>
+          <Button href="/contact/" variant="yellow">Start a conversation</Button>
+        </section>
+
+        <div className="fcols">
+          <div className="fcol fcol--brand">
             <div className="logoplate"><Logo width="100%" eager={false} /></div>
-            <p style={{ margin: '22px 0 24px', maxWidth: '38ch', fontSize: 17 }}>{site.tagline}. {site.city}, {site.country}.</p>
-            <Button href="/contact/" variant="yellow">Start a conversation</Button>
+            <p>{site.tagline}. An engineering practice since {site.founded}, based in {site.city}, {site.country}.</p>
+            <p className="fcol__loc"><span aria-hidden="true" className="dot" />{site.city}, {site.country}</p>
           </div>
-          <div>
-            <h2>Capabilities</h2>
-            <ul>{services.map((s) => (<li key={s.slug}><a href={`/services/${s.slug}/`}>{s.short}</a></li>))}</ul>
-          </div>
-          <div>
-            <h2>Explore</h2>
+          <nav className="fcol" aria-label="Services">
+            <h2>Services</h2>
             <ul>
-              <li><a href="/services/">Services overview</a></li>
-              <li><a href="/products/">Products &amp; solutions</a></li>
-              <li><a href="/industries/">Industries</a></li>
-              <li><a href="/engineering-use-cases/">Engineering use cases</a></li>
-              <li><a href="/case-studies/">Case studies</a></li>
-              <li><a href="/about/">About &amp; leadership</a></li>
-              <li><a href="/privacy/">Privacy notice</a></li>
+              {primary.map((s) => (<li key={s.slug}><a href={`/services/${s.slug}/`}>{s.short}</a></li>))}
+              <li><a className="fall" href="/services/">View all services <span aria-hidden="true"><Arrow /></span></a></li>
             </ul>
-          </div>
-          <div>
-            <h2>Contact</h2>
-            <ul>
-              <li><a href={`tel:${site.phone.tel}`}>{site.phone.display}</a></li>
-              <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
-              <li>{site.city}, {site.country}</li>
+          </nav>
+          <nav className="fcol" aria-label="Explore">
+            <h2>Explore</h2>
+            <ul>{EXPLORE.map(([t, h]) => (<li key={h}><a href={h}>{t}</a></li>))}</ul>
+          </nav>
+          <div className="fcol">
+            <h2>Get in touch</h2>
+            <ul className="fcontact">
+              {site.phones.map((p) => (<li key={p.tel}><span className="k">Call</span><a href={`tel:${p.tel}`}>{p.display}</a></li>))}
+              <li><span className="k">Email</span><a href={`mailto:${site.email}`}>{site.email}</a></li>
+              <li><span className="k">Visit</span><span>{site.city}, {site.country}</span></li>
             </ul>
           </div>
         </div>
-        <div className="footer__base">
+
+        <div className="fbar">
           <span>© {new Date().getFullYear()} {site.name}</span>
-          <span>Photographs are licensed stock images used for illustration, not Siddhrans project photographs. Interface visuals are concept designs. <a href="/image-credits/">Image credits</a></span>
+          <span className="fbar__links"><a href="/privacy/">Privacy Policy</a><a href="/image-credits/">Image Credits</a></span>
+          <span className="fbar__note">Photographs are licensed stock images, not Siddhrans project photographs. Interface visuals are concept designs.</span>
         </div>
       </div>
     </footer>

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Laptop, LmsUI, Phone, PhoneLmsUI, PhoneTalentUI, TalentUI } from '@/components/concept';
 import { ParallaxFrame, Reveal, Stagger, StaggerItem } from '@/components/motion';
-import { BigCta, Crumbs, Eyebrow, Photo, PhotoCard, Pill } from '@/components/ui';
+import { Crumbs, Eyebrow, Photo, PhotoCard, Pill } from '@/components/ui';
 import { photoCaption, type PhotoName } from '@/content/images';
 
 export const metadata: Metadata = {
@@ -155,7 +155,6 @@ export default function CaseStudies() {
           </div>
         </div>
       </section>
-      <BigCta title="Have a similar problem to solve?" />
     </>
   );
 }

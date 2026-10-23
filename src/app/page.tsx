@@ -4,7 +4,7 @@ import ServiceShowcase, { type ShowcaseItem } from '@/components/ServiceShowcase
 import { LoopFigure, SignalChain } from '@/components/diagrams';
 import { Laptop, LmsUI, Phone, PhoneTalentUI } from '@/components/concept';
 import { Reveal, Stagger, StaggerItem, ParallaxFrame } from '@/components/motion';
-import { Art, Arrow, BigCta, Button, Eyebrow, Photo, PhotoCard, Pill, SecHead } from '@/components/ui';
+import { Art, Arrow, Button, Eyebrow, Photo, PhotoCard, Pill, SecHead } from '@/components/ui';
 import { serviceBySlug } from '@/content/services';
 import { site } from '@/content/site';
 
@@ -220,8 +220,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <BigCta title="Tell us what you are trying to build, automate or secure." label="Start a conversation" />
     </>
   );
 }

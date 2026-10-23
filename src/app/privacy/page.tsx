@@ -27,7 +27,7 @@ export default function Privacy() {
           <h2>How it is handled</h2>
           <p>The form sends your enquiry by email to {site.name}. The website does not store enquiries in a database. Copies exist in the company mailbox that receives them, and may pass through our email provider.</p>
           <h2>Your choices</h2>
-          <p>To ask what we hold about you, or to have an enquiry deleted, email <a href={`mailto:${site.email}`}>{site.email}</a> or call <a href={`tel:${site.phone.tel}`}>{site.phone.display}</a>.</p>
+          <p>To ask what we hold about you, or to have an enquiry deleted, email <a href={`mailto:${site.email}`}>{site.email}</a> or call <a href={`tel:${site.phones[0].tel}`}>{site.phones[0].display}</a> or <a href={`tel:${site.phones[1].tel}`}>{site.phones[1].display}</a>.</p>
           <h2>Contact</h2>
           <p>{site.name}, {site.city}, {site.country}.</p>
           <p className="fine">Last updated 23 October 2026. This notice describes the website&apos;s behaviour as built and should be reviewed by the company before launch.</p>

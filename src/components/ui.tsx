@@ -97,18 +97,6 @@ export function PageHero({ photo, pos, crumbs, children }: { photo: PhotoName; p
   );
 }
 
-export const BigCta = ({ title, label = 'Talk to an engineer' }: { title: string; label?: string }) => (
-  <section className="bigcta" aria-label="Contact us">
-    <div className="container bigcta__in">
-      <h2 className="h-xl">{title}</h2>
-      <div className="bigcta__acts">
-        <Button href="/contact/">{label}</Button>
-        <Button href={`tel:${site.phone.tel}`} variant="ghost">Call {site.phone.display}</Button>
-      </div>
-    </div>
-  </section>
-);
-
 export const SecHead = ({ eyebrow, title, lede, row = false }: { eyebrow: string; title: ReactNode; lede?: ReactNode; row?: boolean }) => (
   <div className={`sec-head${row ? ' sec-head--row' : ''}`}>
     <div style={{ display: 'grid', gap: 18 }}><Eyebrow>{eyebrow}</Eyebrow><h2 className="h-xl">{title}</h2></div>

@@ -57,7 +57,7 @@ export default function ContactForm({ defaultArea }: { defaultArea?: string }) {
     return (
       <div className="status" role="status" data-testid="sent">
         <b>Thank you. Your enquiry has been sent.</b>
-        <p style={{ margin: '8px 0 0' }}>We will reply to the email address you gave us. If it is urgent, call <a href={`tel:${site.phone.tel}`} style={{ textDecoration: 'underline' }}>{site.phone.display}</a>.</p>
+        <p style={{ margin: '8px 0 0' }}>We will reply to the email address you gave us. If it is urgent, call <a href={`tel:${site.phones[0].tel}`} style={{ textDecoration: 'underline' }}>{site.phones[0].display}</a> or <a href={`tel:${site.phones[1].tel}`} style={{ textDecoration: 'underline' }}>{site.phones[1].display}</a>.</p>
       </div>
     );
   }
@@ -106,7 +106,7 @@ export default function ContactForm({ defaultArea }: { defaultArea?: string }) {
       </button>
       {state === 'error' && (
         <div className="status" style={{ borderColor: '#E7A29B', background: '#FDECEA' }} role="alert" data-testid="send-error">
-          {serverMsg} You can also email <a href={`mailto:${site.email}`} style={{ textDecoration: 'underline' }}>{site.email}</a> or call <a href={`tel:${site.phone.tel}`} style={{ textDecoration: 'underline' }}>{site.phone.display}</a>.
+          {serverMsg} You can also email <a href={`mailto:${site.email}`} style={{ textDecoration: 'underline' }}>{site.email}</a> or call <a href={`tel:${site.phones[0].tel}`} style={{ textDecoration: 'underline' }}>{site.phones[0].display}</a> or <a href={`tel:${site.phones[1].tel}`} style={{ textDecoration: 'underline' }}>{site.phones[1].display}</a>.
         </div>
       )}
       <p className="fine" style={{ marginTop: 20 }}>Enquiries are sent by email to Siddhrans and are not stored on this website.</p>

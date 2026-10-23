@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { BigCta, PageHero, Pill } from '@/components/ui';
+import { PageHero, Pill } from '@/components/ui';
 import { Reveal } from '@/components/motion';
 import UseCaseLibrary from '@/components/UseCaseLibrary';
 import { statusHelp, statusLabel } from '@/content/usecases';
@@ -30,7 +30,6 @@ export default function UseCases() {
           <p className="fine" style={{ marginTop: 36 }}>Examples are drawn from engineering reference material and are not a list of completed Siddhrans projects. Performance, savings and accuracy figures in the source material are not republished because they are unverified. Photographs are licensed stock images; line drawings are original illustrations.</p>
         </div>
       </section>
-      <BigCta title="Don't see your use case? Describe it." />
     </>
   );
 }

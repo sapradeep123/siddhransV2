@@ -56,3 +56,7 @@ npm run verify:logo && npm run test:api && npm run test:e2e
 npm run lighthouse        # writes docs/LIGHTHOUSE.md
 npm run screenshots       # needs `npm run serve` running; writes docs/screenshots/ (git-ignored)
 ```
+
+## Footer redesign (2026-10-23)
+New footer: call-to-action panel, four columns (brand and location, services, explore, get in touch with both telephone numbers), and a bottom bar with Privacy Policy and Image Credits. The floating header steps aside while the footer is in view, so the two logos can never overlap. Per-page CTA panels were removed because the footer now carries the call to action.
+`tests/footer.spec.ts` checks, on all 18 pages at 1440, 820 and 390 px: footer structure and links, both `tel:` links (`+918971234343`, `+919902406387`), email and location, header hidden or clear of the footer, no logo overlap, no horizontal overflow; plus the Contact page showing both numbers (original first), JSON-LD listing both, header returning on scroll up, and keyboard focus. Full suite: 344 passed; 4 tests timed out once under machine load and passed when rerun in isolation.

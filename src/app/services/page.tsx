@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Lifecycle from '@/components/Lifecycle';
 import { ParallaxFrame, Reveal } from '@/components/motion';
-import { BigCta, Button, Photo, PageHero, Pill, SecHead } from '@/components/ui';
+import { Button, Photo, PageHero, Pill, SecHead } from '@/components/ui';
 import { serviceStatusLabel, services, type ServiceStatus } from '@/content/services';
 
 export const metadata: Metadata = {
@@ -48,7 +48,6 @@ export default function ServicesPage() {
           <Lifecycle />
         </div>
       </section>
-      <BigCta title="Tell us what you want to build, automate or secure." />
     </>
   );
 }

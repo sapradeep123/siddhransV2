@@ -10,6 +10,14 @@ export default function Header() {
   const [open, setOpen] = useState(false);
   const btn = useRef<HTMLButtonElement>(null);
   const reduce = useReducedMotion();
+  const [away, setAway] = useState(false);
+  useEffect(() => {
+    const f = document.getElementById('site-footer');
+    if (!f || !('IntersectionObserver' in window)) return;
+    const io = new IntersectionObserver(([e]) => setAway(e.isIntersecting), { rootMargin: '0px 0px -12% 0px' });
+    io.observe(f);
+    return () => io.disconnect();
+  }, [path]);
 
   useEffect(() => { document.body.style.overflow = open ? 'hidden' : ''; return () => { document.body.style.overflow = ''; }; }, [open]);
   useEffect(() => {
@@ -27,7 +35,7 @@ export default function Header() {
   return (
     <>
       <a className="skip" href="#main">Skip to content</a>
-      <header className="nav">
+      <header className={`nav${away && !open ? " nav--away" : ""}`}>
         <div className="nav__bar">
           <Logo />
           <nav className="nav__links" aria-label="Primary">
@@ -53,7 +61,7 @@ export default function Header() {
               </m.a>
             </nav>
             <div className="menu__foot">
-              <a href={`tel:${site.phone.tel}`}>{site.phone.display}</a>
+              {site.phones.map((p) => <a key={p.tel} href={`tel:${p.tel}`}>{p.display}</a>)}
               <a href={`mailto:${site.email}`}>{site.email}</a>
               <span>{site.city}, {site.country}</span>
             </div>

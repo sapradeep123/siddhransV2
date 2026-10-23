@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { Reveal, Stagger, StaggerItem } from '@/components/motion';
-import { BigCta, Button, Eyebrow, Photo, PhotoCard, PageHero, Pill, SecHead } from '@/components/ui';
+import { Button, Eyebrow, Photo, PhotoCard, PageHero, Pill, SecHead } from '@/components/ui';
 import { SignalChain, Steps } from '@/components/diagrams';
 import { serviceBySlug, serviceStatusLabel, services, type ServiceStatus } from '@/content/services';
 import { statusHelp, statusLabel } from '@/content/usecases';
@@ -126,7 +126,6 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           </Stagger>
         </div>
       </section>
-      <BigCta title={s.cta} />
     </>
   );
 }

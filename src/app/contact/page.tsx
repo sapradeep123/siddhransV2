@@ -27,7 +27,7 @@ export default function Contact() {
               <aside className="contactinfo" aria-label="Contact details">
                 <PhotoCard name="handshake" sizes="(min-width:960px) 40vw, 100vw" pos="30% 40%" cap={false} alt="" />
                 <dl style={{ margin: 0 }}>
-                  <dt>Telephone</dt><dd><a href={`tel:${site.phone.tel}`}>{site.phone.display}</a></dd>
+                  <dt>Telephone</dt><dd>{site.phones.map((p) => (<a key={p.tel} href={`tel:${p.tel}`} style={{ display: 'block', width: 'fit-content', marginBottom: 6 }}>{p.display}</a>))}</dd>
                   <dt>Email</dt><dd><a href={`mailto:${site.email}`}>{site.email}</a></dd>
                   <dt>Location</dt><dd>{site.city}, {site.country}</dd>
                   <dt>Company</dt><dd>{site.name}</dd>

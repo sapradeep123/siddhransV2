@@ -8,6 +8,11 @@ export const site = {
   description:
     'Siddhrans InfoTech Pvt Ltd is a Bengaluru engineering company: enterprise software, AI and automation, cybersecurity, cloud and infrastructure, and embedded and industrial IoT systems.',
   phone: { display: '+91 89712 34343', tel: '+918971234343' },
+  // Both numbers are supplied by the company. Keep the first (profile) number first.
+  phones: [
+    { display: '+91 89712 34343', tel: '+918971234343' },
+    { display: '+91 99024 06387', tel: '+919902406387' },
+  ],
   // Proposed enquiry recipient (profile contact); confirm before go-live.
   email: 'gururaj.n@siddhrans.com',
   city: 'Bengaluru',

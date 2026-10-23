@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { Reveal, Stagger, StaggerItem } from '@/components/motion';
-import { BigCta, Eyebrow, Photo, PageHero, SecHead } from '@/components/ui';
+import { Eyebrow, Photo, PageHero, SecHead } from '@/components/ui';
 import { site } from '@/content/site';
 
 export const metadata: Metadata = {
@@ -79,7 +79,6 @@ export default function About() {
           </Stagger>
         </div>
       </section>
-      <BigCta title="Want to know whether we are the right engineering partner?" />
     </>
   );
 }

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import ProductExplorer from '@/components/ProductExplorer';
 import { Laptop, LmsUI, Phone, PhoneTalentUI } from '@/components/concept';
 import { Reveal, Stagger, StaggerItem } from '@/components/motion';
-import { BigCta, Button, Crumbs, Eyebrow, PhotoCard, Pill, SecHead } from '@/components/ui';
+import { Button, Crumbs, Eyebrow, PhotoCard, Pill, SecHead } from '@/components/ui';
 
 export const metadata: Metadata = {
   title: 'Products & Solutions',
@@ -88,7 +88,6 @@ export default function Products() {
           </div>
         </div>
       </section>
-      <BigCta title="Looking for a system like one of these?" />
     </>
   );
 }
