@@ -4,12 +4,13 @@
 import type { PhotoName } from './images';
 import type { IllKind } from './usecases';
 
-export type ServiceStatus = 'built' | 'capability' | 'evidenced' | 'solutions';
+export type ServiceStatus = 'built' | 'capability' | 'evidenced' | 'solutions' | 'scoped';
 export const serviceStatusLabel: Record<ServiceStatus, string> = {
   built: 'Systems built',
   capability: 'Engineering capability',
   evidenced: 'Evidenced in built systems',
   solutions: 'Engineering solutions',
+  scoped: 'Scoped per engagement',
 };
 
 export interface Service {
@@ -29,13 +30,70 @@ export interface Service {
   list: string[];
   groups?: { title: string; text: string }[];
   groupsTitle?: string;
+  track: 'electronics' | 'software';
+  art?: 'vlsi';
   note?: string;
   cta: string;
 }
 
 export const services: Service[] = [
   {
-    slug: 'enterprise-software-engineering', n: '01', title: 'Enterprise Software Engineering', short: 'Enterprise Software',
+    slug: 'pcb-hardware-engineering', track: 'electronics', n: '01', title: 'PCB Design & Hardware Engineering', short: 'PCB & Hardware',
+    intro: 'A product is only as dependable as the board under it. We design the circuits and printed circuit boards that carry sensors, controllers and connectivity, with build, test and firmware bring-up in mind from the first schematic.',
+    status: 'solutions', photo: 'hw-pcb-inspection', photoPos: '50% 60%', tileBlurb: 'Schematics, PCB layout, power and board bring-up.',
+    stepsTitle: 'From requirement to a board that works',
+    steps: [['Requirements', 'Interfaces, power budget, environment, form factor and cost target.'], ['Schematic', 'Circuit capture and component selection.'], ['PCB layout', 'Placement, routing, stack-up and design-for-manufacture checks.'], ['Assembly support', 'Fabrication files, bill of materials and prototype build.'], ['Bring-up', 'Power-up, debug and test of the first boards.']],
+    listTitle: 'What we engineer',
+    list: ['Hardware architecture: sensing chain, controller, power, interfaces, form factor', 'Schematic design and component selection', 'Sensor, microcontroller and wireless-module boards', 'Power supply, battery and low-power design', 'PCB layout with design-for-manufacture and design-for-test in mind', 'Prototype assembly support and board bring-up', 'Debug headers, test points and production-test planning'],
+    note: 'Status: engineering solutions. Board designs shown on this site are reference examples. This page describes design and engineering services; it does not claim a manufacturing facility, certifications or production volumes.',
+    cta: 'Have a board to design, revise or bring up?',
+  },
+  {
+    slug: 'embedded-firmware-microcontrollers', track: 'electronics', n: '02', title: 'Embedded Firmware & Microcontrollers', short: 'Embedded Firmware',
+    intro: 'Firmware is where hardware becomes behaviour. We write the code that reads sensors, controls actuators and talks to the network on low-power microcontrollers, and we test it on the real board.',
+    status: 'solutions', photo: 'hw-bench-soldering', photoPos: '40% 50%', tileBlurb: 'Microcontroller firmware, drivers, signal processing, wireless.',
+    stepsTitle: 'From first blink to field-ready firmware',
+    steps: [['Bring-up', 'Clocks, power, peripherals and a first sign of life.'], ['Drivers', 'Sensors, displays, storage and communication interfaces.'], ['Application', 'Signal processing, control logic and state handling.'], ['Connectivity', 'Wireless links and a secure path to the backend.'], ['Test', 'Bench and field testing against the specification.']],
+    listTitle: 'What we engineer',
+    list: ['Firmware for low-power microcontrollers, including ESP32 and Arduino-class boards', 'Sensor drivers and signal processing', 'Local control logic and thresholds close to the machine', 'Wireless: Bluetooth LE, Wi-Fi, GSM, LoRaWAN, NB-IoT and LTE-M', 'Power management for battery-operated devices', 'Data logging and device-to-backend communication', 'Debugging and test on the real board'],
+    note: 'Status: engineering solutions. Firmware examples on this site are reference material, not a list of shipped products.',
+    cta: 'Tell us about the device your firmware needs to run on.',
+  },
+  {
+    slug: 'vlsi-semiconductor-design', track: 'electronics', n: '03', title: 'VLSI & Semiconductor Design Support', short: 'VLSI & Semiconductor', art: 'vlsi',
+    intro: 'Digital design and verification support for teams building FPGA- and chip-based products. This page describes the scope we engage on, not a track record: it claims no fabricated silicon.',
+    status: 'scoped', photo: 'hw-solder-board', photoPos: '50% 45%', tileBlurb: 'RTL, verification, FPGA prototyping and board-level integration.',
+    stepsTitle: 'From specification to a validated digital design',
+    steps: [['Specification', 'Functions, interfaces, performance and constraints.'], ['Architecture & RTL', 'Block design and RTL coding.'], ['Verification', 'Test benches and simulation against the specification.'], ['FPGA prototype', 'Run the design on an FPGA board and measure it.'], ['Integration', 'Board-level integration and firmware bring-up.']],
+    listTitle: 'Scope of engagement',
+    list: ['RTL design and functional-verification support (Verilog / SystemVerilog)', 'Test benches and simulation-based verification', 'FPGA prototyping and hardware validation of digital designs', 'Firmware and software bring-up on FPGA and SoC targets', 'Board-level integration of programmable and custom devices', 'Design documentation and review'],
+    note: 'Status: scoped per engagement. Siddhrans does not claim chip fabrication, silicon tape-outs, completed ASICs, foundry partnerships or a manufacturing facility. Scope, tools and team are confirmed in the proposal for each engagement.',
+    cta: 'Describe the design you need help with.',
+  },
+  {
+    slug: 'electronic-product-development', track: 'electronics', n: '04', title: 'Electronic Product Design, Prototyping & Validation', short: 'Product Development',
+    intro: 'We take an electronic product from concept to a validated prototype: hardware, firmware and the application around it, designed together so that nothing is thrown over a wall.',
+    status: 'solutions', photo: 'ai-wearable-pulse', photoPos: '55% 50%', tileBlurb: 'Concept to validated prototype, hardware and firmware together.',
+    stepsTitle: 'The product development lifecycle',
+    steps: [['Concept', 'Outcome, environment and constraints.'], ['Architecture', 'Sensing, controller, power and connectivity.'], ['Schematic & PCB', 'Circuit and board design.'], ['Firmware', 'Code that runs on the board.'], ['Prototype', 'Assemble and prove on real equipment.'], ['Validate', 'Test, calibrate and iterate.']],
+    listTitle: 'What we engineer',
+    list: ['Concept and feasibility for sensing and control products', 'Hardware and firmware co-design', 'Working prototypes for field trials', 'Bench validation and calibration with domain engineers', 'Test planning and documentation', 'Companion mobile, web and cloud applications', 'Hand-over of design files and documentation'],
+    note: 'Status: engineering solutions. The wearable and medical-electronics images on this site are AI-generated concept visuals, not photographs of delivered products.',
+    cta: 'Have a product idea that needs a working prototype?',
+  },
+  {
+    slug: 'edge-ai-intelligent-electronics', track: 'electronics', n: '06', title: 'Edge AI & Intelligent Electronics', short: 'Edge AI',
+    intro: 'Put the intelligence where the signal is. We apply pattern analysis, machine learning and computer vision close to sensors, cameras and machines, validated with the engineers who know the process.',
+    status: 'capability', photo: 'ai-vision-capsules', tileBlurb: 'Vision, anomaly detection and ML close to the machine.',
+    stepsTitle: 'How edge intelligence is put together',
+    steps: [['Signal', 'Sensors and cameras produce the raw data.'], ['Features', 'Filter and extract what matters on the device or gateway.'], ['Model', 'Rules or machine-learning models, trained on real data.'], ['Decision', 'Local action, alert or hand-off to the backend.'], ['Oversight', 'People review exceptions and validate results.']],
+    listTitle: 'What we engineer',
+    list: ['Signal-pattern analysis and deviation detection on sensor data', 'Machine-health and anomaly detection from vibration and current', 'Computer-vision inspection and counting at the line', 'Object detection and classification from camera feeds', 'Model selection and validation with domain engineers', 'Edge-to-backend data paths with human oversight'],
+    note: 'Status: engineering capability. Edge AI examples on this site are designed systems, proposed solutions or capability examples; no production deployment is claimed and figures from source material are not republished.',
+    cta: 'Tell us which signal or camera feed you want to understand.',
+  },
+  {
+    slug: 'enterprise-software-engineering', track: 'software', n: '07', title: 'Enterprise Software Engineering', short: 'Enterprise Software',
     intro: 'Every organisation runs on processes its software was never built for. We build the systems that fit the work: applications, portals, workflow and operational systems, engineered, database-backed and in production use.',
     status: 'built', photo: 'dev-team', tileBlurb: 'Portals, mobile, LMS, billing, workflow.',
     stepsTitle: 'From business problem to production system',
@@ -46,7 +104,7 @@ export const services: Service[] = [
     cta: 'Tell us about the system you need.',
   },
   {
-    slug: 'ai-ml-intelligent-automation', n: '02', title: 'AI, ML & Intelligent Automation', short: 'AI, ML & Intelligent Automation',
+    slug: 'ai-ml-intelligent-automation', track: 'software', n: '08', title: 'AI, ML & Intelligent Automation', short: 'AI, ML & Intelligent Automation',
     intro: 'AI earns its place when it is wired into data, process and oversight. That integration, not the model, is the engineering problem. We build AI into real workflows, with people in the loop.',
     status: 'capability', photo: 'data-wall', tileBlurb: 'Copilots, document intelligence, analytics.',
     stepsTitle: 'How applied AI is put together',
@@ -57,7 +115,7 @@ export const services: Service[] = [
     cta: 'Discuss where AI could earn its place in your workflow.',
   },
   {
-    slug: 'rpa-business-automation', n: '03', title: 'RPA & Business Automation', short: 'RPA & Business Automation',
+    slug: 'rpa-business-automation', track: 'software', n: '09', title: 'RPA & Business Automation', short: 'RPA & Business Automation',
     intro: 'Automate the work that should not require human repetition. RPA here is not "bots"; it is the discipline of turning a process into a controlled system.',
     status: 'capability', photo: 'automation-line', ill: 'flow', tileBlurb: 'Workflow, approvals, system-to-system flows.',
     stepsTitle: 'Turning a process into a controlled system',
@@ -68,7 +126,7 @@ export const services: Service[] = [
     cta: 'Tell us which process is costing you the most time.',
   },
   {
-    slug: 'cybersecurity', n: '04', title: 'Cybersecurity & Secure Engineering', short: 'Cybersecurity',
+    slug: 'cybersecurity', track: 'software', n: '10', title: 'Cybersecurity & Secure Engineering', short: 'Cybersecurity',
     intro: 'Security as an engineering discipline. We treat protection as layers of concrete controls, not a product badge, and it decides whether the other disciplines can be trusted.',
     status: 'capability', photo: 'access-reader', tileBlurb: 'Assess, harden, monitor, remediate.',
     stepsTitle: 'Defence in layers',
@@ -79,7 +137,7 @@ export const services: Service[] = [
     cta: 'Ask us to review your security posture.',
   },
   {
-    slug: 'cloud-infrastructure', n: '05', title: 'Cloud, Server & Infrastructure', short: 'Cloud & Infrastructure',
+    slug: 'cloud-infrastructure', track: 'software', n: '11', title: 'Cloud, Server & Infrastructure', short: 'Cloud & Infrastructure',
     intro: 'The layer everything else depends on: administered, modernised and watched, not just installed. We design, migrate and operate on-premise and cloud infrastructure.',
     status: 'capability', photo: 'fibre-patch', tileBlurb: 'Servers, migration, backup, availability.',
     stepsTitle: 'From assessment to optimisation',
@@ -89,7 +147,7 @@ export const services: Service[] = [
     cta: 'Tell us about the infrastructure you need to modernise.',
   },
   {
-    slug: 'data-analytics-integration', n: '06', title: 'Data, Analytics & Integration', short: 'Data, Analytics & Integration',
+    slug: 'data-analytics-integration', track: 'software', n: '12', title: 'Data, Analytics & Integration', short: 'Data, Analytics & Integration',
     intro: 'From systems of record to decisions. Data work starts where our software already lives: billing, inventory, training and operational records.',
     status: 'evidenced', photo: 'analyst-dashboards', ill: 'chart', tileBlurb: 'APIs, dashboards, reporting.',
     stepsTitle: 'From records to action',
@@ -101,9 +159,9 @@ export const services: Service[] = [
     cta: 'Tell us which data you want to turn into decisions.',
   },
   {
-    slug: 'embedded-systems-industrial-iot', n: '07', title: 'Embedded Systems & Industrial IoT', short: 'Embedded Systems & Industrial IoT',
-    intro: 'We engineer the whole chain between a physical signal and a business decision: sensors, embedded controllers, connectivity, secure backends, dashboards and alerts.',
-    status: 'solutions', photo: 'solder-bench', photoPos: '50% 60%', tileBlurb: 'Sensing, controllers, connectivity, dashboards and alerts.',
+    slug: 'embedded-systems-industrial-iot', track: 'electronics', n: '05', title: 'Industrial IoT & Connected Devices', short: 'Industrial IoT',
+    intro: 'We engineer the whole chain between a physical signal and a decision: sensors, embedded controllers, connectivity, secure backends, dashboards and alerts, for machines, buildings, utilities and logistics.',
+    status: 'solutions', photo: 'ai-iot-chiller', tileBlurb: 'Sensing, controllers, connectivity, dashboards and alerts.',
     stepsTitle: 'Engineering gates, not guesses',
     steps: [['Define', 'Measurable outcome, environment and constraints.'], ['Prototype', 'Prove the sensing and control on real equipment.'], ['Validate', 'Calibrate with domain engineers; test before trusting.'], ['Integrate', 'Connect to your systems and secure the data path.'], ['Operate', 'Monitor, support and improve in production.']],
     listTitle: 'What we engineer',
@@ -112,7 +170,7 @@ export const services: Service[] = [
     cta: 'Have a machine, process or site you want to instrument?',
   },
   {
-    slug: 'managed-technology-services', n: '08', title: 'Managed Technology Services', short: 'Managed Technology Services',
+    slug: 'managed-technology-services', track: 'software', n: '13', title: 'Managed Technology Services', short: 'Managed Technology Services',
     intro: 'An extended engineering team, not a ticket queue. The team that built the system is the team best placed to run it.',
     status: 'capability', photo: 'dev-pair', ill: 'loop', tileBlurb: 'Run, support, improve.',
     stepsTitle: 'Plan, build, run, support, improve',
@@ -124,5 +182,6 @@ export const services: Service[] = [
   },
 ];
 
+services.sort((a, b) => a.n.localeCompare(b.n));
 export const serviceBySlug = (slug: string) => services.find((s) => s.slug === slug);
 export type { IllKind };

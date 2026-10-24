@@ -44,3 +44,6 @@ Robotic lab arm hero, abstract "AI network" picture, laboratory porthole, server
 
 ## Not used, by rule
 Nothing from the supplied presentation, nothing from search engines, nothing AI-generated.
+
+## Electronics repositioning (2026-10-24)
+Added processed derivatives (AVIF/WebP/JPEG) from three already-registered Pexels photos (35290693, 37426135, 3912983, re-cut from higher-quality originals) and from the supplied Siddhrans folders. Full inventory, rejections and corrections: `IMAGE_INVENTORY.md`. Provenance and licence of the supplied images (Pradeep Pics, GPT Pics) must be confirmed by Siddhrans; they are labelled "AI-generated concept" or captioned as reference photographs and are never presented as project photographs.

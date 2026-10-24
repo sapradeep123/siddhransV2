@@ -1,5 +1,6 @@
 import type { CSSProperties, ReactNode } from 'react';
-import { photoAlt, photoCaption, photoDims, type PhotoName } from '@/content/images';
+import { photoAlt, photoCaption, photoDims, isProcessed, type PhotoName } from '@/content/images';
+import { processedMeta } from '@/content/images.generated';
 import { illustration, type IllustrationKind } from './svgart';
 import { site } from '@/content/site';
 
@@ -27,22 +28,36 @@ export function Logo({ width, eager = true, link = true }: { width?: number | st
   return link ? <a className="logo" href="/" aria-label="Siddhrans InfoTech — home" style={style}>{img}</a> : <span className="logo" style={style}>{img}</span>;
 }
 
-/** Responsive licensed stock photograph (WebP, 480/720/960/1600). */
+/** Responsive photograph. Processed images are AVIF + WebP with a JPEG fallback; older stock images are WebP (480/720/960/1600). */
 export function Photo({ name, sizes = '100vw', priority = false, pos, className, alt }: { name: PhotoName; sizes?: string; priority?: boolean; pos?: string; className?: string; alt?: string }) {
   const [w, h] = photoDims[name];
   const W = 960;
+  const common = {
+    className, sizes, width: W, height: Math.round((W * h) / w), alt: alt ?? photoAlt[name],
+    style: pos ? { objectPosition: pos } : undefined,
+    ...(priority ? { fetchPriority: 'high' as const } : { loading: 'lazy' as const, decoding: 'async' as const }),
+  };
+  if (isProcessed(name)) {
+    const ws = processedMeta[name].widths;
+    // content-hash query string: a replaced source gets new URLs, so the 30-day /img/ cache cannot serve the old file
+    const q = 'v' in processedMeta[name] ? `?v=${(processedMeta[name] as { v: string }).v}` : '';
+    const set = (e: string) => ws.map((x) => `/img/${name}-${x}.${e}${q} ${x}w`).join(', ');
+    const mid = ws[Math.min(1, ws.length - 1)];
+    return (
+      <picture>
+        <source type="image/avif" srcSet={set('avif')} sizes={sizes} />
+        <source type="image/webp" srcSet={set('webp')} sizes={sizes} />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={`/img/${name}-${mid}.jpg${q}`} srcSet={set('jpg')} {...common} />
+      </picture>
+    );
+  }
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      className={className}
       src={`/img/${name}-960.webp`}
       srcSet={`/img/${name}-480.webp 480w, /img/${name}-720.webp 720w, /img/${name}-960.webp 960w, /img/${name}-1600.webp 1600w`}
-      sizes={sizes}
-      width={W}
-      height={Math.round((W * h) / w)}
-      alt={alt ?? photoAlt[name]}
-      style={pos ? { objectPosition: pos } : undefined}
-      {...(priority ? { fetchPriority: 'high' as const } : { loading: 'lazy' as const, decoding: 'async' as const })}
+      {...common}
     />
   );
 }

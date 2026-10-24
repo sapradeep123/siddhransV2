@@ -4,7 +4,7 @@ import { Arrow, Photo, Pill } from './ui';
 import { serviceStatusLabel, type Service, type ServiceStatus } from '@/content/services';
 import type { PhotoName } from '@/content/images';
 
-const KIND: Record<ServiceStatus, 'built' | 'cap' | 'eng'> = { built: 'built', evidenced: 'built', capability: 'cap', solutions: 'eng' };
+const KIND: Record<ServiceStatus, 'built' | 'cap' | 'eng'> = { built: 'built', evidenced: 'built', capability: 'cap', solutions: 'eng', scoped: 'cap' };
 
 export interface ShowcaseItem { service: Service; photo: PhotoName; pos?: string; blurb: string; points: string[] }
 

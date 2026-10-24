@@ -6,16 +6,16 @@ import { statusHelp, statusLabel } from '@/content/usecases';
 
 export const metadata: Metadata = {
   title: 'Engineering Use Cases',
-  description: 'A library of embedded, IoT and AI engineering use cases across industrial, medical, utility, logistics and safety domains, each labelled by status.',
+  description: 'Electronics-led engineering use cases: embedded, IoT and medical-electronics designs first, then related software and AI applications, each labelled as a designed system, proposed solution or capability example.',
   alternates: { canonical: '/engineering-use-cases/' },
 };
 
 export default function UseCases() {
   return (
     <>
-      <PageHero photo="pharma-line" pos="50% 45%" crumbs={[{ href: '/', label: 'Home' }, { label: 'Engineering Use Cases' }]}>
+      <PageHero photo="hw-pcb-inspection" pos="50% 62%" crumbs={[{ href: '/', label: 'Home' }, { label: 'Engineering Use Cases' }]}>
         <h1 className="h-xl">Engineering <span className="hl">use cases</span>.</h1>
-        <p className="lede" style={{ maxWidth: '60ch' }}>Reference engineering examples across industrial, medical, utility, logistics, safety and AI domains. Every entry is labelled so you can tell a design from a proposal from a capability example.</p>
+        <p className="lede" style={{ maxWidth: '60ch' }}>Electronics-led reference examples first: wearable and medical electronics, machine-health sensing, metering, building systems and connected devices. Related software and AI applications follow. Every entry is labelled so you can tell a design from a proposal from a capability example.</p>
       </PageHero>
       <section className="sec sec--mist" aria-labelledby="h-lib" style={{ paddingTop: 'clamp(48px,6vw,90px)' }}>
         <div className="container">
@@ -27,7 +27,7 @@ export default function UseCases() {
             </div>
           </Reveal>
           <UseCaseLibrary />
-          <p className="fine" style={{ marginTop: 36 }}>Examples are drawn from engineering reference material and are not a list of completed Siddhrans projects. Performance, savings and accuracy figures in the source material are not republished because they are unverified. Photographs are licensed stock images; line drawings are original illustrations.</p>
+          <p className="fine" style={{ marginTop: 36 }}>Examples are drawn from engineering reference material and are not a list of completed Siddhrans projects. Performance, savings and accuracy figures in the source material are not republished because they are unverified. Photographs are licensed stock images; concept images are AI-generated and illustrative; line drawings are original illustrations.</p>
         </div>
       </section>
     </>

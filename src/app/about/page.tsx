@@ -5,12 +5,12 @@ import { site } from '@/content/site';
 
 export const metadata: Metadata = {
   title: 'About',
-  description: 'An engineering company from Bengaluru, building since 2016. Founder-led, with software first and the whole technology stack now under one roof.',
+  description: 'A Bengaluru engineering company building since 2016. Founder-led, with a software foundation and an electronics focus: PCB hardware, embedded firmware, VLSI design support and connected systems.',
   alternates: { canonical: '/about/' },
 };
 
 const PRINCIPLES: [string, string, string][] = [
-  ['Build', 'Build what matters', 'Understand the business problem before touching technology.'],
+  ['Hardware', 'Engineer from the circuit up', 'Hardware, firmware and application are designed as one system, not handed over in pieces.'],
   ['Secure', 'Secure what matters', 'Treat protection as layers of concrete controls, not a product badge.'],
   ['Automate', 'Automate what slows you down', 'Apply AI and workflow where they earn their place, with people in the loop.'],
   ['Modernise', 'Modernise what holds you back', 'Upgrade legacy applications, servers and infrastructure safely.'],
@@ -21,18 +21,18 @@ const PRINCIPLES: [string, string, string][] = [
 export default function About() {
   return (
     <>
-      <PageHero photo="factory-corridor" pos="50% 60%" crumbs={[{ href: '/', label: 'Home' }, { label: 'About' }]}>
-        <h1 className="h-xl">An engineering company from Bengaluru, building <span className="hl">since {site.founded}</span>.</h1>
-        <p className="lede" style={{ maxWidth: '62ch' }}>Siddhrans began as a software engineering practice, designing and building business applications, web platforms and workflow systems for organisations across education, logistics, healthcare, events and retail.</p>
+      <PageHero photo="hw-pcb-inspection" pos="50% 62%" crumbs={[{ href: '/', label: 'Home' }, { label: 'About' }]}>
+        <h1 className="h-xl">An electronics and embedded engineering company, building <span className="hl">since {site.founded}</span>.</h1>
+        <p className="lede" style={{ maxWidth: '62ch' }}>Siddhrans began in Bengaluru as a software engineering practice. Today its engineering focus is electronics: PCB hardware, embedded firmware, VLSI design support, industrial IoT and edge AI, with the software, security and cloud work to carry them into applications.</p>
       </PageHero>
 
       <section className="sec sec--white" aria-labelledby="h-st">
         <div className="container">
           <div className="story" style={{ alignItems: 'start' }}>
-            <Reveal><p id="h-st" className="h-lg">The same build discipline, extended into AI, automation, cybersecurity and infrastructure.</p></Reveal>
+            <Reveal><p id="h-st" className="h-lg">The same build discipline, extended from software down to the hardware.</p></Reveal>
             <Reveal delay={0.08}>
-              <p className="lede">That practice now operates as {site.name}. Our software history is the foundation, repositioned and not hidden, and the reason we can take responsibility for what we build.</p>
-              <p className="lede" style={{ marginTop: 18 }}>Our newest engineering focus is embedded systems and industrial IoT: connecting machines and sensors to the software and analytics that make them useful.</p>
+              <p className="lede">That practice now operates as {site.name}. Our software history is the foundation, not hidden, and the reason we can engineer a solution from electronic hardware through embedded software to the intelligent application.</p>
+              <p className="lede" style={{ marginTop: 18 }}>Our differentiation is that chain: circuit, firmware, connectivity, analytics and application, designed together and kept accountable to one team. VLSI work is offered as design support per engagement; we claim no fabricated silicon.</p>
             </Reveal>
           </div>
         </div>
@@ -44,7 +44,7 @@ export default function About() {
           <Stagger className="timeline">
             <StaggerItem><div className="tl" style={{ height: '100%' }}><b>2016</b><strong>Web &amp; application engineering</strong><p>Practice established in Bengaluru. First business systems: salon and cargo management, corporate websites, early workflow applications.</p></div></StaggerItem>
             <StaggerItem><div className="tl" style={{ height: '100%' }}><b>2016 – 2020</b><strong>Sector systems &amp; productisation</strong><p>Dialysis, film-event and inventory systems delivered. Product family built: GST Billing, POS, Restaurant, Catering, Gym Master, Project Management, plus Siddhrans LMS and the Talent platforms.</p></div></StaggerItem>
-            <StaggerItem><div className="tl" style={{ height: '100%' }}><b>Today</b><strong>Full lifecycle</strong><p>AI, automation, cybersecurity, infrastructure and embedded engineering added to the engineering core.</p></div></StaggerItem>
+            <StaggerItem><div className="tl" style={{ height: '100%' }}><b>Today</b><strong>Electronics-led, full lifecycle</strong><p>Embedded, PCB and IoT engineering added to the software core, with AI, automation, cybersecurity and infrastructure around it.</p></div></StaggerItem>
           </Stagger>
         </div>
       </section>
@@ -67,8 +67,8 @@ export default function About() {
       </section>
 
       <div className="bandphoto">
-        <Photo name="solder-board" sizes="100vw" pos="50% 55%" />
-        <span className="photo__cap"><b>Illustrative image</b> · Circuit-board assembly</span>
+        <Photo name="hw-bench-soldering" sizes="100vw" pos="50% 55%" />
+        <span className="photo__cap"><b>Illustrative image</b> · Electronics bench</span>
       </div>
 
       <section className="sec sec--mist" aria-labelledby="h-pr">

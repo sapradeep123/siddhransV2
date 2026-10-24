@@ -33,9 +33,18 @@ export const LoopFigure = () => (
 
 /** Numbered approach steps (works for any count up to 8). */
 export const Steps = ({ items }: { items: readonly (readonly [string, string])[] }) => (
-  <div className="loopfig" style={{ ['--cols' as string]: Math.min(items.length, 5) } as React.CSSProperties}>
+  <div className="loopfig" style={{ ['--cols' as string]: items.length === 6 ? 3 : Math.min(items.length, 5) } as React.CSSProperties}>
     {items.map(([t, d], i) => (
       <div className="loopfig__item" key={t}><small>{String(i + 1).padStart(2, '0')}</small><b>{t}</b><span>{d}</span></div>
     ))}
   </div>
+);
+
+const VLSI: [string, string][] = [['Specification', 'Functions and interfaces'], ['RTL design', 'Verilog / SystemVerilog'], ['Verification', 'Test benches, simulation'], ['FPGA prototype', 'Run and measure on hardware'], ['Board integration', 'PCB and firmware bring-up']];
+/** Design flow we support, drawn as original artwork. It is a scope diagram, not a claim of fabricated silicon. */
+export const VlsiFlow = ({ compact = false }: { compact?: boolean }) => (
+  <figure className={`vflow${compact ? ' vflow--compact' : ''}`} aria-label="Digital design flow: specification, RTL design, verification, FPGA prototype, board integration">
+    <ol>{VLSI.map(([t, d], i) => (<li key={t}><small className="mono">{String(i + 1).padStart(2, '0')}</small><b>{t}</b><span>{d}</span></li>))}</ol>
+    <figcaption className="mono">Design-support scope · no tape-out or fabrication claimed</figcaption>
+  </figure>
 );

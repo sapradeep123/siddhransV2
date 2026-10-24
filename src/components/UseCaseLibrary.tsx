@@ -1,5 +1,5 @@
 'use client';
-import { useMemo, useState } from 'react';
+import { Fragment, useMemo, useState } from 'react';
 import { AnimatePresence, m, useReducedMotion } from 'motion/react';
 import { Art, Photo, Pill } from './ui';
 import { domainLabel, statusLabel, useCases, type UseCaseStatus } from '@/content/usecases';
@@ -24,10 +24,14 @@ export default function UseCaseLibrary() {
       </p>
       <div className="uc-grid">
         <AnimatePresence mode="popLayout" initial={false}>
-          {rows.map(({ u, i }) => (
-            <m.article layout={!reduce} key={u.title} className="uc" data-status={u.status} initial={reduce ? false : { opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} exit={reduce ? undefined : { opacity: 0, scale: 0.96 }} transition={{ duration: reduce ? 0 : 0.4, ease: [0.2, 0.8, 0.2, 1] }}>
+          {rows.map(({ u, i }, k) => (
+            <Fragment key={u.title}>
+            {(k === 0 || rows[k - 1].u.track !== u.track) && (
+              <p className="uc-divider mono" data-track={u.track}>{u.track === 'electronics' ? 'Electronics, embedded & IoT applications' : 'Related software & AI applications'}</p>
+            )}
+            <m.article layout={!reduce} className="uc" data-status={u.status} initial={reduce ? false : { opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} exit={reduce ? undefined : { opacity: 0, scale: 0.96 }} transition={{ duration: reduce ? 0 : 0.4, ease: [0.2, 0.8, 0.2, 1] }}>
               <div className="uc__media">
-                {'photo' in u.media ? <Photo name={u.media.photo} pos={u.media.pos} sizes="(min-width:1180px) 30vw, (min-width:640px) 45vw, 100vw" alt="" /> : <Art kind={u.media.ill} />}
+                {'photo' in u.media ? <Photo name={u.media.photo} pos={u.media.pos} className={u.media.fit === 'contain' ? 'fit-contain' : undefined} sizes="(min-width:1180px) 30vw, (min-width:640px) 45vw, 100vw" alt="" /> : <Art kind={u.media.ill} />}
                 <Pill kind={KIND[u.status]}>{statusLabel[u.status]}</Pill>
                 <span className="uc__n">{String(i + 1).padStart(2, '0')}</span>
               </div>
@@ -38,6 +42,7 @@ export default function UseCaseLibrary() {
                 <div className="uc__flow">{u.flow.map((s, k) => (<span key={s}>{k > 0 && <em> → </em>}{s}</span>))}</div>
               </div>
             </m.article>
+            </Fragment>
           ))}
         </AnimatePresence>
       </div>

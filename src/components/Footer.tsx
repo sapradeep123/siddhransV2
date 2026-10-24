@@ -2,7 +2,7 @@ import { site } from '@/content/site';
 import { services } from '@/content/services';
 import { Arrow, Button, Logo } from './ui';
 
-const PRIMARY = ['enterprise-software-engineering', 'ai-ml-intelligent-automation', 'cybersecurity', 'cloud-infrastructure', 'embedded-systems-industrial-iot'];
+const PRIMARY = ['pcb-hardware-engineering', 'embedded-firmware-microcontrollers', 'vlsi-semiconductor-design', 'electronic-product-development', 'embedded-systems-industrial-iot', 'edge-ai-intelligent-electronics'];
 const EXPLORE: [string, string][] = [['Products & Solutions', '/products/'], ['Industries', '/industries/'], ['Case Studies', '/case-studies/'], ['Engineering Use Cases', '/engineering-use-cases/'], ['About', '/about/'], ['Contact', '/contact/']];
 
 export default function Footer() {
@@ -14,7 +14,7 @@ export default function Footer() {
           <div>
             <p className="eyebrow">Work with Siddhrans</p>
             <h2 id="fcta-h" className="h-xl">Let&apos;s engineer what comes next.</h2>
-            <p className="lede">From intelligent software to connected infrastructure, let&apos;s build technology that moves your business forward.</p>
+            <p className="lede">From circuit design and firmware to connected, intelligent systems: tell us about the product, board or machine you want to engineer.</p>
           </div>
           <Button href="/contact/" variant="yellow">Start a conversation</Button>
         </section>
@@ -49,7 +49,7 @@ export default function Footer() {
         <div className="fbar">
           <span>© {new Date().getFullYear()} {site.name}</span>
           <span className="fbar__links"><a href="/privacy/">Privacy Policy</a><a href="/image-credits/">Image Credits</a></span>
-          <span className="fbar__note">Photographs are licensed stock images, not Siddhrans project photographs. Interface visuals are concept designs.</span>
+          <span className="fbar__note">Photographs are licensed stock images and concept visuals are AI-generated; they are not Siddhrans project photographs. Interface visuals are concept designs.</span>
         </div>
       </div>
     </footer>

@@ -6,28 +6,28 @@ import type { PhotoName } from '@/content/images';
 
 export const metadata: Metadata = {
   title: 'Industries',
-  description: 'Industries served through delivered software and engineering solutions: education, talent, healthcare, logistics, manufacturing, energy, water and retail.',
+  description: 'Electronics and embedded engineering for manufacturing, medical devices, utilities and buildings, water and environment, and logistics, alongside delivered software for education, talent and retail.',
   alternates: { canonical: '/industries/' },
 };
 
 interface Industry { id: string; title: string; photo?: PhotoName; pos?: string; delivered: string[]; solutions: string[] }
 const industries: Industry[] = [
+  { id: 'manufacturing', title: 'Manufacturing & pharma', photo: 'ai-vision-capsules', pos: '50% 50%', delivered: [], solutions: ['Vibration & machine-health monitoring (designed system)', 'Smart-factory quality intelligence (designed system)', 'Contactless powder mixing (capability example)', 'Secure laboratory access & occupancy (capability example)'] },
+  { id: 'healthcare', title: 'Healthcare & medical electronics', photo: 'ai-ecg-handheld', pos: '30% 50%', delivered: ['Dialysis management system'], solutions: ['Wearable PPG health sensor (capability example)', 'Handheld Bluetooth ECG (capability example)', 'Medical-kit & asset readiness (proposed solution)'] },
+  { id: 'energy', title: 'Energy, utilities & buildings', photo: 'ai-iot-chiller', pos: '50% 50%', delivered: [], solutions: ['Gas-meter digitisation retrofit (proposed solution)', 'IoT HVAC energy management (proposed solution)', 'Theatre air-cooler optimisation (proposed solution)'] },
+  { id: 'water', title: 'Water & environment', photo: 'ref-water-sensor-boat', pos: '50% 50%', delivered: [], solutions: ['Water-quality monitoring (capability example)', 'Industrial safety & environmental alerts (capability example)'] },
+  { id: 'logistics', title: 'Logistics & cold chain', photo: 'ai-coldchain-truck', pos: '50% 50%', delivered: ['Cargo management system'], solutions: ['Cold-chain condition monitoring (capability example)', 'Smart warehouse & logistics (capability example)'] },
   { id: 'education', title: 'Education & training', photo: 'lecture-hall', pos: '50% 40%', delivered: ['Siddhrans LMS', 'Online training programmes'], solutions: [] },
   { id: 'talent', title: 'Talent & placement', photo: 'interview-panel', pos: '50% 40%', delivered: ['Talent Sandalwood', 'Talent Workforce', 'Talent Sports Force'], solutions: [] },
-  { id: 'healthcare', title: 'Healthcare & medical electronics', photo: 'vitals-monitor', pos: '50% 35%', delivered: ['Dialysis management system'], solutions: ['Handheld Bluetooth ECG (capability example)', 'Medical-kit & asset readiness (proposed solution)'] },
-  { id: 'logistics', title: 'Logistics & cold chain', photo: 'warehouse-scan', pos: '55% 40%', delivered: ['Cargo management system'], solutions: ['Cold-chain condition monitoring (capability example)', 'Smart warehouse & logistics (capability example)'] },
-  { id: 'manufacturing', title: 'Manufacturing & pharma', photo: 'pharma-line', delivered: [], solutions: ['Vibration & machine-health monitoring (designed system)', 'Smart-factory quality intelligence (designed system)', 'Secure laboratory access & occupancy (capability example)'] },
-  { id: 'energy', title: 'Energy, utilities & buildings', photo: 'solar-farm', pos: '60% 50%', delivered: [], solutions: ['Gas-meter digitisation retrofit (proposed solution)', 'IoT HVAC energy management (proposed solution)', 'Theatre air-cooler optimisation (proposed solution)'] },
-  { id: 'water', title: 'Water & environment', photo: 'water-treatment', delivered: [], solutions: ['Water-quality monitoring (capability example)', 'Industrial safety & environmental alerts (capability example)'] },
   { id: 'retail', title: 'Retail, events & business operations', delivered: ['GST Billing', 'Point of Sale', 'Restaurant', 'Catering', 'Gym Master', 'Salon', 'Film Event', 'Inventory management', 'Project Management System'], solutions: [] },
 ];
 
 export default function Industries() {
   return (
     <>
-      <PageHero photo="factory-corridor" pos="50% 60%" crumbs={[{ href: '/', label: 'Home' }, { label: 'Industries' }]}>
-        <h1 className="h-xl">Built for operations that cannot afford <span className="hl">downtime</span>.</h1>
-        <p className="lede" style={{ maxWidth: '62ch' }}>Our delivered software spans education, logistics, healthcare, events and retail. Our engineering solutions extend into manufacturing, utilities, buildings and safety. Each industry below separates what we have built from what we can engineer.</p>
+      <PageHero photo="hw-solder-board" pos="50% 50%" crumbs={[{ href: '/', label: 'Home' }, { label: 'Industries' }]}>
+        <h1 className="h-xl">Electronics engineering for operations that cannot afford <span className="hl">downtime</span>.</h1>
+        <p className="lede" style={{ maxWidth: '62ch' }}>Our electronics and embedded engineering applies to manufacturing, medical devices, utilities and buildings, water and logistics. Our delivered software spans education, talent, healthcare, logistics and retail. Each industry below separates what we have built from what we can engineer.</p>
         <div className="phero__actions"><Button href="/contact/">Talk to an engineer</Button></div>
       </PageHero>
       <section className="sec sec--white" aria-labelledby="h-ind">
@@ -47,7 +47,7 @@ export default function Industries() {
               </Reveal>
             </div>
           ))}
-          <p className="fine" style={{ marginTop: 22 }}>Photographs are licensed stock images used for illustration, not Siddhrans project photographs. The point-of-sale interface is a concept design with placeholder data. See <a href="/engineering-use-cases/" style={{ textDecoration: 'underline' }}>engineering use cases</a>.</p>
+          <p className="fine" style={{ marginTop: 22 }}>Images are licensed stock photographs, supplied reference photographs or AI-generated concept visuals used for illustration, not Siddhrans project photographs. The point-of-sale interface is a concept design with placeholder data. See <a href="/engineering-use-cases/" style={{ textDecoration: 'underline' }}>engineering use cases</a>.</p>
         </div>
       </section>
     </>

@@ -126,7 +126,7 @@ main{overflow-x:clip}
 
 /* ---------- photographs ---------- */
 .photo{position:relative;overflow:hidden;border-radius:var(--r-lg);background:var(--navy-800);isolation:isolate}
-.photo>img{width:100%;height:100%;object-fit:cover;display:block}
+.photo>img,.photo>picture>img{width:100%;height:100%;object-fit:cover;display:block}
 .photo__cap{position:absolute;left:14px;bottom:14px;z-index:3;font:500 10.5px/1.2 var(--f-mono);letter-spacing:.07em;text-transform:uppercase;color:#fff;background:#0A1326;padding:7px 10px;border-radius:999px;max-width:calc(100% - 28px)}
 .photo__cap b{color:var(--yellow);font-weight:500}
 .photo--tall{aspect-ratio:3/4}.photo--wide{aspect-ratio:16/10}.photo--sq{aspect-ratio:1}
@@ -158,9 +158,9 @@ main{overflow-x:clip}
 .hero__trust b{display:block;font:600 19px/1.2 var(--f-display);color:#fff;letter-spacing:-.01em}
 .collage{position:relative;aspect-ratio:1/1.02;max-width:640px;margin-left:auto;width:100%}
 .collage>*{position:absolute}
-.collage .c-a{inset:0 0 18% 14%;border-radius:var(--r-xl);box-shadow:var(--shadow-2)}
-.collage .c-b{left:0;bottom:0;width:38%;aspect-ratio:3/4;border-radius:var(--r-lg);border:6px solid var(--navy-950);box-shadow:var(--shadow-2)}
-.collage .c-c{right:-3%;bottom:6%;width:36%;aspect-ratio:1;border-radius:var(--r-lg);border:6px solid var(--navy-950);box-shadow:var(--shadow-2)}
+.collage .c-a{inset:0 0 auto 0;aspect-ratio:3/2;border-radius:var(--r-xl);box-shadow:var(--shadow-2)}
+.collage .c-b{left:0;bottom:0;width:46%;aspect-ratio:4/3;border-radius:var(--r-lg);border:6px solid var(--navy-950);box-shadow:var(--shadow-2)}
+.collage .c-c{right:0;bottom:2%;width:34%;aspect-ratio:1;border-radius:var(--r-lg);border:6px solid var(--navy-950);box-shadow:var(--shadow-2)}
 .floatchip{position:absolute;display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.96);color:var(--ink);border-radius:16px;padding:11px 16px 11px 12px;font:600 14px/1.2 var(--f-body);box-shadow:var(--shadow-2);z-index:5;animation:bob 6s ease-in-out infinite}
 .floatchip i{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font-style:normal;font:700 13px var(--f-mono);color:#fff;background:var(--green-d)}
 .floatchip small{display:block;font:400 12px var(--f-body);color:var(--ink-2)}
@@ -436,8 +436,8 @@ main{overflow-x:clip}
 .uc{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;transition:transform .45s var(--ease),box-shadow .45s}
 .uc:hover{transform:translateY(-6px);box-shadow:var(--shadow-1)}
 .uc__media{aspect-ratio:16/10;position:relative;overflow:hidden;background:var(--navy-900)}
-.uc__media>img,.uc__media>svg{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
-.uc:hover .uc__media>img{transform:scale(1.06)}
+.uc__media>img,.uc__media>picture>img,.uc__media>svg{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.uc:hover .uc__media>img,.uc:hover .uc__media>picture>img{transform:scale(1.06)}
 .uc__media .pill{position:absolute;left:14px;top:14px;z-index:2}
 .uc__body{padding:22px 24px 26px;display:flex;flex-direction:column;gap:10px;flex:1}
 .uc__body .mono{color:var(--green-d);font-size:11.5px}
@@ -657,8 +657,8 @@ textarea{min-height:150px;resize:vertical}
 .pcard p{color:var(--slate-300);font-size:16px}
 .casecard{position:relative;display:flex;flex-direction:column;justify-content:flex-end;border-radius:var(--r-xl);overflow:hidden;min-height:clamp(380px,38vw,520px);color:#fff;text-decoration:none;isolation:isolate;padding:clamp(24px,3vw,44px)}
 .casecard>.photo{position:absolute;inset:0;border-radius:0;z-index:-2}
-.casecard>.photo>img{transition:transform 1.2s var(--ease)}
-.casecard:hover>.photo>img{transform:scale(1.06)}
+.casecard>.photo>img,.casecard>.photo>picture>img{transition:transform 1.2s var(--ease)}
+.casecard:hover>.photo>img,.casecard:hover>.photo>picture>img{transform:scale(1.06)}
 .casecard::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(5,10,20,.1) 20%,rgba(5,10,20,.92))}
 .casecard h3{font-size:clamp(28px,3vw,44px);margin:14px 0 10px;max-width:16ch;color:#fff}
 .casecard p{color:var(--slate-200);max-width:40ch;margin-bottom:18px}
@@ -705,3 +705,51 @@ textarea{min-height:150px;resize:vertical}
 .pf img,.ph-frame img,.bandphoto img{width:100%;height:100%;object-fit:cover;display:block}
 .chapter-hero{min-height:min(86vh,820px)}
 .chapter-hero__in{min-height:520px;display:flex;flex-direction:column;justify-content:flex-end}
+
+/* ---------- electronics repositioning ---------- */
+picture{display:contents}
+.uc-divider{grid-column:1/-1;margin:10px 0 0;padding-top:14px;border-top:1px solid var(--line,rgba(10,19,38,.14));color:var(--ink-2);letter-spacing:.08em;text-transform:uppercase}
+.uc-divider:first-child{border-top:0;padding-top:0;margin-top:0}
+
+.vflow{margin:0;padding:clamp(22px,3vw,40px);border-radius:var(--r-xl);color:#fff;position:relative;overflow:hidden;isolation:isolate;
+ background:linear-gradient(rgba(5,10,20,.55),rgba(5,10,20,.8)),repeating-linear-gradient(0deg,rgba(25,196,110,.16) 0 1px,transparent 1px 22px),repeating-linear-gradient(90deg,rgba(25,196,110,.16) 0 1px,transparent 1px 22px),var(--navy-900)}
+.vflow ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;counter-reset:v}
+.vflow li{position:relative;padding:16px 16px 18px;border:1px solid rgba(255,255,255,.22);border-radius:var(--r-md);background:rgba(5,10,20,.72);display:flex;flex-direction:column;gap:6px}
+.vflow li:not(:last-child)::after{content:"";position:absolute;right:-13px;top:50%;width:14px;height:2px;background:var(--green-b)}
+.vflow small{color:var(--green-b)}.vflow b{font:600 18px/1.2 var(--f-display)}.vflow li span{font-size:14px;color:var(--slate-300);line-height:1.35}
+.vflow figcaption{margin-top:18px;color:var(--slate-300)}
+.vflow--compact ol{grid-template-columns:1fr}.vflow--compact li:not(:last-child)::after{display:none}
+@media (max-width:960px){.vflow ol{grid-template-columns:1fr 1fr}.vflow li:not(:last-child)::after{display:none}}
+@media (max-width:520px){.vflow ol{grid-template-columns:1fr}}
+.vart{width:100%;height:100%;min-height:100%;display:flex;align-items:center;padding:8%}
+.vart .vflow{width:100%}
+
+/* ---------- supplied-image rows: equal-height pairs sized to each image's own ratio, so nothing is cropped ---------- */
+.duo{display:grid;gap:clamp(12px,1.6vw,20px);align-items:stretch}
+.duo>.photo{border-radius:var(--r-lg);min-width:0}
+.duo>.photo>picture>img,.duo>.photo>img{object-fit:cover}
+.duo--card>.photo{background:#fff}
+.duo--card>.photo>picture>img{object-fit:contain}
+.sec--dark .duo--card>.photo,.sec--navy .duo--card>.photo{box-shadow:var(--shadow-2)}
+.rowtext{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(24px,4vw,64px);align-items:center}
+.figcard{margin:0;background:#fff;border-radius:var(--r-lg);overflow:hidden;color:var(--ink)}
+.figcard>.photo{border-radius:0;background:#fff}
+.figcard>.photo>picture>img{object-fit:contain}
+.figcard figcaption{padding:14px 18px;font-size:14px;color:var(--ink-2);line-height:1.4}
+@media (max-width:960px){.rowtext{grid-template-columns:1fr}.duo{grid-template-columns:1fr!important}.duo>.photo{aspect-ratio:var(--ar)}}
+/* hero chips sit in the gaps of the pump-infographic collage rather than over it */
+.collage .floatchip--1{top:61%;left:-4%}
+.collage .floatchip--2{top:63%;right:-3%}
+.collage .floatchip--3{display:none}
+.collage .c-a .photo__cap{top:auto;bottom:12px;right:12px}
+.figcard{margin-inline:auto}
+@media (max-width:640px){.collage .floatchip{display:none}.collage .c-a .photo__cap{bottom:8px;right:8px}}
+.collage .c-a .photo__cap{top:8px;bottom:auto;right:8px;left:auto;font-size:9px;padding:5px 8px;max-width:78%}
+@media (max-width:960px){.collage .floatchip{display:none}.duo__side{max-width:min(300px,72%);margin-inline:auto}}
+
+.figscroll{overflow-x:auto;overscroll-behavior-x:contain}
+.figscroll>.photo{min-width:700px}
+@media (max-width:640px){.collage .c-a .photo__cap{top:auto;bottom:6px;left:6px;right:auto;font-size:8px;padding:4px 7px;max-width:80%}}
+.uc__media img.fit-contain{object-fit:contain;background:#fff}
+.photo--contain{background:#fff}.photo--contain>picture>img{object-fit:contain}
+.duo--card .photo__cap,.photo--contain .photo__cap{left:auto;right:12px}

@@ -1,4 +1,5 @@
 export const SERVICE_SLUGS = [
+  'pcb-hardware-engineering', 'embedded-firmware-microcontrollers', 'vlsi-semiconductor-design', 'electronic-product-development', 'edge-ai-intelligent-electronics',
   'enterprise-software-engineering', 'ai-ml-intelligent-automation', 'rpa-business-automation', 'cybersecurity',
   'cloud-infrastructure', 'data-analytics-integration', 'embedded-systems-industrial-iot', 'managed-technology-services',
 ];

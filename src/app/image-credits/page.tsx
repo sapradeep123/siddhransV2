@@ -20,6 +20,12 @@ const CREDITS: [string, number][] = [
   ['Electrical substation', 25537595], ['Aerial view of a solar farm', 35105444], ['Patient vitals monitor', 28782186],
 ];
 
+// Images supplied by Siddhrans (not stock). Shown as illustrative; none is a photograph of a delivered product.
+const SUPPLIED: [string, string, string][] = [
+  ['Motor with vibration sensor, ESP32 board and waveform display', 'Motor vibration-sensing prototype', 'Vibration & Machine-Health Monitoring, Electronic Product Development, home page'],
+  ['ESP32 breadboard with OLED display, SCT-013 current clamp and DS18B20 temperature probes, with labelled callouts', 'ESP32 sensing prototype', 'Theatre Air-Cooler Optimisation, Embedded Firmware, home page'],
+];
+
 export default function ImageCredits() {
   return (
     <>
@@ -27,7 +33,7 @@ export default function ImageCredits() {
         <div className="container">
           <Crumbs items={[{ href: '/', label: 'Home' }, { label: 'Image credits' }]} />
           <h1 className="h-xl">Image credits</h1>
-          <p className="lede" style={{ maxWidth: '62ch' }}>Photographs on this website are stock images from <a href="https://www.pexels.com/license/" style={{ textDecoration: 'underline' }}>Pexels</a>, used under the Pexels licence. They illustrate themes and are <b>not Siddhrans project photographs</b>. Interface visuals are original concept designs with placeholder data; line drawings are original illustrations.</p>
+          <p className="lede" style={{ maxWidth: '62ch' }}>Most photographs on this website are stock images from <a href="https://www.pexels.com/license/" style={{ textDecoration: 'underline' }}>Pexels</a>, used under the Pexels licence. They illustrate themes and are <b>not Siddhrans project photographs</b>. Images captioned “AI-generated concept” were generated with AI tools and show concepts, not delivered products; images captioned “Water-quality sensing prototype” are small reference photographs supplied by Siddhrans. Interface visuals are original concept designs with placeholder data; line drawings are original illustrations.</p>
         </div>
       </header>
       <section className="sec sec--white" style={{ paddingTop: 'clamp(40px,5vw,72px)' }}>
@@ -41,6 +47,16 @@ export default function ImageCredits() {
               ))}</tbody>
             </table>
           </div>
+          <div className="table-wrap" style={{ marginTop: 'clamp(32px,4vw,56px)' }}>
+            <table className="credits-t">
+              <caption className="mono" style={{ textAlign: 'left', padding: '0 0 12px', color: 'var(--ink-2)' }}>Images supplied by Siddhrans</caption>
+              <thead><tr><th scope="col">Image</th><th scope="col">Caption on site</th><th scope="col">Used on</th></tr></thead>
+              <tbody>{SUPPLIED.map(([t, c, u]) => (
+                <tr key={t}><th scope="row" style={{ font: 'inherit', textTransform: 'none', letterSpacing: 0, color: 'inherit' }}>{t}</th><td>{c}</td><td>{u}</td></tr>
+              ))}</tbody>
+            </table>
+          </div>
+          <p className="fine" style={{ marginTop: 18 }}>These two prototype visuals were supplied by Siddhrans and are illustrative. They are not photographs of delivered products. Other supplied images are captioned where they appear.</p>
         </div>
       </section>
     </>

@@ -14,6 +14,7 @@ const mono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono', displ
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: { default: `${site.short} — ${site.tagline}`, template: `%s — ${site.short}` },
+  keywords: ['PCB design', 'embedded systems', 'firmware', 'VLSI design support', 'FPGA', 'industrial IoT', 'edge AI', 'electronic product development', 'Bengaluru'],
   description: site.description,
   applicationName: site.short,
   alternates: { canonical: './' },
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website', siteName: site.short, locale: 'en_IN', url: site.url,
     title: `${site.short} — ${site.tagline}`, description: site.description,
-    images: [{ url: '/og/og-default.jpg', width: 1200, height: 630, alt: 'A robotic arm in an automation cell (illustrative stock photograph)' }],
+    images: [{ url: '/og/og-default.jpg', width: 1200, height: 630, alt: 'Siddhrans InfoTech: from circuit design to intelligent systems, over a close-up of a circuit board being soldered (illustrative stock photograph)' }],
   },
   twitter: { card: 'summary_large_image', title: `${site.short} — ${site.tagline}`, description: site.description, images: ['/og/og-default.jpg'] },
 };

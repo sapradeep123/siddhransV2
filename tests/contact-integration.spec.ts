@@ -8,7 +8,7 @@ test('enquiry travels from the form to an email addressed to the company', async
   const sent: { to: string; replyTo: string; subject: string; text: string }[] = [];
   const json = nodemailer.createTransport({ jsonTransport: true });
   const server = createContactServer({ transport: { sendMail: async (m: never) => { sent.push(m); return json.sendMail(m); } }, mailTo: 'gururaj.n@siddhrans.com', mailFrom: 'Siddhrans Website <website@siddhrans.com>' });
-  await new Promise<void>((r) => server.listen(8787, '127.0.0.1', r));
+  await new Promise<void>((r) => server.listen(Number(process.env.TEST_API_PORT ?? 8787), '127.0.0.1', r));
   try {
     await page.goto('/contact/');
     await page.getByLabel('Name', { exact: true }).fill('Asha Rao');
@@ -22,7 +22,7 @@ test('enquiry travels from the form to an email addressed to the company', async
     expect(sent).toHaveLength(1);
     expect(sent[0].to).toBe('gururaj.n@siddhrans.com');
     expect(sent[0].replyTo).toContain('asha@example.com');
-    expect(sent[0].subject).toBe('Website enquiry: Embedded systems & industrial IoT');
+    expect(sent[0].subject).toBe('New Website Enquiry | Embedded systems & industrial IoT | Siddhrans');
     expect(sent[0].text).toContain('vibration on our packaging line motors');
     expect(sent[0].text).toContain('Acme Pharma');
   } finally {

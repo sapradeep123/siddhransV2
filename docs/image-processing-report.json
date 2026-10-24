@@ -1,0 +1,107 @@
+[
+  {
+    "name": "hw-pcb-inspection",
+    "crop": "2268x2834",
+    "widths": "480/800/1200/1600",
+    "notes": "shadow lift gamma 1.25",
+    "kb": "avif 386 / webp 590 / jpg 767 KB (all widths)"
+  },
+  {
+    "name": "hw-solder-board",
+    "crop": "1824x1280",
+    "widths": "480/800/1200/1600",
+    "notes": "white balance gains 0.940/1.010/1.060",
+    "kb": "avif 154 / webp 234 / jpg 344 KB (all widths)"
+  },
+  {
+    "name": "hw-bench-soldering",
+    "crop": "1488x1232",
+    "widths": "480/800/1200/1488",
+    "notes": "shadow lift gamma 1.55",
+    "kb": "avif 164 / webp 230 / jpg 354 KB (all widths)"
+  },
+  {
+    "name": "ref-water-sensor-boat",
+    "crop": "592x517",
+    "widths": "480/592",
+    "notes": "median-3 denoise",
+    "kb": "avif 25 / webp 31 / jpg 48 KB (all widths)"
+  },
+  {
+    "name": "ref-water-field-sites",
+    "crop": "1024x333",
+    "widths": "480/800/1024",
+    "notes": "median-3 denoise",
+    "kb": "avif 59 / webp 86 / jpg 110 KB (all widths)"
+  },
+  {
+    "name": "ai-wearable-pulse",
+    "crop": "1448x1086",
+    "widths": "480/800/1200/1448",
+    "notes": "none",
+    "kb": "avif 84 / webp 114 / jpg 198 KB (all widths)"
+  },
+  {
+    "name": "ai-ecg-handheld",
+    "crop": "1448x1086",
+    "widths": "480/800/1200/1448",
+    "notes": "none",
+    "kb": "avif 123 / webp 179 / jpg 299 KB (all widths)"
+  },
+  {
+    "name": "ai-iot-chiller",
+    "crop": "1536x1024",
+    "widths": "480/800/1200/1536",
+    "notes": "shadow lift gamma 1.12",
+    "kb": "avif 258 / webp 410 / jpg 531 KB (all widths)"
+  },
+  {
+    "name": "ai-iot-warehouse",
+    "crop": "1448x1086",
+    "widths": "480/800/1200/1448",
+    "notes": "none",
+    "kb": "avif 295 / webp 470 / jpg 623 KB (all widths)"
+  },
+  {
+    "name": "ai-coldchain-truck",
+    "crop": "1536x1024",
+    "widths": "480/800/1200/1536",
+    "notes": "none",
+    "kb": "avif 128 / webp 191 / jpg 293 KB (all widths)"
+  },
+  {
+    "name": "ai-cleanroom-access",
+    "crop": "1536x1024",
+    "widths": "480/800/1200/1536",
+    "notes": "none",
+    "kb": "avif 139 / webp 226 / jpg 367 KB (all widths)"
+  },
+  {
+    "name": "ai-vision-capsules",
+    "crop": "1698x926",
+    "widths": "480/800/1200/1600",
+    "notes": "none",
+    "kb": "avif 192 / webp 295 / jpg 422 KB (all widths)"
+  },
+  {
+    "name": "ai-powder-mixing",
+    "crop": "1448x1086",
+    "widths": "480/800/1200/1448",
+    "notes": "none",
+    "kb": "avif 256 / webp 425 / jpg 569 KB (all widths)"
+  },
+  {
+    "name": "ai-drone-endurance",
+    "crop": "719x426",
+    "widths": "480/719",
+    "notes": "median-3 denoise",
+    "kb": "avif 34 / webp 43 / jpg 61 KB (all widths)"
+  },
+  {
+    "name": "gpt-medical-kit",
+    "crop": "953x376",
+    "widths": "480/800/953",
+    "notes": "none",
+    "kb": "avif 68 / webp 111 / jpg 142 KB (all widths)"
+  }
+]
