@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { Reveal, Stagger, StaggerItem } from '@/components/motion';
 import { Button, Eyebrow, Photo, PhotoCard, PageHero, Pill, SecHead } from '@/components/ui';
 import { SignalChain, Steps, VlsiFlow } from '@/components/diagrams';
+import { SampleNote, ShowAgents, ShowDocs, ShowPredict, ShowVision } from '@/components/home/showcases';
 import { pillarMeta, serviceBySlug, serviceStatusLabel, services, type ServiceStatus } from '@/content/services';
 import { statusHelp, statusLabel } from '@/content/usecases';
 import type { PhotoName } from '@/content/images';
@@ -74,6 +75,20 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           <div className="container">
             <Reveal><SecHead eyebrow="Signal chain" title={<span id="h-chain">One chain, engineered as one system.</span>} /></Reveal>
             <Reveal><SignalChain /></Reveal>
+          </div>
+        </section>
+      )}
+
+      {s.slug === 'ai-ml-intelligent-automation' && (
+        <section className="v4s v4s--navy on-dark" aria-labelledby="h-show">
+          <div className="container">
+            <Reveal><SecHead row eyebrow="What it looks like" title={<span id="h-show">Four ways AI works inside real tasks.</span>} lede="Concept interfaces with invented sample data show how each capability would look in a working product. They are not Siddhrans deployments and the figures are illustrative." /></Reveal>
+            <div className="v4-fam">
+              <article className="v4-fc"><div className="v4-fc__v v4-fc__v--sc"><ShowAgents /><SampleNote /></div><div className="v4-fc__t"><div className="v4-fc__h"><h3>Agents &amp; enterprise copilots</h3><Pill kind="cap">Engineering capability</Pill></div><p>Answers grounded in your documents, with sources shown and a person approving the next action.</p></div></article>
+              <article className="v4-fc"><div className="v4-fc__v v4-fc__v--sc"><ShowDocs /><SampleNote /></div><div className="v4-fc__t"><div className="v4-fc__h"><h3>Document intelligence</h3><Pill kind="cap">Engineering capability</Pill></div><p>Fields extracted with their source page, checked against each other, and flagged for review when they disagree.</p></div></article>
+              <article className="v4-fc"><div className="v4-fc__v v4-fc__v--sc"><ShowVision /><SampleNote>Concept interface · illustrative overlay on a licensed stock photograph, not an inspection record</SampleNote></div><div className="v4-fc__t"><div className="v4-fc__h"><h3>Computer vision &amp; inspection</h3><Pill kind="design">Capability example</Pill></div><p>Features located and checked on the line, with a clear pass, flag or review outcome.</p></div></article>
+              <article className="v4-fc"><div className="v4-fc__v v4-fc__v--sc"><ShowPredict /><SampleNote /></div><div className="v4-fc__t"><div className="v4-fc__h"><h3>Predictive ML</h3><Pill kind="cap">Engineering capability</Pill></div><p>A trend that leaves its normal range, an explanation of why, and a recommended action.</p></div></article>
+            </div>
           </div>
         </section>
       )}

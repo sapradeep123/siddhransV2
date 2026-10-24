@@ -71,6 +71,7 @@ const stockCaption: Record<StockName, string> = {
 
 const processedAlt: Record<ProcessedName, string> = {
   'hw-pcb-inspection': 'Technician inspecting a green circuit board under a stereo microscope at a repair bench',
+  'hw-pcb-aoi': 'Close-up of a green printed circuit board with many soldered joints and a soldering iron tip at work',
   'hw-solder-board': 'Hands soldering components onto a green printed circuit board held in a helping-hands clamp',
   'hw-bench-soldering': 'Engineer soldering a small circuit board on a bench lit by a warm work lamp',
   'ref-water-sensor-boat': 'Prototype floating water-quality sensor: electronics in a clear enclosure on a small metal hull with an antenna',
@@ -99,7 +100,7 @@ const processedAlt: Record<ProcessedName, string> = {
 };
 // Every caption starts "Illustrative image"; the second part says what kind of image it is.
 const processedCaption: Record<ProcessedName, string> = {
-  'hw-pcb-inspection': 'PCB inspection', 'hw-solder-board': 'Board assembly', 'hw-bench-soldering': 'Electronics bench',
+  'hw-pcb-inspection': 'PCB inspection', 'hw-pcb-aoi': 'Circuit-board close-up', 'hw-solder-board': 'Board assembly', 'hw-bench-soldering': 'Electronics bench',
   'ref-water-sensor-boat': 'Water-quality sensing prototype', 'ref-water-field-sites': 'Water-monitoring field hardware',
   'ai-wearable-pulse': 'AI-generated concept · wearable pulse sensor', 'ai-ecg-handheld': 'AI-generated concept · handheld ECG',
   'ai-iot-chiller': 'AI-generated concept · chiller monitoring', 'ai-iot-warehouse': 'AI-generated concept · warehouse IoT',

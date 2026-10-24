@@ -24,6 +24,7 @@ const JOBS = [
   // --- real photographs (licensed stock already on the site, re-cut from higher-quality originals)
   { name: 'hw-pcb-inspection', src: STOCK(35290693), crop: [0, 0.17, 1, 0.873], fix: { gamma: 1.25, sharpen: 0.7 } },
   { name: 'hw-solder-board', src: STOCK(37426135), crop: [0.12, 0.08, 0.88, 0.88], fix: { wb: true, sharpen: 0.7 } },
+  { name: 'hw-pcb-aoi', src: STOCK(37426135), crop: [0.14, 0.52, 0.62, 0.83], fix: { sharpen: 0.6 } }, // board close-up for the inspection showcase
   { name: 'hw-bench-soldering', src: STOCK(3912983), crop: [0, 0.18, 0.62, 0.95], fix: { gamma: 1.55, sharpen: 0.6 } },
   // --- reference photographs supplied by Siddhrans (small, JPEG-compressed: no enlargement)
   { name: 'ref-water-sensor-boat', src: PRA('Water Quality Monitoring.jpg'), crop: [0, 0, 1, 1], fix: { denoise: true, sharpen: 0.5 } },

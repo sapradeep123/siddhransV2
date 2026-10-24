@@ -1,14 +1,22 @@
 'use client';
 import { usePathname } from 'next/navigation';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type MouseEvent } from 'react';
 import { AnimatePresence, m, useReducedMotion } from 'motion/react';
 import { nav, site } from '@/content/site';
 import { Button, Logo } from './ui';
+
+const BLURB: Record<string, string> = {
+  '/services/ai-ml-intelligent-automation/': 'Agents, copilots and automation',
+  '/services/enterprise-software-engineering/': 'Enterprise software and 15 systems',
+  '/services/embedded-systems-industrial-iot/': 'IoT, firmware, PCB and edge AI',
+  '/services/cybersecurity/': 'Security, cloud and managed services',
+};
 
 export default function Header() {
   const path = usePathname() ?? '/';
   const [open, setOpen] = useState(false);
   const btn = useRef<HTMLButtonElement>(null);
+  const sheet = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
   const [away, setAway] = useState(false);
   useEffect(() => {
@@ -22,7 +30,16 @@ export default function Header() {
   useEffect(() => { document.body.style.overflow = open ? 'hidden' : ''; return () => { document.body.style.overflow = ''; }; }, [open]);
   useEffect(() => {
     if (!open) return;
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') { setOpen(false); btn.current?.focus(); } };
+    // focus moves into the sheet; Tab cycles between the menu button and the sheet; Escape closes and returns focus
+    sheet.current?.querySelector<HTMLElement>('a')?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') { setOpen(false); btn.current?.focus(); return; }
+      if (e.key !== 'Tab') return;
+      const items = [btn.current, ...Array.from(sheet.current?.querySelectorAll<HTMLElement>('a[href], button') ?? [])].filter(Boolean) as HTMLElement[];
+      const first = items[0], last = items[items.length - 1], cur = document.activeElement;
+      if (e.shiftKey && cur === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && cur === last) { e.preventDefault(); first.focus(); }
+    };
     const onResize = () => { if (window.innerWidth > 1280) setOpen(false); };
     document.addEventListener('keydown', onKey);
     window.addEventListener('resize', onResize);
@@ -49,22 +66,27 @@ export default function Header() {
       </header>
       <AnimatePresence>
         {open && (
-          <m.div id="mobile-menu" className="menu" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={fade}>
-            <nav aria-label="Primary" style={{ position: 'relative' }}>
-              {nav.map((n, i) => (
-                <m.a key={n.href} href={n.href} aria-current={active(n.href) ? 'page' : undefined} initial={reduce ? false : { opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={reduce ? { duration: 0 } : { duration: 0.6, delay: 0.08 + i * 0.06, ease: [0.2, 0.8, 0.2, 1] }}>
-                  <small>{String(i + 1).padStart(2, '0')}</small>{n.label}
-                </m.a>
-              ))}
-              <m.a href="/contact/" initial={reduce ? false : { opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={reduce ? { duration: 0 } : { duration: 0.6, delay: 0.08 + nav.length * 0.06, ease: [0.2, 0.8, 0.2, 1] }} style={{ color: 'var(--yellow)' }}>
-                <small>→</small>Start a project
-              </m.a>
-            </nav>
-            <div className="menu__foot">
-              {site.phones.map((p) => <a key={p.tel} href={`tel:${p.tel}`}>{p.display}</a>)}
-              <a href={`mailto:${site.email}`}>{site.email}</a>
-              <span>{site.city}, {site.country}</span>
-            </div>
+          <m.div id="mobile-menu" className="menu" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={fade} onClick={(e: MouseEvent) => { if (e.target === e.currentTarget) setOpen(false); }}>
+            <m.div ref={sheet} className="menu__sheet" initial={reduce ? false : { opacity: 0, y: -12 }} animate={{ opacity: 1, y: 0 }} exit={reduce ? undefined : { opacity: 0, y: -8 }} transition={reduce ? { duration: 0 } : { duration: 0.28, ease: [0.2, 0.8, 0.2, 1] }}>
+              <nav aria-label="Primary" className="menu__nav">
+                <p className="menu__lab" aria-hidden="true">What we do</p>
+                <div className="menu__cap">
+                  {nav.slice(0, 4).map((n, i) => (
+                    <a key={n.href} href={n.href} aria-label={n.label} aria-describedby={`mb-${i}`} aria-current={active(n.href) ? 'page' : undefined}><b>{n.label}</b><span id={`mb-${i}`}>{BLURB[n.href]}</span></a>
+                  ))}
+                </div>
+                <p className="menu__lab" aria-hidden="true">Company</p>
+                <div className="menu__co">
+                  {nav.slice(4).map((n) => (<a key={n.href} href={n.href} aria-current={active(n.href) ? 'page' : undefined}>{n.label}</a>))}
+                </div>
+              </nav>
+              <Button href="/contact/" className="menu__cta">Start a project</Button>
+              <div className="menu__foot">
+                {site.phones.map((p) => <a key={p.tel} href={`tel:${p.tel}`}>{p.display}</a>)}
+                <a href={`mailto:${site.email}`}>{site.email}</a>
+                <span>{site.city}, {site.country}</span>
+              </div>
+            </m.div>
           </m.div>
         )}
       </AnimatePresence>

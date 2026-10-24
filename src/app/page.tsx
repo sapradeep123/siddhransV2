@@ -1,7 +1,8 @@
 import ContactForm from '@/components/ContactForm';
 import PortfolioSelector from '@/components/home/PortfolioSelector';
 import TabSet from '@/components/home/TabSet';
-import { AlertVisual, ChatVisual, ConceptLabel, CurveVisual, DecisionVisual, DocVisual, HeroVisual, MiniAgents, MiniApps, MiniDecision, MiniNli, MiniWorkflow, PredVisual } from '@/components/home/visuals';
+import { HeroVisual } from '@/components/home/visuals';
+import { ExpAgents, ExpApps, ExpForecast, ExpNli, ExpWorkflow, PhoneAlert, SampleNote, ShowAgents, ShowDocs, ShowPredict, ShowVision, StatusBoard, VibrationMini } from '@/components/home/showcases';
 import { Reveal } from '@/components/motion';
 import { Arrow, Button, Eyebrow, Photo, Pill, SecHead } from '@/components/ui';
 import { site } from '@/content/site';
@@ -11,11 +12,11 @@ const Link = ({ href, children, light = false }: { href: string; children: React
 );
 
 const EXPLORER = [
-  { id: 'apps', label: 'Generative AI applications', visual: <MiniApps />, text: 'Generative AI applications for business tasks, built into the web and mobile software your people already use.', points: ['AI-enabled web and mobile applications', 'Built on database-backed, workflow-driven platforms', 'People review what matters'] },
-  { id: 'nli', label: 'Natural-language interfaces', visual: <MiniNli />, text: 'Natural-language interfaces to the systems and data you already run.', points: ['Questions answered from system data', 'Access follows the rules of the source system', 'A person takes over when the answer is unclear'] },
-  { id: 'wf', label: 'Intelligent workflow', visual: <MiniWorkflow />, text: 'AI-enabled workflow with people in the loop, built on our automation and RPA engineering.', points: ['Rules and AI inside approvals', 'Exceptions go to people', 'An audit trail by design'] },
-  { id: 'dec', label: 'Decision support', visual: <MiniDecision />, text: 'Predictive analytics and decision support over operational data.', points: ['Forecasting and classification', 'Reasons shown, not just scores', 'Validated with the people who run the process'] },
-  { id: 'agents', label: 'Multi-agent solutions', visual: <MiniAgents />, text: 'Multi-agent solutions for multi-step work, with approvals between the steps.', points: ['Specialised agents with defined tools', 'Human approval gates', 'Every decision logged'] },
+  { id: 'apps', label: 'Generative AI applications', visual: <ExpApps />, text: 'Generative AI applications for business tasks, built into the web and mobile software your people already use.', points: ['AI-enabled web and mobile applications', 'Built on database-backed, workflow-driven platforms', 'People review what matters'] },
+  { id: 'nli', label: 'Natural-language interfaces', visual: <ExpNli />, text: 'Natural-language interfaces to the systems and data you already run.', points: ['Questions answered from system data', 'Access follows the rules of the source system', 'A person takes over when the answer is unclear'] },
+  { id: 'wf', label: 'Intelligent workflow', visual: <ExpWorkflow />, text: 'AI-enabled workflow with people in the loop, built on our automation and RPA engineering.', points: ['Rules and AI inside approvals', 'Exceptions go to people', 'An audit trail by design'] },
+  { id: 'dec', label: 'Decision support', visual: <ExpForecast />, text: 'Predictive analytics and decision support over operational data.', points: ['Forecasting and classification', 'Reasons shown, not just scores', 'Validated with the people who run the process'] },
+  { id: 'agents', label: 'Multi-agent solutions', visual: <ExpAgents />, text: 'Multi-agent solutions for multi-step work, with approvals between the steps.', points: ['Specialised agents with defined tools', 'Human approval gates', 'Every decision logged'] },
 ];
 
 const TRACKS = [
@@ -64,32 +65,28 @@ export default function Home() {
         <div className="container">
           <Reveal><SecHead row eyebrow="01 · AI & Intelligent Automation" title={<span id="h-ai">AI that works inside your operations.</span>} lede="Agents, copilots and automation connected to your data, your systems and your people, with humans in the loop where judgement matters." /></Reveal>
           <div className="v4-fam">
-            <article className="v4-fc v4-fc--a">
-              <div className="v4-fc__v"><ChatVisual /><ConceptLabel /></div>
-              <div className="v4-fc__t"><div className="v4-fc__h"><h3>AI agents &amp; copilots</h3><Pill kind="cap">Engineering capability</Pill></div><p>Role-specific assistants and multi-agent solutions that work from your documents and systems, with people approving what matters.</p><ul className="v4-tags"><li>Agents</li><li>Copilots</li><li>RAG</li><li>Approvals</li></ul></div>
+            <article className="v4-fc">
+              <div className="v4-fc__v v4-fc__v--sc"><ShowAgents /><SampleNote /></div>
+              <div className="v4-fc__t"><div className="v4-fc__h"><h3>AI agents &amp; enterprise copilots</h3><Pill kind="cap">Engineering capability</Pill></div><p>Role-specific assistants and multi-agent solutions that work from your documents and systems, cite their sources and wait for a person to approve what matters.</p><ul className="v4-tags"><li>Agents</li><li>Copilots</li><li>RAG</li><li>Approvals</li></ul></div>
             </article>
-            <article className="v4-fc v4-fc--b">
-              <div className="v4-fc__v"><DocVisual /><ConceptLabel /></div>
-              <div className="v4-fc__t"><div className="v4-fc__h"><h3>Document &amp; knowledge intelligence</h3><Pill kind="cap">Engineering capability</Pill></div><p>Intelligent document processing and enterprise knowledge retrieval: extract, classify and find what is in contracts, forms and records.</p></div>
+            <article className="v4-fc">
+              <div className="v4-fc__v v4-fc__v--sc"><ShowDocs /><SampleNote /></div>
+              <div className="v4-fc__t"><div className="v4-fc__h"><h3>Document &amp; knowledge intelligence</h3><Pill kind="cap">Engineering capability</Pill></div><p>Intelligent document processing and enterprise knowledge retrieval: extract fields, point to the page they came from, and flag what a person should check.</p><ul className="v4-tags"><li>Extraction</li><li>Validation</li><li>Knowledge retrieval</li></ul></div>
             </article>
-            <article className="v4-fc v4-fc--c">
-              <div className="v4-fc__v v4-fc__v--img">
-                <div className="v4-vis"><Photo name="ref-label-mismatch" sizes="(min-width:1180px) 36vw, 100vw" alt="Machine-vision output comparing a work-order label with the container labels and flagging a mismatch" /></div>
-                <div className="v4-vis__in"><Photo name="ai-vision-capsules" sizes="(min-width:1180px) 16vw, 40vw" alt="" /></div>
-                <span className="photo__cap v4-fc__cap"><b>Illustrative image</b> · Vision outputs</span>
-              </div>
-              <div className="v4-fc__t"><div className="v4-fc__h"><h3>Vision &amp; industrial inspection</h3><Pill kind="design">Capability example</Pill></div><p>Detect, count and match labels or defects on the line, with results people can review.</p></div>
+            <article className="v4-fc">
+              <div className="v4-fc__v v4-fc__v--sc"><ShowVision /><SampleNote>Concept interface · illustrative overlay on a licensed stock photograph, not an inspection record</SampleNote></div>
+              <div className="v4-fc__t"><div className="v4-fc__h"><h3>Vision &amp; industrial inspection</h3><Pill kind="design">Capability example</Pill></div><p>Detect, locate and check features on the line, with a clear pass, flag or review outcome and a person making the final call.</p><ul className="v4-tags"><li>Detection</li><li>Inspection</li><li>Human review</li></ul></div>
             </article>
-            <article className="v4-fc v4-fc--d">
-              <div className="v4-fc__v"><PredVisual /><ConceptLabel>trend is illustrative</ConceptLabel></div>
-              <div className="v4-fc__t"><div className="v4-fc__h"><h3>Predictive &amp; edge intelligence</h3><Pill kind="cap">Engineering capability</Pill></div><p>Predictive analytics and machine learning, running in the cloud or close to the sensor on microcontrollers and gateways.</p><ul className="v4-tags"><li>Forecasting</li><li>Anomaly detection</li><li>Edge AI</li></ul></div>
+            <article className="v4-fc">
+              <div className="v4-fc__v v4-fc__v--sc"><ShowPredict /><SampleNote /></div>
+              <div className="v4-fc__t"><div className="v4-fc__h"><h3>Predictive &amp; edge intelligence</h3><Pill kind="cap">Engineering capability</Pill></div><p>Predictive analytics and machine learning in the cloud or close to the sensor, with an explanation of why something was flagged and what to do about it.</p><ul className="v4-tags"><li>Anomaly detection</li><li>Explainability</li><li>Edge AI</li></ul></div>
             </article>
           </div>
           <div className="v4-exp">
             <div className="v4-exp__h"><div><span className="mono v4-g">More AI capabilities</span><h3>Explore the rest of what we build</h3></div></div>
             <TabSet idp="ex" label="More AI capabilities" items={EXPLORER.map((x) => ({
               id: x.id, label: x.label,
-              node: (<div className="v4-exp__pn"><div className="v4-exp__vz">{x.visual}<ConceptLabel /></div><div><p>{x.text}</p><ul>{x.points.map((p) => <li key={p}>{p}</li>)}</ul><Pill kind="cap">Engineering capability</Pill></div></div>),
+              node: (<div className="v4-exp__pn"><div className="v4-exp__vz">{x.visual}<SampleNote>Concept interface · sample data</SampleNote></div><div><p>{x.text}</p><ul>{x.points.map((p) => <li key={p}>{p}</li>)}</ul><Pill kind="cap">Engineering capability</Pill></div></div>),
             }))} />
           </div>
           <div className="v4-cta">
@@ -129,11 +126,11 @@ export default function Home() {
           <ol className="v4-pipe" aria-label="From sensor to action">
             <li className="v4-nd"><span className="v4-nd__n">1</span><h3>Sense</h3><div className="v4-nd__v ct"><Photo name="ref-motor-vibration-board" eager sizes="(min-width:1180px) 16vw, 30vw" alt="Motor with a vibration sensor board and display" /></div><p>Current, vibration, temperature, optical and pulse sensors.</p></li>
             <li className="v4-nd"><span className="v4-nd__n">2</span><h3>Firmware</h3><div className="v4-nd__v ct"><Photo name="ref-esp32-breadboard" eager sizes="(min-width:1180px) 16vw, 30vw" alt="ESP32 breadboard prototype with labelled callouts" /></div><p>ESP32 and Arduino-class firmware: drivers, signal processing, local control.</p></li>
-            <li className="v4-nd"><span className="v4-nd__n">3</span><h3>AI / ML</h3><div className="v4-nd__v"><CurveVisual /></div><p>Pattern analysis and deviation detection, validated with domain engineers.</p></li>
-            <li className="v4-nd"><span className="v4-nd__n">4</span><h3>Decision</h3><div className="v4-nd__v"><DecisionVisual /></div><p>Rules and models turn readings into a state: normal, watch or act.</p></li>
-            <li className="v4-nd"><span className="v4-nd__n">5</span><h3>Action</h3><div className="v4-nd__v"><AlertVisual /></div><p>Alerts, audit logs and automated follow-through.</p></li>
+            <li className="v4-nd"><span className="v4-nd__n">3</span><h3>AI / ML</h3><div className="v4-nd__v dk"><VibrationMini /></div><p>Pattern analysis and deviation detection, validated with domain engineers.</p></li>
+            <li className="v4-nd"><span className="v4-nd__n">4</span><h3>Decision</h3><div className="v4-nd__v"><StatusBoard /></div><p>Rules and models turn readings into a state: normal, watch or act.</p></li>
+            <li className="v4-nd"><span className="v4-nd__n">5</span><h3>Action</h3><div className="v4-nd__v"><PhoneAlert /></div><p>Alerts, audit logs and automated follow-through.</p></li>
           </ol>
-          <p className="fine v4-pipe__note">Steps 3 to 5 are concept visuals with illustrative data. Steps 1 and 2 are prototype images supplied by Siddhrans.</p>
+          <p className="fine v4-pipe__note">Steps 3 to 5 are concept visuals with illustrative sample data (pump P-204). Steps 1 and 2 are prototype images supplied by Siddhrans.</p>
           <div className="v4-trk">
             <TabSet idp="trk" label="Where it applies" items={TRACKS.map((t) => ({
               id: t.id, label: t.label,

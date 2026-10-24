@@ -240,5 +240,15 @@ export const processedMeta = {
       1200,
       1600
     ]
+  },
+  "hw-pcb-aoi": {
+    "w": 1152,
+    "h": 496,
+    "widths": [
+      480,
+      800,
+      1152
+    ],
+    "v": "e1380a4d"
   }
 } as const satisfies Record<string, { w: number; h: number; widths: readonly number[]; v?: string }>;
