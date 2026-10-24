@@ -13,6 +13,15 @@ export const serviceStatusLabel: Record<ServiceStatus, string> = {
   scoped: 'Scoped per engagement',
 };
 
+export type Pillar = 'ai' | 'software' | 'embedded' | 'foundations';
+export const pillarMeta: Record<Pillar, { n: string; label: string; short: string; blurb: string }> = {
+  ai: { n: '01', label: 'AI & Intelligent Automation', short: 'AI & Automation', blurb: 'Agents, copilots, document intelligence, predictive models and intelligent workflow, connected to your data and your people.' },
+  software: { n: '02', label: 'Software & Digital Engineering', short: 'Software', blurb: 'Enterprise software and digital applications built since 2016, and the data and integration beneath them.' },
+  embedded: { n: '03', label: 'Embedded & Intelligent Electronics', short: 'Embedded', blurb: 'Industrial IoT, edge AI, firmware, PCB and product development, with VLSI design support scoped per engagement.' },
+  foundations: { n: '04', label: 'Foundations: cloud, security & managed services', short: 'Cloud & Security', blurb: 'The cloud, cybersecurity and managed operations that every pillar depends on.' },
+};
+export const pillarOrder: Pillar[] = ['ai', 'software', 'embedded', 'foundations'];
+
 export interface Service {
   slug: string;
   n: string;
@@ -31,6 +40,7 @@ export interface Service {
   groups?: { title: string; text: string }[];
   groupsTitle?: string;
   track: 'electronics' | 'software';
+  pillar: Pillar;
   art?: 'vlsi';
   note?: string;
   cta: string;
@@ -38,7 +48,7 @@ export interface Service {
 
 export const services: Service[] = [
   {
-    slug: 'pcb-hardware-engineering', track: 'electronics', n: '01', title: 'PCB Design & Hardware Engineering', short: 'PCB & Hardware',
+    slug: 'pcb-hardware-engineering', track: 'electronics', n: '08', pillar: 'embedded', title: 'PCB Design & Hardware Engineering', short: 'PCB & Hardware',
     intro: 'A product is only as dependable as the board under it. We design the circuits and printed circuit boards that carry sensors, controllers and connectivity, with build, test and firmware bring-up in mind from the first schematic.',
     status: 'solutions', photo: 'hw-pcb-inspection', photoPos: '50% 60%', tileBlurb: 'Schematics, PCB layout, power and board bring-up.',
     stepsTitle: 'From requirement to a board that works',
@@ -49,7 +59,7 @@ export const services: Service[] = [
     cta: 'Have a board to design, revise or bring up?',
   },
   {
-    slug: 'embedded-firmware-microcontrollers', track: 'electronics', n: '02', title: 'Embedded Firmware & Microcontrollers', short: 'Embedded Firmware',
+    slug: 'embedded-firmware-microcontrollers', track: 'electronics', n: '07', pillar: 'embedded', title: 'Embedded Firmware & Microcontrollers', short: 'Embedded Firmware',
     intro: 'Firmware is where hardware becomes behaviour. We write the code that reads sensors, controls actuators and talks to the network on low-power microcontrollers, and we test it on the real board.',
     status: 'solutions', photo: 'hw-bench-soldering', photoPos: '40% 50%', tileBlurb: 'Microcontroller firmware, drivers, signal processing, wireless.',
     stepsTitle: 'From first blink to field-ready firmware',
@@ -60,7 +70,7 @@ export const services: Service[] = [
     cta: 'Tell us about the device your firmware needs to run on.',
   },
   {
-    slug: 'vlsi-semiconductor-design', track: 'electronics', n: '03', title: 'VLSI & Semiconductor Design Support', short: 'VLSI & Semiconductor', art: 'vlsi',
+    slug: 'vlsi-semiconductor-design', track: 'electronics', n: '10', pillar: 'embedded', title: 'VLSI & Semiconductor Design Support', short: 'VLSI & Semiconductor', art: 'vlsi',
     intro: 'Digital design and verification support for teams building FPGA- and chip-based products. This page describes the scope we engage on, not a track record: it claims no fabricated silicon.',
     status: 'scoped', photo: 'hw-solder-board', photoPos: '50% 45%', tileBlurb: 'RTL, verification, FPGA prototyping and board-level integration.',
     stepsTitle: 'From specification to a validated digital design',
@@ -71,7 +81,7 @@ export const services: Service[] = [
     cta: 'Describe the design you need help with.',
   },
   {
-    slug: 'electronic-product-development', track: 'electronics', n: '04', title: 'Electronic Product Design, Prototyping & Validation', short: 'Product Development',
+    slug: 'electronic-product-development', track: 'electronics', n: '09', pillar: 'embedded', title: 'Electronic Product Design, Prototyping & Validation', short: 'Product Development',
     intro: 'We take an electronic product from concept to a validated prototype: hardware, firmware and the application around it, designed together so that nothing is thrown over a wall.',
     status: 'solutions', photo: 'ai-wearable-pulse', photoPos: '55% 50%', tileBlurb: 'Concept to validated prototype, hardware and firmware together.',
     stepsTitle: 'The product development lifecycle',
@@ -82,7 +92,7 @@ export const services: Service[] = [
     cta: 'Have a product idea that needs a working prototype?',
   },
   {
-    slug: 'edge-ai-intelligent-electronics', track: 'electronics', n: '06', title: 'Edge AI & Intelligent Electronics', short: 'Edge AI',
+    slug: 'edge-ai-intelligent-electronics', track: 'electronics', n: '06', pillar: 'embedded', title: 'Edge AI & Intelligent Electronics', short: 'Edge AI',
     intro: 'Put the intelligence where the signal is. We apply pattern analysis, machine learning and computer vision close to sensors, cameras and machines, validated with the engineers who know the process.',
     status: 'capability', photo: 'ai-vision-capsules', tileBlurb: 'Vision, anomaly detection and ML close to the machine.',
     stepsTitle: 'How edge intelligence is put together',
@@ -93,7 +103,7 @@ export const services: Service[] = [
     cta: 'Tell us which signal or camera feed you want to understand.',
   },
   {
-    slug: 'enterprise-software-engineering', track: 'software', n: '07', title: 'Enterprise Software Engineering', short: 'Enterprise Software',
+    slug: 'enterprise-software-engineering', track: 'software', n: '03', pillar: 'software', title: 'Enterprise Software Engineering', short: 'Enterprise Software',
     intro: 'Every organisation runs on processes its software was never built for. We build the systems that fit the work: applications, portals, workflow and operational systems, engineered, database-backed and in production use.',
     status: 'built', photo: 'dev-team', tileBlurb: 'Portals, mobile, LMS, billing, workflow.',
     stepsTitle: 'From business problem to production system',
@@ -104,7 +114,7 @@ export const services: Service[] = [
     cta: 'Tell us about the system you need.',
   },
   {
-    slug: 'ai-ml-intelligent-automation', track: 'software', n: '08', title: 'AI, ML & Intelligent Automation', short: 'AI, ML & Intelligent Automation',
+    slug: 'ai-ml-intelligent-automation', track: 'software', n: '01', pillar: 'ai', title: 'AI, ML & Intelligent Automation', short: 'AI, ML & Intelligent Automation',
     intro: 'AI earns its place when it is wired into data, process and oversight. That integration, not the model, is the engineering problem. We build AI into real workflows, with people in the loop.',
     status: 'capability', photo: 'data-wall', tileBlurb: 'Copilots, document intelligence, analytics.',
     stepsTitle: 'How applied AI is put together',
@@ -115,7 +125,7 @@ export const services: Service[] = [
     cta: 'Discuss where AI could earn its place in your workflow.',
   },
   {
-    slug: 'rpa-business-automation', track: 'software', n: '09', title: 'RPA & Business Automation', short: 'RPA & Business Automation',
+    slug: 'rpa-business-automation', track: 'software', n: '02', pillar: 'ai', title: 'RPA & Business Automation', short: 'RPA & Business Automation',
     intro: 'Automate the work that should not require human repetition. RPA here is not "bots"; it is the discipline of turning a process into a controlled system.',
     status: 'capability', photo: 'automation-line', ill: 'flow', tileBlurb: 'Workflow, approvals, system-to-system flows.',
     stepsTitle: 'Turning a process into a controlled system',
@@ -126,7 +136,7 @@ export const services: Service[] = [
     cta: 'Tell us which process is costing you the most time.',
   },
   {
-    slug: 'cybersecurity', track: 'software', n: '10', title: 'Cybersecurity & Secure Engineering', short: 'Cybersecurity',
+    slug: 'cybersecurity', track: 'software', n: '11', pillar: 'foundations', title: 'Cybersecurity & Secure Engineering', short: 'Cybersecurity',
     intro: 'Security as an engineering discipline. We treat protection as layers of concrete controls, not a product badge, and it decides whether the other disciplines can be trusted.',
     status: 'capability', photo: 'access-reader', tileBlurb: 'Assess, harden, monitor, remediate.',
     stepsTitle: 'Defence in layers',
@@ -137,7 +147,7 @@ export const services: Service[] = [
     cta: 'Ask us to review your security posture.',
   },
   {
-    slug: 'cloud-infrastructure', track: 'software', n: '11', title: 'Cloud, Server & Infrastructure', short: 'Cloud & Infrastructure',
+    slug: 'cloud-infrastructure', track: 'software', n: '12', pillar: 'foundations', title: 'Cloud, Server & Infrastructure', short: 'Cloud & Infrastructure',
     intro: 'The layer everything else depends on: administered, modernised and watched, not just installed. We design, migrate and operate on-premise and cloud infrastructure.',
     status: 'capability', photo: 'fibre-patch', tileBlurb: 'Servers, migration, backup, availability.',
     stepsTitle: 'From assessment to optimisation',
@@ -147,7 +157,7 @@ export const services: Service[] = [
     cta: 'Tell us about the infrastructure you need to modernise.',
   },
   {
-    slug: 'data-analytics-integration', track: 'software', n: '12', title: 'Data, Analytics & Integration', short: 'Data, Analytics & Integration',
+    slug: 'data-analytics-integration', track: 'software', n: '04', pillar: 'software', title: 'Data, Analytics & Integration', short: 'Data, Analytics & Integration',
     intro: 'From systems of record to decisions. Data work starts where our software already lives: billing, inventory, training and operational records.',
     status: 'evidenced', photo: 'analyst-dashboards', ill: 'chart', tileBlurb: 'APIs, dashboards, reporting.',
     stepsTitle: 'From records to action',
@@ -159,7 +169,7 @@ export const services: Service[] = [
     cta: 'Tell us which data you want to turn into decisions.',
   },
   {
-    slug: 'embedded-systems-industrial-iot', track: 'electronics', n: '05', title: 'Industrial IoT & Connected Devices', short: 'Industrial IoT',
+    slug: 'embedded-systems-industrial-iot', track: 'electronics', n: '05', pillar: 'embedded', title: 'Industrial IoT & Connected Devices', short: 'Industrial IoT',
     intro: 'We engineer the whole chain between a physical signal and a decision: sensors, embedded controllers, connectivity, secure backends, dashboards and alerts, for machines, buildings, utilities and logistics.',
     status: 'solutions', photo: 'ai-iot-chiller', tileBlurb: 'Sensing, controllers, connectivity, dashboards and alerts.',
     stepsTitle: 'Engineering gates, not guesses',
@@ -170,7 +180,7 @@ export const services: Service[] = [
     cta: 'Have a machine, process or site you want to instrument?',
   },
   {
-    slug: 'managed-technology-services', track: 'software', n: '13', title: 'Managed Technology Services', short: 'Managed Technology Services',
+    slug: 'managed-technology-services', track: 'software', n: '13', pillar: 'foundations', title: 'Managed Technology Services', short: 'Managed Technology Services',
     intro: 'An extended engineering team, not a ticket queue. The team that built the system is the team best placed to run it.',
     status: 'capability', photo: 'dev-pair', ill: 'loop', tileBlurb: 'Run, support, improve.',
     stepsTitle: 'Plan, build, run, support, improve',

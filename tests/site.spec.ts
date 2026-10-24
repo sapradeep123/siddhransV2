@@ -137,10 +137,10 @@ test.describe('original logo', () => {
 test.describe('navigation', () => {
   test('primary navigation reaches every top-level page', async ({ page, isMobile }) => {
     await page.goto('/');
-    const targets = [['Services', /\/services\/$/], ['Solutions', /\/products\/$/], ['Industries', /\/industries\/$/], ['Engineering Use Cases', /\/engineering-use-cases\/$/], ['Case Studies', /\/case-studies\/$/], ['About', /\/about\/$/]] as const;
+    const targets = [['AI & Automation', /\/services\/ai-ml-intelligent-automation\/$/], ['Software', /\/services\/enterprise-software-engineering\/$/], ['Embedded', /\/services\/embedded-systems-industrial-iot\/$/], ['Cloud & Security', /\/services\/cybersecurity\/$/], ['Industries', /\/industries\/$/], ['Solutions', /\/products\/$/], ['Use Cases', /\/engineering-use-cases\/$/], ['About', /\/about\/$/]] as const;
     for (const [label, url] of targets) {
       await page.goto('/');
-      if (isMobile || (page.viewportSize()?.width ?? 0) <= 1180) await page.getByRole('button', { name: 'Open menu' }).click();
+      if (isMobile || (page.viewportSize()?.width ?? 0) <= 1280) await page.getByRole('button', { name: 'Open menu' }).click();
       await page.getByRole('navigation', { name: 'Primary' }).getByRole('link', { name: new RegExp(`${label}$`) }).first().click();
       await expect(page).toHaveURL(url);
       await expect(page.locator('h1')).toBeVisible();
@@ -148,7 +148,7 @@ test.describe('navigation', () => {
   });
 
   test('mobile menu opens, traps nothing, closes with Escape and marks the current page', async ({ page }) => {
-    test.skip((page.viewportSize()?.width ?? 2000) > 1180, 'menu is collapsed only below 1181px');
+    test.skip((page.viewportSize()?.width ?? 2000) > 1280, 'menu is collapsed only below 1281px');
     await page.goto('/about/');
     const btn = page.getByRole('button', { name: 'Open menu' });
     await expect(btn).toHaveAttribute('aria-expanded', 'false');

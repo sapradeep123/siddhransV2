@@ -29,13 +29,13 @@ export function Logo({ width, eager = true, link = true }: { width?: number | st
 }
 
 /** Responsive photograph. Processed images are AVIF + WebP with a JPEG fallback; older stock images are WebP (480/720/960/1600). */
-export function Photo({ name, sizes = '100vw', priority = false, pos, className, alt }: { name: PhotoName; sizes?: string; priority?: boolean; pos?: string; className?: string; alt?: string }) {
+export function Photo({ name, sizes = '100vw', priority = false, eager = false, pos, className, alt }: { name: PhotoName; sizes?: string; priority?: boolean; /** load immediately without high priority: for images hidden at some widths or inside a closed disclosure */ eager?: boolean; pos?: string; className?: string; alt?: string }) {
   const [w, h] = photoDims[name];
   const W = 960;
   const common = {
     className, sizes, width: W, height: Math.round((W * h) / w), alt: alt ?? photoAlt[name],
     style: pos ? { objectPosition: pos } : undefined,
-    ...(priority ? { fetchPriority: 'high' as const } : { loading: 'lazy' as const, decoding: 'async' as const }),
+    ...(priority ? { fetchPriority: 'high' as const } : eager ? { loading: 'eager' as const, decoding: 'async' as const } : { loading: 'lazy' as const, decoding: 'async' as const }),
   };
   if (isProcessed(name)) {
     const ws = processedMeta[name].widths;

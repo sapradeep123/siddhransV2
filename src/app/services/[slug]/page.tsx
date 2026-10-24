@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { Reveal, Stagger, StaggerItem } from '@/components/motion';
 import { Button, Eyebrow, Photo, PhotoCard, PageHero, Pill, SecHead } from '@/components/ui';
 import { SignalChain, Steps, VlsiFlow } from '@/components/diagrams';
-import { serviceBySlug, serviceStatusLabel, services, type ServiceStatus } from '@/content/services';
+import { pillarMeta, serviceBySlug, serviceStatusLabel, services, type ServiceStatus } from '@/content/services';
 import { statusHelp, statusLabel } from '@/content/usecases';
 import type { PhotoName } from '@/content/images';
 
@@ -31,7 +31,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   if (!s) notFound();
   const isEmbedded = s.slug === 'embedded-systems-industrial-iot';
   const second = SECOND[s.slug];
-  const others = services.filter((x) => x.slug !== s.slug && x.track === s.track).slice(0, 3);
+  const others = [...services.filter((x) => x.slug !== s.slug && x.pillar === s.pillar), ...services.filter((x) => x.slug !== s.slug && x.pillar !== s.pillar)].slice(0, 3);
 
   return (
     <>
@@ -49,7 +49,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         <div className="container">
           <div className="story">
             <Reveal>
-              <Eyebrow>Discipline {s.n} of {String(services.length).padStart(2, '0')}</Eyebrow>
+              <Eyebrow>{pillarMeta[s.pillar].short} · service {s.n} of {String(services.length).padStart(2, '0')}</Eyebrow>
               <h2 id="h-what" className="h-xl" style={{ margin: '18px 0 24px' }}>{s.listTitle}.</h2>
               {s.art === 'vlsi' ? <VlsiFlow compact /> : second && <PhotoCard name={second} sizes="(min-width:1180px) 40vw, 100vw" className={`photo--wide${second === 'ref-esp32-breadboard' || second === 'ref-motor-vibration-board' ? ' photo--contain' : ''}`} style={{ borderRadius: 'var(--r-xl)' }} />}
             </Reveal>

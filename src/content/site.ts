@@ -4,9 +4,9 @@ export const site = {
   name: 'Siddhrans InfoTech Pvt Ltd',
   short: 'Siddhrans InfoTech',
   url: process.env.NEXT_PUBLIC_SITE_URL ?? 'https://siddhrans.com',
-  tagline: 'Electronics, VLSI & Embedded Systems Engineering',
+  tagline: 'AI-Led Engineering. From Software to Smart Machines.',
   description:
-    'Siddhrans InfoTech, Bengaluru, designs electronic products, PCB hardware, embedded firmware and connected systems, with VLSI design support, edge AI, software and cybersecurity.',
+    'Siddhrans InfoTech, Bengaluru: AI agents, copilots and intelligent automation, enterprise software built since 2016, and embedded systems, IoT and electronics.',
   phone: { display: '+91 89712 34343', tel: '+918971234343' },
   // Both numbers are supplied by the company. Keep the first (profile) number first.
   phones: [
@@ -25,11 +25,13 @@ export const site = {
 } as const;
 
 export const nav = [
-  { href: '/services/', label: 'Services' },
-  { href: '/engineering-use-cases/', label: 'Engineering Use Cases' },
+  { href: '/services/ai-ml-intelligent-automation/', label: 'AI & Automation' },
+  { href: '/services/enterprise-software-engineering/', label: 'Software' },
+  { href: '/services/embedded-systems-industrial-iot/', label: 'Embedded' },
+  { href: '/services/cybersecurity/', label: 'Cloud & Security' },
   { href: '/industries/', label: 'Industries' },
   { href: '/products/', label: 'Solutions' },
-  { href: '/case-studies/', label: 'Case Studies' },
+  { href: '/engineering-use-cases/', label: 'Use Cases' },
   { href: '/about/', label: 'About' },
 ] as const;
 

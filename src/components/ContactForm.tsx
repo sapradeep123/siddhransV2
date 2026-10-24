@@ -3,7 +3,7 @@ import { useRef, useState, type FormEvent } from 'react';
 import { site } from '@/content/site';
 import { Arrow } from './ui';
 
-const AREAS = ['PCB & hardware design', 'Embedded firmware & microcontrollers', 'VLSI & FPGA design support', 'Electronic product prototyping', 'Embedded systems & industrial IoT', 'Edge AI', 'Enterprise software', 'AI & automation', 'Cybersecurity', 'Cloud & infrastructure', 'Managed services', 'Something else'];
+const AREAS = ['AI & intelligent automation', 'Enterprise software & applications', 'Embedded systems & industrial IoT', 'Edge AI', 'PCB & hardware design', 'Embedded firmware & microcontrollers', 'VLSI & FPGA design support', 'Electronic product prototyping', 'Cloud & infrastructure', 'Cybersecurity', 'Managed services', 'Something else'];
 type Field = 'name' | 'email' | 'message' | 'consent';
 type Errors = Partial<Record<Field, string>>;
 type State = 'idle' | 'sending' | 'sent' | 'error';

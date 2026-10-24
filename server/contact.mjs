@@ -4,7 +4,7 @@ import http from 'node:http';
 import nodemailer from 'nodemailer';
 import { buildEnquiryEmail } from './email.mjs';
 
-const AREAS = ['PCB & hardware design', 'Embedded firmware & microcontrollers', 'VLSI & FPGA design support', 'Electronic product prototyping', 'Embedded systems & industrial IoT', 'Edge AI', 'Enterprise software', 'AI & automation', 'Cybersecurity', 'Cloud & infrastructure', 'Managed services', 'Something else'];
+const AREAS = ['AI & intelligent automation', 'Enterprise software & applications', 'Embedded systems & industrial IoT', 'Edge AI', 'PCB & hardware design', 'Embedded firmware & microcontrollers', 'VLSI & FPGA design support', 'Electronic product prototyping', 'Cloud & infrastructure', 'Cybersecurity', 'Managed services', 'Something else', 'Enterprise software', 'AI & automation'];
 const EMAIL = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 const MAX_BODY = 20 * 1024;
 const LIMITS = { name: 120, email: 200, org: 160, phone: 40, message: 5000 };

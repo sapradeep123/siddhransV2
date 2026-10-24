@@ -27,7 +27,7 @@ export default function UseCaseLibrary() {
           {rows.map(({ u, i }, k) => (
             <Fragment key={u.title}>
             {(k === 0 || rows[k - 1].u.track !== u.track) && (
-              <p className="uc-divider mono" data-track={u.track}>{u.track === 'electronics' ? 'Electronics, embedded & IoT applications' : 'Related software & AI applications'}</p>
+              <p className="uc-divider mono" data-track={u.track}>{u.track === 'electronics' ? 'AI meets machines: embedded, IoT & electronics' : 'AI & software applications'}</p>
             )}
             <m.article layout={!reduce} className="uc" data-status={u.status} initial={reduce ? false : { opacity: 0, scale: 0.96 }} animate={{ opacity: 1, scale: 1 }} exit={reduce ? undefined : { opacity: 0, scale: 0.96 }} transition={{ duration: reduce ? 0 : 0.4, ease: [0.2, 0.8, 0.2, 1] }}>
               <div className="uc__media">

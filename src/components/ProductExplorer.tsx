@@ -6,9 +6,9 @@ import { BillingUI, Laptop, LmsUI, OpsUI, Phone, PhoneLmsUI, PhoneTalentUI, PosU
 interface Family { id: string; n: string; title: string; sub: string; headline: string; text: string; points: string[]; systems: string[]; devices: 'lms' | 'talent' | 'business' | 'sector' }
 
 const FAMILIES: Family[] = [
-  { id: 'lms', n: '01', title: 'Education & training', sub: 'Learning management and online training', headline: 'Siddhrans LMS', devices: 'lms',
+  { id: 'lms', n: '01', title: 'Education & training', sub: 'Siddhrans LMS, including its online training programmes', headline: 'Siddhrans LMS', devices: 'lms',
     text: 'A structured way to run programmes, deliver content, assess learners and process results, in one platform instead of spreadsheets, email and paper.',
-    points: ['Programmes, batches and content in one system', 'Assessment and examination workflows', 'Result processing and reporting', 'A platform basis for examination-grade solutions'], systems: ['Siddhrans LMS', 'Online training programmes'] },
+    points: ['Programmes, batches and content in one system', 'Assessment and examination workflows', 'Result processing and reporting', 'A platform basis for examination-grade solutions'], systems: ['Siddhrans LMS'] },
   { id: 'talent', n: '02', title: 'Talent & placement', sub: 'Three sector platforms, one engineering pattern', headline: 'Talent platforms', devices: 'talent',
     text: 'Structured talent records, searchable discovery and placement workflows, tailored to film and creative, staffing, and sports talent markets.',
     points: ['Structured talent records in place of paper', 'Searchable discovery across each sector', 'Profile, search and placement workflow', 'One engineering base, three distinct markets'], systems: ['Talent Sandalwood', 'Talent Workforce', 'Talent Sports Force'] },

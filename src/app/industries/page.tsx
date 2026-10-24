@@ -6,28 +6,28 @@ import type { PhotoName } from '@/content/images';
 
 export const metadata: Metadata = {
   title: 'Industries',
-  description: 'Electronics and embedded engineering for manufacturing, medical devices, utilities and buildings, water and environment, and logistics, alongside delivered software for education, talent and retail.',
+  description: 'Delivered software for education, talent, healthcare, logistics and retail, and AI, embedded and IoT engineering for manufacturing, medical devices, utilities, water and logistics.',
   alternates: { canonical: '/industries/' },
 };
 
 interface Industry { id: string; title: string; photo?: PhotoName; pos?: string; delivered: string[]; solutions: string[] }
 const industries: Industry[] = [
-  { id: 'manufacturing', title: 'Manufacturing & pharma', photo: 'ai-vision-capsules', pos: '50% 50%', delivered: [], solutions: ['Vibration & machine-health monitoring (designed system)', 'Smart-factory quality intelligence (designed system)', 'Contactless powder mixing (capability example)', 'Secure laboratory access & occupancy (capability example)'] },
+  { id: 'education', title: 'Education & training', photo: 'lecture-hall', pos: '50% 40%', delivered: ['Siddhrans LMS (including online training programmes)'], solutions: [] },
+  { id: 'talent', title: 'Talent & placement', photo: 'interview-panel', pos: '50% 40%', delivered: ['Talent Sandalwood', 'Talent Workforce', 'Talent Sports Force'], solutions: [] },
   { id: 'healthcare', title: 'Healthcare & medical electronics', photo: 'ai-ecg-handheld', pos: '30% 50%', delivered: ['Dialysis management system'], solutions: ['Wearable PPG health sensor (capability example)', 'Handheld Bluetooth ECG (capability example)', 'Medical-kit & asset readiness (proposed solution)'] },
+  { id: 'logistics', title: 'Logistics & cold chain', photo: 'ai-coldchain-truck', pos: '50% 50%', delivered: ['Cargo management system'], solutions: ['Cold-chain condition monitoring (capability example)', 'Smart warehouse & logistics (capability example)'] },
+  { id: 'manufacturing', title: 'Manufacturing & pharma', photo: 'ai-vision-capsules', pos: '50% 50%', delivered: [], solutions: ['Vibration & machine-health monitoring (designed system)', 'Smart-factory quality intelligence (designed system)', 'Contactless powder mixing (capability example)', 'Secure laboratory access & occupancy (capability example)'] },
   { id: 'energy', title: 'Energy, utilities & buildings', photo: 'ai-iot-chiller', pos: '50% 50%', delivered: [], solutions: ['Gas-meter digitisation retrofit (proposed solution)', 'IoT HVAC energy management (proposed solution)', 'Theatre air-cooler optimisation (proposed solution)'] },
   { id: 'water', title: 'Water & environment', photo: 'ref-water-sensor-boat', pos: '50% 50%', delivered: [], solutions: ['Water-quality monitoring (capability example)', 'Industrial safety & environmental alerts (capability example)'] },
-  { id: 'logistics', title: 'Logistics & cold chain', photo: 'ai-coldchain-truck', pos: '50% 50%', delivered: ['Cargo management system'], solutions: ['Cold-chain condition monitoring (capability example)', 'Smart warehouse & logistics (capability example)'] },
-  { id: 'education', title: 'Education & training', photo: 'lecture-hall', pos: '50% 40%', delivered: ['Siddhrans LMS', 'Online training programmes'], solutions: [] },
-  { id: 'talent', title: 'Talent & placement', photo: 'interview-panel', pos: '50% 40%', delivered: ['Talent Sandalwood', 'Talent Workforce', 'Talent Sports Force'], solutions: [] },
   { id: 'retail', title: 'Retail, events & business operations', delivered: ['GST Billing', 'Point of Sale', 'Restaurant', 'Catering', 'Gym Master', 'Salon', 'Film Event', 'Inventory management', 'Project Management System'], solutions: [] },
 ];
 
 export default function Industries() {
   return (
     <>
-      <PageHero photo="hw-solder-board" pos="50% 50%" crumbs={[{ href: '/', label: 'Home' }, { label: 'Industries' }]}>
-        <h1 className="h-xl">Electronics engineering for operations that cannot afford <span className="hl">downtime</span>.</h1>
-        <p className="lede" style={{ maxWidth: '62ch' }}>Our electronics and embedded engineering applies to manufacturing, medical devices, utilities and buildings, water and logistics. Our delivered software spans education, talent, healthcare, logistics and retail. Each industry below separates what we have built from what we can engineer.</p>
+      <PageHero photo="ai-iot-chiller" pos="50% 50%" crumbs={[{ href: '/', label: 'Home' }, { label: 'Industries' }]}>
+        <h1 className="h-xl">AI, software and electronics for operations that cannot afford <span className="hl">downtime</span>.</h1>
+        <p className="lede" style={{ maxWidth: '62ch' }}>Our delivered software spans education, talent, healthcare, logistics and retail. Our AI, embedded and IoT engineering applies to manufacturing, medical devices, utilities and buildings, water and logistics. Each industry below separates what we have built from what we can engineer.</p>
         <div className="phero__actions"><Button href="/contact/">Talk to an engineer</Button></div>
       </PageHero>
       <section className="sec sec--white" aria-labelledby="h-ind">

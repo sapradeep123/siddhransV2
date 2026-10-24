@@ -1,16 +1,16 @@
 import type { Metadata } from 'next';
 import { Reveal, Stagger, StaggerItem } from '@/components/motion';
-import { Eyebrow, Photo, PageHero, SecHead } from '@/components/ui';
+import { Eyebrow, Photo, PageHero, Pill, SecHead } from '@/components/ui';
 import { site } from '@/content/site';
 
 export const metadata: Metadata = {
   title: 'About',
-  description: 'A Bengaluru engineering company building since 2016. Founder-led, with a software foundation and an electronics focus: PCB hardware, embedded firmware, VLSI design support and connected systems.',
+  description: 'A Bengaluru engineering company building since 2016. Founder-led, AI-led and software-first: AI and intelligent automation, enterprise software, and embedded systems that take intelligence into machines.',
   alternates: { canonical: '/about/' },
 };
 
 const PRINCIPLES: [string, string, string][] = [
-  ['Hardware', 'Engineer from the circuit up', 'Hardware, firmware and application are designed as one system, not handed over in pieces.'],
+  ['Intelligence', 'Put AI where it earns its place', 'In software and in machines, with people in the loop and the whole chain designed together.'],
   ['Secure', 'Secure what matters', 'Treat protection as layers of concrete controls, not a product badge.'],
   ['Automate', 'Automate what slows you down', 'Apply AI and workflow where they earn their place, with people in the loop.'],
   ['Modernise', 'Modernise what holds you back', 'Upgrade legacy applications, servers and infrastructure safely.'],
@@ -21,18 +21,18 @@ const PRINCIPLES: [string, string, string][] = [
 export default function About() {
   return (
     <>
-      <PageHero photo="hw-pcb-inspection" pos="50% 62%" crumbs={[{ href: '/', label: 'Home' }, { label: 'About' }]}>
-        <h1 className="h-xl">An electronics and embedded engineering company, building <span className="hl">since {site.founded}</span>.</h1>
-        <p className="lede" style={{ maxWidth: '62ch' }}>Siddhrans began in Bengaluru as a software engineering practice. Today its engineering focus is electronics: PCB hardware, embedded firmware, VLSI design support, industrial IoT and edge AI, with the software, security and cloud work to carry them into applications.</p>
+      <PageHero photo="ai-vision-capsules" pos="50% 50%" crumbs={[{ href: '/', label: 'Home' }, { label: 'About' }]}>
+        <h1 className="h-xl">An AI-led engineering company, building <span className="hl">since {site.founded}</span>.</h1>
+        <p className="lede" style={{ maxWidth: '62ch' }}>Siddhrans began in Bengaluru as a software engineering practice, building business applications, web platforms and workflow systems for education, logistics, healthcare, events and retail. Today we apply AI across that software and across the machines it connects to.</p>
       </PageHero>
 
       <section className="sec sec--white" aria-labelledby="h-st">
         <div className="container">
           <div className="story" style={{ alignItems: 'start' }}>
-            <Reveal><p id="h-st" className="h-lg">The same build discipline, extended from software down to the hardware.</p></Reveal>
+            <Reveal><p id="h-st" className="h-lg">The same build discipline, extended into AI and down to the hardware.</p></Reveal>
             <Reveal delay={0.08}>
-              <p className="lede">That practice now operates as {site.name}. Our software history is the foundation, not hidden, and the reason we can engineer a solution from electronic hardware through embedded software to the intelligent application.</p>
-              <p className="lede" style={{ marginTop: 18 }}>Our differentiation is that chain: circuit, firmware, connectivity, analytics and application, designed together and kept accountable to one team. VLSI work is offered as design support per engagement; we claim no fabricated silicon.</p>
+              <p className="lede">That practice now operates as {site.name}. Our software history is the foundation, not hidden, and the reason we can take responsibility for what we build and bring AI into it.</p>
+              <p className="lede" style={{ marginTop: 18 }}>Our differentiation is the chain: AI and software on one side, sensors, firmware and electronics on the other, designed together and kept accountable to one team. VLSI work is offered as design support per engagement; we claim no fabricated silicon.</p>
             </Reveal>
           </div>
         </div>
@@ -44,7 +44,7 @@ export default function About() {
           <Stagger className="timeline">
             <StaggerItem><div className="tl" style={{ height: '100%' }}><b>2016</b><strong>Web &amp; application engineering</strong><p>Practice established in Bengaluru. First business systems: salon and cargo management, corporate websites, early workflow applications.</p></div></StaggerItem>
             <StaggerItem><div className="tl" style={{ height: '100%' }}><b>2016 – 2020</b><strong>Sector systems &amp; productisation</strong><p>Dialysis, film-event and inventory systems delivered. Product family built: GST Billing, POS, Restaurant, Catering, Gym Master, Project Management, plus Siddhrans LMS and the Talent platforms.</p></div></StaggerItem>
-            <StaggerItem><div className="tl" style={{ height: '100%' }}><b>Today</b><strong>Electronics-led, full lifecycle</strong><p>Embedded, PCB and IoT engineering added to the software core, with AI, automation, cybersecurity and infrastructure around it.</p></div></StaggerItem>
+            <StaggerItem><div className="tl" style={{ height: '100%' }}><b>Today</b><strong>AI-led, full lifecycle</strong><p>AI and intelligent automation on the software core, embedded and IoT engineering for machines, and cloud, cybersecurity and managed services beneath.</p></div></StaggerItem>
           </Stagger>
         </div>
       </section>
@@ -70,6 +70,17 @@ export default function About() {
         <Photo name="hw-bench-soldering" sizes="100vw" pos="50% 55%" />
         <span className="photo__cap"><b>Illustrative image</b> · Electronics bench</span>
       </div>
+
+      <section className="sec sec--navy on-dark" id="evidence" aria-labelledby="h-ev">
+        <div className="container">
+          <Reveal><SecHead row eyebrow="How we label our work" title={<span id="h-ev">Every claim carries a label.</span>} lede="We keep delivered software, engineering capability, reference designs and illustrative images separate, so you can see what stands behind each statement." /></Reveal>
+          <Stagger className="cardgrid">
+            {([['built', 'Systems built', 'Delivered software named in our company profile.'], ['cap', 'Engineering capability', 'Designed, prototyped and applied on engagement. Not a claim of production deployment.'], ['eng', 'Engineering solutions', 'Embedded and IoT designs shown as reference material.'], ['cap', 'Scoped per engagement', 'Design support described by its scope, such as VLSI design support. No tape-out, fabrication or foundry is claimed.'], ['prop', 'Proposed solution', 'A planned architecture or pilot. No completed rollout is implied.'], ['concept', 'Concept', 'An illustrative or AI-generated image or interface, not a delivered product.']] as const).map(([k, t, d]) => (
+              <StaggerItem key={t}><div className="tl" style={{ height: '100%' }}><Pill kind={k}>{t}</Pill><p style={{ marginTop: 14 }}>{d}</p></div></StaggerItem>
+            ))}
+          </Stagger>
+        </div>
+      </section>
 
       <section className="sec sec--mist" aria-labelledby="h-pr">
         <div className="container">

@@ -1,21 +1,28 @@
-import HeroCollage from '@/components/HeroCollage';
-import ServiceShowcase, { type ShowcaseItem } from '@/components/ServiceShowcase';
-import { Steps, VlsiFlow } from '@/components/diagrams';
-import { Laptop, LmsUI, Phone, PhoneTalentUI } from '@/components/concept';
-import { Reveal, Stagger, StaggerItem } from '@/components/motion';
-import { Art, Button, Eyebrow, Photo, PhotoCard, Pill, SecHead } from '@/components/ui';
-import { serviceBySlug } from '@/content/services';
-import { productLifecycle, site } from '@/content/site';
+import ContactForm from '@/components/ContactForm';
+import PortfolioSelector from '@/components/home/PortfolioSelector';
+import TabSet from '@/components/home/TabSet';
+import { AlertVisual, ChatVisual, ConceptLabel, CurveVisual, DecisionVisual, DocVisual, HeroVisual, MiniAgents, MiniApps, MiniDecision, MiniNli, MiniWorkflow, PredVisual } from '@/components/home/visuals';
+import { Reveal } from '@/components/motion';
+import { Arrow, Button, Eyebrow, Photo, Pill, SecHead } from '@/components/ui';
+import { site } from '@/content/site';
 
-const svc = (slug: string) => serviceBySlug(slug)!;
-const SHOWCASE: ShowcaseItem[] = [
-  { service: svc('enterprise-software-engineering'), photo: 'dev-team', pos: '50% 40%', blurb: 'Dashboards, portals and operational systems around the hardware, engineered, database-backed and in production use.', points: ['Web & mobile engineering', 'Workflow & approvals', 'Billing, POS & operations', 'Legacy modernisation'] },
-  { service: svc('ai-ml-intelligent-automation'), photo: 'data-wall', pos: '60% 40%', blurb: 'Applied AI wired into data, process and oversight, with people in the loop.', points: ['Copilots & assistants', 'Document intelligence', 'Knowledge retrieval', 'Predictive analytics'] },
-  { service: svc('cybersecurity'), photo: 'access-reader', pos: '60% 50%', blurb: 'Protection as layers of concrete controls, from the device to the cloud.', points: ['Identity & access', 'Hardening & patching', 'Monitoring & audit trails', 'Recovery'] },
-  { service: svc('cloud-infrastructure'), photo: 'fibre-patch', pos: '50% 50%', blurb: 'Servers, migration, databases, backup and high availability, administered and watched.', points: ['Windows & Linux', 'Cloud migration', 'Backup & recovery', 'High availability'] },
+const Link = ({ href, children, light = false }: { href: string; children: React.ReactNode; light?: boolean }) => (
+  <a className="linkarrow" href={href} style={light ? { color: '#fff' } : undefined}>{children} <svg viewBox="0 0 18 12" aria-hidden="true"><path d="M0 6h16M11 1l5 5-5 5" /></svg></a>
+);
+
+const EXPLORER = [
+  { id: 'apps', label: 'Generative AI applications', visual: <MiniApps />, text: 'Generative AI applications for business tasks, built into the web and mobile software your people already use.', points: ['AI-enabled web and mobile applications', 'Built on database-backed, workflow-driven platforms', 'People review what matters'] },
+  { id: 'nli', label: 'Natural-language interfaces', visual: <MiniNli />, text: 'Natural-language interfaces to the systems and data you already run.', points: ['Questions answered from system data', 'Access follows the rules of the source system', 'A person takes over when the answer is unclear'] },
+  { id: 'wf', label: 'Intelligent workflow', visual: <MiniWorkflow />, text: 'AI-enabled workflow with people in the loop, built on our automation and RPA engineering.', points: ['Rules and AI inside approvals', 'Exceptions go to people', 'An audit trail by design'] },
+  { id: 'dec', label: 'Decision support', visual: <MiniDecision />, text: 'Predictive analytics and decision support over operational data.', points: ['Forecasting and classification', 'Reasons shown, not just scores', 'Validated with the people who run the process'] },
+  { id: 'agents', label: 'Multi-agent solutions', visual: <MiniAgents />, text: 'Multi-agent solutions for multi-step work, with approvals between the steps.', points: ['Specialised agents with defined tools', 'Human approval gates', 'Every decision logged'] },
 ];
 
-const MARQUEE = ['PCB design', 'Embedded firmware', 'VLSI & FPGA design support', 'Product prototyping', 'Industrial IoT', 'Edge AI', 'Software & cybersecurity'];
+const TRACKS = [
+  { id: 'pump', label: 'Condition monitoring', pill: <Pill kind="design">Designed system</Pill>, photo: 'ref-pump-installation' as const, ct: false, cap: 'Pump installation', chain: ['Current, vibration, temperature', 'Anomaly model', 'Technician alert'], text: 'Detect abnormal motor load earlier and guide maintenance.' },
+  { id: 'vision', label: 'Vision inspection', pill: <Pill kind="cap">Capability example</Pill>, photo: 'ref-label-mismatch' as const, ct: true, cap: 'Label-inspection output', chain: ['Camera', 'Detection model', 'Pass or flag'], text: 'Check labels and product on the line, with results people can review.' },
+  { id: 'util', label: 'Smart utilities', pill: <Pill kind="prop">Proposed solution</Pill>, photo: 'ref-gas-meter-phone' as const, ct: false, cap: 'Gas-meter reading by phone', chain: ['Pulse reader', 'Low-power controller', 'NB-IoT', 'Utility platform'], text: 'Digital readings from meters that are already installed.' },
+];
 
 export default function Home() {
   return (
@@ -25,251 +32,186 @@ export default function Home() {
         <div className="hero__bg" aria-hidden="true"><div className="hero__grid" /></div>
         <div className="container hero__inner">
           <div className="hero__copy">
-            <Eyebrow>Electronics, VLSI &amp; Embedded Systems Engineering</Eyebrow>
+            <Eyebrow>AI, software &amp; electronics engineering · Bengaluru</Eyebrow>
             <h1 id="h1" className="h-display">
-              <span className="line"><span>From Circuit</span></span>
-              <span className="line"><span>Design to</span></span>
-              <span className="line"><span><span className="hl">Intelligent</span> Systems.</span></span>
+              <span className="line"><span>AI-Led Engineering.</span></span>
+              <span className="line"><span><span className="hl">From Software</span></span></span>
+              <span className="line"><span><span className="hl">to Smart Machines.</span></span></span>
             </h1>
-            <p className="lede">Siddhrans InfoTech helps organisations design and develop electronic products, PCB hardware, embedded firmware, semiconductor design solutions and intelligent connected systems, supported by AI, software engineering and cybersecurity.</p>
+            <p className="lede">Siddhrans InfoTech builds AI agents, copilots and intelligent applications, the enterprise software and data beneath them, and the embedded systems that take the same intelligence into machines.</p>
             <div className="hero__actions">
-              <Button href="/contact/">Discuss a hardware project</Button>
-              <Button href="/services/" variant="ghost">Explore engineering services</Button>
+              <Button href="/services/ai-ml-intelligent-automation/">Explore AI capabilities</Button>
+              <Button href="/contact/" variant="ghost">Start a project</Button>
             </div>
+            <ul className="v4-pill3" aria-label="Our three pillars">
+              <li><a href="#ai"><b>01</b>AI &amp; Intelligent Automation</a></li>
+              <li><a href="#software"><b>02</b>Software &amp; Digital Engineering</a></li>
+              <li><a href="#machines"><b>03</b>Embedded &amp; Intelligent Electronics</a></li>
+            </ul>
             <div className="hero__trust">
-              <div><b>Circuit to app</b>One engineering chain</div>
-              <div><b>Since {site.founded}</b>Bengaluru practice</div>
+              <div><b>Since {site.founded}</b>Engineering practice</div>
+              <div><b>15 systems</b>Software built</div>
+              <div><b>AI to device</b>Application to edge</div>
               <div><b>Founder-led</b>Same leadership</div>
             </div>
           </div>
-          <HeroCollage />
-        </div>
-        <div className="marquee" aria-hidden="true">
-          <div className="marquee__track">
-            {[0, 1].map((k) => (<span key={k} style={{ display: 'contents' }}>{MARQUEE.map((t) => <span key={`${k}-${t}`}>{t}</span>)}</span>))}
-          </div>
+          <HeroVisual />
         </div>
       </section>
 
-      {/* ============ 2. PCB & HARDWARE ============ */}
-      <section className="sec sec--white" id="pcb" aria-labelledby="h-pcb">
+      {/* ============ 2. AI & INTELLIGENT AUTOMATION ============ */}
+      <section className="v4s v4s--navy on-dark" id="ai" aria-labelledby="h-ai">
         <div className="container">
-          <div className="story">
-            <Reveal>
-              <Pill kind="eng">Engineering solutions</Pill>
-              <h2 id="h-pcb" className="h-xl" style={{ margin: '22px 0 20px' }}>PCB design and electronic hardware.</h2>
-              <p className="lede">The board decides whether a product is dependable. We design the circuits and printed circuit boards that carry sensors, controllers and connectivity, with assembly, test and firmware bring-up planned from the first schematic.</p>
-              <ul className="tickgrid" style={{ margin: '26px 0 32px' }}>
-                {['Hardware architecture & component selection', 'Schematic design', 'PCB layout, design-for-manufacture and test', 'Power and low-power design', 'Prototype assembly support', 'Board bring-up and debug'].map((x) => <li key={x}>{x}</li>)}
-              </ul>
-              <Button href="/services/pcb-hardware-engineering/" variant="green">PCB &amp; hardware engineering</Button>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <div className="collage2">
-                <div className="k1"><PhotoCard name="hw-solder-board" sizes="(min-width:1180px) 36vw, 90vw" style={{ height: '100%' }} pos="50% 50%" /></div>
-                <div className="k2"><PhotoCard name="hw-pcb-inspection" sizes="(min-width:1180px) 18vw, 40vw" cap={false} style={{ height: '100%' }} pos="85% 60%" /></div>
-                <div className="k3"><PhotoCard name="hw-bench-soldering" sizes="(min-width:1180px) 22vw, 60vw" cap={false} style={{ aspectRatio: '16/9' }} pos="40% 55%" /></div>
+          <Reveal><SecHead row eyebrow="01 · AI & Intelligent Automation" title={<span id="h-ai">AI that works inside your operations.</span>} lede="Agents, copilots and automation connected to your data, your systems and your people, with humans in the loop where judgement matters." /></Reveal>
+          <div className="v4-fam">
+            <article className="v4-fc v4-fc--a">
+              <div className="v4-fc__v"><ChatVisual /><ConceptLabel /></div>
+              <div className="v4-fc__t"><div className="v4-fc__h"><h3>AI agents &amp; copilots</h3><Pill kind="cap">Engineering capability</Pill></div><p>Role-specific assistants and multi-agent solutions that work from your documents and systems, with people approving what matters.</p><ul className="v4-tags"><li>Agents</li><li>Copilots</li><li>RAG</li><li>Approvals</li></ul></div>
+            </article>
+            <article className="v4-fc v4-fc--b">
+              <div className="v4-fc__v"><DocVisual /><ConceptLabel /></div>
+              <div className="v4-fc__t"><div className="v4-fc__h"><h3>Document &amp; knowledge intelligence</h3><Pill kind="cap">Engineering capability</Pill></div><p>Intelligent document processing and enterprise knowledge retrieval: extract, classify and find what is in contracts, forms and records.</p></div>
+            </article>
+            <article className="v4-fc v4-fc--c">
+              <div className="v4-fc__v v4-fc__v--img">
+                <div className="v4-vis"><Photo name="ref-label-mismatch" sizes="(min-width:1180px) 36vw, 100vw" alt="Machine-vision output comparing a work-order label with the container labels and flagging a mismatch" /></div>
+                <div className="v4-vis__in"><Photo name="ai-vision-capsules" sizes="(min-width:1180px) 16vw, 40vw" alt="" /></div>
+                <span className="photo__cap v4-fc__cap"><b>Illustrative image</b> · Vision outputs</span>
               </div>
-            </Reveal>
+              <div className="v4-fc__t"><div className="v4-fc__h"><h3>Vision &amp; industrial inspection</h3><Pill kind="design">Capability example</Pill></div><p>Detect, count and match labels or defects on the line, with results people can review.</p></div>
+            </article>
+            <article className="v4-fc v4-fc--d">
+              <div className="v4-fc__v"><PredVisual /><ConceptLabel>trend is illustrative</ConceptLabel></div>
+              <div className="v4-fc__t"><div className="v4-fc__h"><h3>Predictive &amp; edge intelligence</h3><Pill kind="cap">Engineering capability</Pill></div><p>Predictive analytics and machine learning, running in the cloud or close to the sensor on microcontrollers and gateways.</p><ul className="v4-tags"><li>Forecasting</li><li>Anomaly detection</li><li>Edge AI</li></ul></div>
+            </article>
+          </div>
+          <div className="v4-exp">
+            <div className="v4-exp__h"><div><span className="mono v4-g">More AI capabilities</span><h3>Explore the rest of what we build</h3></div></div>
+            <TabSet idp="ex" label="More AI capabilities" items={EXPLORER.map((x) => ({
+              id: x.id, label: x.label,
+              node: (<div className="v4-exp__pn"><div className="v4-exp__vz">{x.visual}<ConceptLabel /></div><div><p>{x.text}</p><ul>{x.points.map((p) => <li key={p}>{p}</li>)}</ul><Pill kind="cap">Engineering capability</Pill></div></div>),
+            }))} />
+          </div>
+          <div className="v4-cta">
+            <Button href="/services/ai-ml-intelligent-automation/" variant="yellow">Explore AI &amp; automation</Button>
+            <Button href="/contact/" variant="ghost">Discuss an AI use case</Button>
+            <span className="fine">Works with or without hardware.</span>
           </div>
         </div>
       </section>
 
-      {/* ============ 3. ELECTRONICS & EMBEDDED FIRMWARE ============ */}
-      <section className="sec sec--navy diag-top" id="firmware" aria-labelledby="h-fw">
-        <div className="glow" style={{ right: '-10%', top: '8%', width: '40vw', aspectRatio: '1', background: 'rgba(25,196,110,.35)' }} aria-hidden="true" />
-        <div className="container" style={{ position: 'relative' }}>
-          <Reveal>
-            <SecHead row eyebrow="Electronics & embedded systems" title={<span id="h-fw">Embedded firmware, sensing and microcontrollers.</span>} lede="Firmware is where hardware becomes behaviour. We write the code that reads sensors, controls actuators and talks to the network on low-power microcontrollers, and prove it on the real board." />
-          </Reveal>
-          <Reveal delay={0.05}>
-            <div className="duo duo--card" style={{ gridTemplateColumns: '1fr 1fr', marginTop: 'clamp(28px,3.5vw,48px)' }}>
-              <PhotoCard name="ref-esp32-breadboard" sizes="(min-width:1180px) 48vw, 100vw" style={{ aspectRatio: '4/3' }} />
-              <PhotoCard name="ref-motor-vibration-board" sizes="(min-width:1180px) 48vw, 100vw" style={{ aspectRatio: '4/3' }} />
-            </div>
-          </Reveal>
-          <ul className="stage__chips" style={{ margin: '28px 0 30px', padding: 0 }}>
-            {['ESP32', 'Arduino-class boards', 'Current & vibration sensing', 'Signal processing', 'Bluetooth LE', 'Wi-Fi', 'LoRaWAN', 'NB-IoT / LTE-M', 'Low-power design'].map((x) => <li key={x}>{x}</li>)}
-          </ul>
-          <Button href="/services/embedded-firmware-microcontrollers/">Embedded firmware</Button>
-        </div>
-      </section>
-
-      {/* ============ 4. VLSI ============ */}
-      <section className="sec sec--mist on-light" id="vlsi" aria-labelledby="h-vlsi">
+      {/* ============ 3. SOFTWARE & DIGITAL ENGINEERING ============ */}
+      <section className="v4s v4s--warm on-light" id="software" aria-labelledby="h-sw">
         <div className="container">
-          <Reveal><SecHead row eyebrow="VLSI & semiconductor design" title={<span id="h-vlsi">Digital design support, from specification to a working prototype.</span>} lede="RTL design, verification and FPGA prototyping for teams building chip- and FPGA-based products, integrated with the board and firmware they run on." /></Reveal>
-          <Reveal delay={0.05}><VlsiFlow /></Reveal>
-          <div className="notice"><b>Scope, not track record. </b>This is design support offered per engagement. Siddhrans does not claim chip fabrication, silicon tape-outs, completed ASICs, foundry partnerships or a manufacturing facility.</div>
-          <div style={{ marginTop: 28 }}><Button href="/services/vlsi-semiconductor-design/" variant="green">VLSI &amp; semiconductor design support</Button></div>
-        </div>
-      </section>
-
-      {/* ============ 5. PRODUCT DEVELOPMENT LIFECYCLE ============ */}
-      <section className="sec sec--white" id="lifecycle" aria-labelledby="h-life">
-        <div className="container">
-          <Reveal><SecHead row eyebrow="Electronic product development" title={<span id="h-life">From concept to a validated prototype.</span>} lede="Hardware, firmware and the application around it are designed together, so nothing is thrown over a wall. Each stage ends in something you can test." /></Reveal>
-          <Reveal delay={0.05}><Steps items={productLifecycle} /></Reveal>
-          <div style={{ marginTop: 36 }}><Button href="/services/electronic-product-development/" variant="green">Product design, prototyping &amp; validation</Button></div>
-        </div>
-      </section>
-
-      {/* ============ 6. INDUSTRIAL IOT & CONDITION MONITORING ============ */}
-      <section className="sec sec--dark diag-both" id="iot" aria-labelledby="h-iot">
-        <div className="container">
-          <div className="rowtext">
-            <Reveal>
-              <Pill kind="design">Designed system</Pill>
-              <h2 id="h-iot" className="h-xl" style={{ margin: '22px 0 20px' }}>Industrial IoT and condition monitoring.</h2>
-              <p className="lede">Current, vibration and temperature sensing on pumps, motors and coolers, an embedded controller at the machine, and a dashboard and alerts for the technician who has to act.</p>
-              <div style={{ marginTop: 28 }}><Button href="/services/embedded-systems-industrial-iot/">Industrial IoT</Button></div>
-            </Reveal>
-            <Reveal delay={0.08}>
-              <PhotoCard name="ref-pump-installation" sizes="(min-width:1180px) 52vw, 100vw" style={{ aspectRatio: '1068/567' }} />
-            </Reveal>
+          <Reveal><SecHead row eyebrow="02 · Software & Digital Engineering" title={<span id="h-sw">Software built to run real operations.</span>} lede="Fifteen named systems built since 2016: full-stack, database-backed and workflow-driven. They are the platform foundation we bring AI into." /></Reveal>
+          <Reveal delay={0.05}><div className="v4-pfwrap"><PortfolioSelector /></div></Reveal>
+          <div className="v4-sw2">
+            <div className="v4-facts"><div><b>15</b>systems built</div><div><b>4</b>product families</div><div><b>{site.founded}</b>since</div></div>
+            <ul className="v4-caps"><li>Web &amp; mobile engineering</li><li>Workflow &amp; approvals</li><li>Billing, POS &amp; operations</li><li>Legacy modernisation</li></ul>
+            <div className="v4-aiapp"><b>AI-enabled applications</b><span>Add copilots, search and document intelligence to platforms like these.</span><Pill kind="cap">Engineering capability</Pill></div>
           </div>
-          <Reveal delay={0.05}>
-            <figure className="figcard" style={{ maxWidth: 1047, marginTop: 'clamp(28px,3.5vw,48px)' }}>
-              <div className="figscroll" tabIndex={0} role="region" aria-label="Monitoring architecture diagram (scrolls sideways on small screens)">
-                <PhotoCard name="ref-iot-architecture" sizes="(min-width:1180px) 1047px, 100vw" cap={false} style={{ aspectRatio: '1047/364' }} />
-              </div>
-              <figcaption><b>Illustrative image</b> · Monitoring architecture: current clamp and temperature sensors, ESP32, cooler dashboard, technician.</figcaption>
-            </figure>
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ============ 7. SMART UTILITIES ============ */}
-      <section className="sec sec--white" id="utilities" aria-labelledby="h-util">
-        <div className="container">
-          <Reveal><SecHead row eyebrow="Smart utilities & connected systems" title={<span id="h-util">Digital readings from the meters already installed.</span>} lede="A low-power sensing module, a wireless link and a utility platform can turn an existing gas meter into a connected one, without replacing the meter." /></Reveal>
-          <Reveal delay={0.05}>
-            <div className="duo duo--card" style={{ gridTemplateColumns: '2.12fr .75fr', marginTop: 'clamp(28px,3.5vw,48px)' }}>
-              <PhotoCard name="ref-gas-meter-phone" sizes="(min-width:1180px) 70vw, 100vw" style={{ aspectRatio: '651/307' }} />
-              <PhotoCard name="ref-gas-meter-standalone" className="duo__side" sizes="(min-width:1180px) 25vw, 60vw" style={{ aspectRatio: '375/500', border: '1px solid rgba(10,19,38,.12)' }} />
-            </div>
-          </Reveal>
-          <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center', marginTop: 28 }}>
-            <Pill kind="prop">Proposed solution</Pill>
-            <a className="linkarrow" href="/engineering-use-cases/">Gas-meter digitisation retrofit and other use cases <svg viewBox="0 0 18 12" aria-hidden="true"><path d="M0 6h16M11 1l5 5-5 5" /></svg></a>
+          <div className="v4-cs">
+            <a className="v4-cs__c" href="/case-studies/#lms"><span className="mono">Case study</span><b>Siddhrans LMS</b><span>Training delivery, structured end to end: programmes, content, assessments and results in one platform.</span><em>Read the case study <Arrow /></em></a>
+            <a className="v4-cs__c" href="/case-studies/#talent"><span className="mono">Case study</span><b>Talent platforms</b><span>One engineering pattern, three talent markets: profiles, discovery and placement workflows.</span><em>Read the case study <Arrow /></em></a>
+          </div>
+          <div className="v4-cta v4-cta--light">
+            <Button href="/products/" variant="green">See all 15 systems</Button>
+            <Button href="/services/enterprise-software-engineering/" variant="ghost-dark">Enterprise software engineering</Button>
+            <span className="fine">Interfaces are concept designs with placeholder data, not screenshots of delivered products.</span>
           </div>
         </div>
       </section>
 
-      {/* ============ 7b. AI VISION / INSPECTION ============ */}
-      <section className="sec sec--mist on-light" id="vision" aria-labelledby="h-vis">
+      {/* ============ 4. AI MEETS THE MACHINE ============ */}
+      <section className="v4s v4s--ink v4-glow on-dark" id="machines" aria-labelledby="h-mach">
         <div className="container">
-          <Reveal><SecHead row eyebrow="AI vision & inspection" title={<span id="h-vis">Cameras that check the work.</span>} lede="Machine vision at the line: compare a label with its work order, count and classify product, and flag a mismatch before it ships. Models are validated with the people who know the process." /></Reveal>
-          <Reveal delay={0.05}>
-            <div className="duo duo--card" style={{ gridTemplateColumns: '1.924fr 1.834fr', marginTop: 'clamp(28px,3.5vw,48px)' }}>
-              <PhotoCard name="ref-label-mismatch" sizes="(min-width:1180px) 50vw, 100vw" style={{ aspectRatio: '760/395' }} />
-              <PhotoCard name="ai-vision-capsules" sizes="(min-width:1180px) 48vw, 100vw" style={{ aspectRatio: '1698/926' }} />
-            </div>
-          </Reveal>
-          <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center', marginTop: 28 }}>
-            <Pill kind="cap">Capability example</Pill>
-            <a className="linkarrow" href="/services/edge-ai-intelligent-electronics/">Edge AI &amp; intelligent electronics <svg viewBox="0 0 18 12" aria-hidden="true"><path d="M0 6h16M11 1l5 5-5 5" /></svg></a>
-          </div>
-        </div>
-      </section>
-
-      {/* ============ 7c. SAFETY, ACCESS & SMART OPERATIONS ============ */}
-      <section className="sec sec--dark diag-both" id="safety" aria-labelledby="h-saf">
-        <div className="container">
-          <Reveal><SecHead row eyebrow="Safety, access & smart operations" title={<span id="h-saf">Alerts and access control that reach the person on site.</span>} lede="Beacons, wearables and access readers connected to rules and an evidence log, so a hazard or an unauthorised entry becomes an alert, not a surprise." /></Reveal>
-          <Reveal delay={0.05}>
-            <div className="duo" style={{ gridTemplateColumns: '2.56fr 1.333fr', marginTop: 'clamp(28px,3.5vw,48px)' }}>
-              <PhotoCard name="ref-safety-sos" sizes="(min-width:1180px) 62vw, 100vw" style={{ aspectRatio: '768/300' }} />
-              <PhotoCard name="ref-access-watch" sizes="(min-width:1180px) 33vw, 100vw" style={{ aspectRatio: '1600/1200' }} />
-            </div>
-          </Reveal>
-          <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center', marginTop: 28 }}>
-            <Pill kind="cap">Capability example</Pill>
-            <a className="linkarrow" href="/engineering-use-cases/" style={{ color: '#fff' }}>All engineering use cases <svg viewBox="0 0 18 12" aria-hidden="true"><path d="M0 6h16M11 1l5 5-5 5" /></svg></a>
-          </div>
-          <p className="fine" style={{ marginTop: 22, color: 'var(--slate-300)' }}>Images on this page are illustrative: licensed stock, supplied reference images or AI-generated concepts. Examples are reference material, not completed Siddhrans projects.</p>
-        </div>
-      </section>
-
-      {/* ============ 8. SUPPORTING SOFTWARE, SECURITY, CLOUD ============ */}
-      <section className="sec sec--navy diag-top" id="capabilities" aria-labelledby="h-cap">
-        <div className="container" style={{ position: 'relative' }}>
-          <Reveal><SecHead row eyebrow="Supporting capabilities" title={<span id="h-cap">Software, AI, security and cloud around the hardware.</span>} lede="Devices need applications, analytics and protection. Our software practice, started in 2016, provides them." /></Reveal>
-          <Reveal delay={0.05}><ServiceShowcase items={SHOWCASE} /></Reveal>
-          <Stagger className="bento" style={{ marginTop: 14, gridAutoRows: 'clamp(210px,18vw,260px)' }}>
-            <StaggerItem className="bcell" style={{ gridColumn: 'span 4' }}>
-              <a className="bi" href="/services/rpa-business-automation/"><Art kind="flow" /><div className="tagrow"><Pill kind="cap">Engineering capability</Pill></div><h3>RPA &amp; Business Automation</h3><p>Turn a process into a controlled system: rules, workflow, integration, and people only for exceptions.</p></a>
-            </StaggerItem>
-            <StaggerItem className="bcell" style={{ gridColumn: 'span 4' }}>
-              <a className="bi" href="/services/data-analytics-integration/"><Art kind="chart" /><div className="tagrow"><Pill kind="built">Evidenced in built systems</Pill></div><h3>Data, Analytics &amp; Integration</h3><p>From systems of record to decisions: APIs, dashboards and reporting.</p></a>
-            </StaggerItem>
-            <StaggerItem className="bcell" style={{ gridColumn: 'span 4' }}>
-              <a className="bi" href="/services/managed-technology-services/"><Art kind="loop" /><div className="tagrow"><Pill kind="cap">Engineering capability</Pill></div><h3>Managed Technology Services</h3><p>An extended engineering team: plan, build, run, support, improve.</p></a>
-            </StaggerItem>
-          </Stagger>
-        </div>
-      </section>
-
-      {/* ============ 9. PRODUCT PORTFOLIO & CREDENTIALS ============ */}
-      {/* ============ PRODUCTS PREVIEW ============ */}
-      <section className="sec sec--dark diag-both" aria-labelledby="h-prod" style={{ overflow: 'hidden' }}>
-        <div className="glow" style={{ left: '-12%', top: '10%', width: '46vw', aspectRatio: '1', background: 'rgba(25,196,110,.28)' }} aria-hidden="true" />
-        <div className="container" style={{ position: 'relative' }}>
-          <div className="story">
-            <Reveal>
-              <Eyebrow>Products &amp; solutions</Eyebrow>
-              <h2 id="h-prod" className="h-xl" style={{ margin: '20px 0 22px' }}>Existing product portfolio: software built to run real operations.</h2>
-              <p className="lede">Fifteen named systems since {site.founded}: learning platforms, talent platforms, billing and business operations, and sector systems. Full-stack, database-backed and workflow-driven.</p>
-              <ul className="stage__chips" style={{ margin: '28px 0 34px', padding: 0 }}>
-                {['Siddhrans LMS', 'Talent platforms', 'GST Billing', 'Point of Sale', 'Cargo', 'Dialysis', '+ 7 more'].map((s) => <li key={s}>{s}</li>)}
-              </ul>
-              <Button href="/products/">Explore the product showcase</Button>
-              <p className="fine" style={{ marginTop: 22 }}>Interfaces shown are concept designs with placeholder data, not screenshots of delivered products.</p>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <div style={{ position: 'relative', paddingBottom: '8%' }}>
-                <div style={{ width: '88%' }}><Laptop><LmsUI /></Laptop></div>
-                <div style={{ position: 'absolute', right: 0, bottom: 0, width: '24%' }}><Phone><PhoneTalentUI /></Phone></div>
-              </div>
-            </Reveal>
-          </div>
-        </div>
-      </section>
-
-      {/* ============ SYSTEMS BUILT ============ */}
-      <section className="sec sec--navy" id="systems" aria-labelledby="h-sys" style={{ overflow: 'hidden' }}>
-        <div className="container">
-          <div className="story" style={{ alignItems: 'end' }}>
-            <Reveal>
-              <div className="story__n" aria-hidden="true" data-n="15" />
-              <Eyebrow>Systems built</Eyebrow>
-              <h2 id="h-sys" className="h-xl" style={{ margin: '18px 0 0' }}>Fifteen named systems built since {site.founded}.</h2>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <p className="lede" style={{ marginBottom: 24 }}>Full-stack, database-backed, workflow-driven software, the engineering foundation under everything else we do.</p>
-              <Button href="/products/" variant="yellow">See products &amp; solutions</Button>
-            </Reveal>
-          </div>
-          <Stagger className="cardgrid" style={{ gridTemplateColumns: 'repeat(4,1fr)', marginTop: 'clamp(36px,5vw,64px)' }}>
-            {[
-              ['Education & training', ['Siddhrans LMS', 'Online training programmes']],
-              ['Talent & placement', ['Talent Sandalwood', 'Talent Workforce', 'Talent Sports Force']],
-              ['Business operations', ['GST Billing', 'Point of Sale', 'Restaurant', 'Catering', 'Gym Master', 'Project Management System']],
-              ['Sector systems', ['Salon', 'Cargo', 'Dialysis', 'Film Event', 'Inventory management']],
-            ].map(([g, l]) => (
-              <StaggerItem key={g as string}>
-                <div className="tl" style={{ height: '100%' }}>
-                  <strong style={{ color: 'var(--green-b)', font: '500 12px var(--f-mono)', letterSpacing: '.1em', textTransform: 'uppercase' }}>{g as string}</strong>
-                  <ul style={{ listStyle: 'none', margin: '16px 0 0', padding: 0 }}>{(l as string[]).map((n) => <li key={n} style={{ font: '600 19px/1.25 var(--f-display)', padding: '9px 0', borderBottom: '1px solid rgba(255,255,255,.1)', letterSpacing: '-.01em' }}>{n}</li>)}</ul>
+          <Reveal><SecHead row eyebrow="03 · Embedded & Intelligent Electronics" title={<span id="h-mach">AI meets the machine.</span>} lede="One team engineers the sensor, the firmware, the model and the decision, so intelligence does not stop at the dashboard." /></Reveal>
+          <ol className="v4-pipe" aria-label="From sensor to action">
+            <li className="v4-nd"><span className="v4-nd__n">1</span><h3>Sense</h3><div className="v4-nd__v ct"><Photo name="ref-motor-vibration-board" eager sizes="(min-width:1180px) 16vw, 30vw" alt="Motor with a vibration sensor board and display" /></div><p>Current, vibration, temperature, optical and pulse sensors.</p></li>
+            <li className="v4-nd"><span className="v4-nd__n">2</span><h3>Firmware</h3><div className="v4-nd__v ct"><Photo name="ref-esp32-breadboard" eager sizes="(min-width:1180px) 16vw, 30vw" alt="ESP32 breadboard prototype with labelled callouts" /></div><p>ESP32 and Arduino-class firmware: drivers, signal processing, local control.</p></li>
+            <li className="v4-nd"><span className="v4-nd__n">3</span><h3>AI / ML</h3><div className="v4-nd__v"><CurveVisual /></div><p>Pattern analysis and deviation detection, validated with domain engineers.</p></li>
+            <li className="v4-nd"><span className="v4-nd__n">4</span><h3>Decision</h3><div className="v4-nd__v"><DecisionVisual /></div><p>Rules and models turn readings into a state: normal, watch or act.</p></li>
+            <li className="v4-nd"><span className="v4-nd__n">5</span><h3>Action</h3><div className="v4-nd__v"><AlertVisual /></div><p>Alerts, audit logs and automated follow-through.</p></li>
+          </ol>
+          <p className="fine v4-pipe__note">Steps 3 to 5 are concept visuals with illustrative data. Steps 1 and 2 are prototype images supplied by Siddhrans.</p>
+          <div className="v4-trk">
+            <TabSet idp="trk" label="Where it applies" items={TRACKS.map((t) => ({
+              id: t.id, label: t.label,
+              node: (
+                <div className="v4-trk__pn">
+                  <div className={`v4-trk__im${t.ct ? ' ct' : ''}`}><Photo name={t.photo} sizes="(min-width:1180px) 46vw, 100vw" /><span className="photo__cap"><b>Illustrative image</b> · {t.cap}</span></div>
+                  <div className="v4-trk__tx"><div>{t.pill}</div><h3>{t.label}</h3><p>{t.text}</p><div className="v4-chain" aria-label="Signal chain">{t.chain.map((c, k) => <span key={c}>{k > 0 && <em aria-hidden="true">→</em>}{c}</span>)}</div></div>
                 </div>
-              </StaggerItem>
-            ))}
-          </Stagger>
+              ),
+            }))} />
+          </div>
+          <details className="v4-arch">
+            <summary>See the monitoring architecture <span>CT clamp → temperature sensors → ESP32 → cooler dashboard → technician</span></summary>
+            <div className="figscroll" tabIndex={0} role="region" aria-label="Monitoring architecture diagram (scrolls sideways on small screens)"><Photo name="ref-iot-architecture" eager sizes="(min-width:1180px) 1047px, 100vw" /></div>
+            <p className="fine">Illustrative image · Monitoring architecture.</p>
+          </details>
+          <div className="v4-cta">
+            <Button href="/services/embedded-systems-industrial-iot/" variant="yellow">Industrial IoT &amp; Edge AI</Button>
+            <Button href="/engineering-use-cases/" variant="ghost">Engineering use cases</Button>
+            <span className="fine">Reference material, not completed Siddhrans projects.</span>
+          </div>
         </div>
       </section>
 
+      {/* ============ 5. ELECTRONICS ============ */}
+      <section className="v4s v4s--graphite on-dark" id="electronics" aria-labelledby="h-el">
+        <div className="container v4-el">
+          <Reveal>
+            <Eyebrow>Electronics engineering</Eyebrow>
+            <h2 id="h-el" className="h-lg" style={{ margin: '16px 0 12px' }}>The electronics underneath.</h2>
+            <p className="lede" style={{ marginBottom: 22 }}>Boards, firmware and prototypes for devices that sense and decide.</p>
+            <ul className="v4-rows">
+              <li><b><a href="/services/pcb-hardware-engineering/">PCB &amp; hardware design</a></b><span>Schematics, layout, power and board bring-up.</span><Pill kind="eng">Engineering solutions</Pill></li>
+              <li><b><a href="/services/embedded-firmware-microcontrollers/">Embedded firmware</a></b><span>ESP32 and Arduino-class firmware, drivers, wireless.</span><Pill kind="eng">Engineering solutions</Pill></li>
+              <li><b><a href="/services/electronic-product-development/">Product development</a></b><span>Concept to validated prototype.</span><Pill kind="eng">Engineering solutions</Pill></li>
+              <li className="q"><b><a href="/services/vlsi-semiconductor-design/">VLSI &amp; semiconductor design support</a></b><span>RTL, verification and FPGA prototyping support. No tape-out, fabrication or foundry is claimed.</span><Pill kind="cap">Scoped per engagement</Pill></li>
+            </ul>
+            <div style={{ marginTop: 22 }}><Button href="/services/embedded-systems-industrial-iot/" variant="ghost">Embedded &amp; electronics services</Button></div>
+          </Reveal>
+          <Reveal delay={0.08}>
+            <div className="v4-strip">
+              <figure><Photo name="hw-pcb-inspection" sizes="(min-width:1180px) 16vw, 40vw" pos="60% 70%" /><figcaption className="photo__cap"><b>Illustrative image</b> · PCB inspection</figcaption></figure>
+              <figure className="ct"><Photo name="ref-esp32-breadboard" sizes="(min-width:1180px) 16vw, 40vw" alt="" /></figure>
+              <figure className="ct"><Photo name="ref-motor-vibration-board" eager sizes="(min-width:1180px) 16vw, 40vw" alt="" /></figure>
+            </div>
+          </Reveal>
+        </div>
+      </section>
 
-      {/* ============ 10. CONTACT: the footer carries the project-enquiry call to action ============ */}
+      {/* ============ 6. FOUNDATIONS ============ */}
+      <section className="v4s v4s--navy on-dark" id="foundations" aria-labelledby="h-fd">
+        <div className="container">
+          <Reveal><SecHead row eyebrow="Foundations" title={<span id="h-fd">Secure, integrated and run for you.</span>} lede="Intelligence is only as dependable as what it runs on. These four layers sit under every pillar." /></Reveal>
+          <div className="v4-pillars" aria-hidden="true"><div>AI &amp; Intelligent Automation</div><div>Software &amp; Digital Engineering</div><div>Embedded &amp; Intelligent Electronics</div></div>
+          <ul className="v4-slab">
+            <li><b><a href="/services/cybersecurity/">Cybersecurity &amp; secure engineering</a></b><span>Assess, harden, monitor, remediate: seven layers from identity to recovery.</span><Pill kind="cap">Engineering capability</Pill></li>
+            <li><b><a href="/services/cloud-infrastructure/">Cloud, server &amp; infrastructure</a></b><span>Servers, migration, backup and availability, administered and watched.</span><Pill kind="cap">Engineering capability</Pill></li>
+            <li><b><a href="/services/data-analytics-integration/">Data, analytics &amp; integration</a></b><span>APIs, dashboards and system-to-system flows.</span><Pill kind="built">Evidenced in built systems</Pill></li>
+            <li><b><a href="/services/managed-technology-services/">Managed technology services</a></b><span>Run, support and improve what we build.</span><Pill kind="cap">Engineering capability</Pill></li>
+          </ul>
+          <a className="v4-callout" href="/products/#h-ex"><span><b>Securing the complete examination environment.</b> Software, cloud and security as one chain.</span><Pill kind="prop">Proposed solution</Pill></a>
+          <ul className="v4-ind" aria-label="Industries"><li><a href="/industries/#education">Education</a></li><li><a href="/industries/#talent">Talent</a></li><li><a href="/industries/#healthcare">Healthcare</a></li><li><a href="/industries/#manufacturing">Manufacturing</a></li><li><a href="/industries/#energy">Energy &amp; utilities</a></li><li><a href="/industries/#water">Water</a></li><li><a href="/industries/#logistics">Logistics</a></li><li><a href="/industries/#retail">Retail &amp; business operations</a></li></ul>
+        </div>
+      </section>
+
+      {/* ============ 7. START A PROJECT ============ */}
+      <section className="v4s v4s--green on-dark" id="start" aria-labelledby="h-st">
+        <div className="container v4-fin">
+          <Reveal>
+            <Eyebrow>Start a project</Eyebrow>
+            <h2 id="h-st" className="h-xl" style={{ margin: '18px 0 18px' }}>Tell us what you want to make intelligent.</h2>
+            <p className="lede">A workflow, a pile of documents, a production line, a device. Describe it and we will tell you how we would approach it.</p>
+            <div className="hero__trust"><div><b>Since {site.founded}</b>Bengaluru</div><div><b>15 systems</b>Software built</div><div><b>Founder-led</b>Same leadership</div></div>
+            <p className="fine" style={{ marginTop: 22, color: '#E3EBF5' }}>How we label our work: <a href="/about/#evidence" style={{ textDecoration: 'underline' }}>systems built, engineering capability and more</a>.</p>
+          </Reveal>
+          <Reveal delay={0.08}><div className="form-card"><ContactForm /></div></Reveal>
+        </div>
+      </section>
     </>
   );
 }

@@ -23,7 +23,7 @@ export default function Header() {
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') { setOpen(false); btn.current?.focus(); } };
-    const onResize = () => { if (window.innerWidth > 1180) setOpen(false); };
+    const onResize = () => { if (window.innerWidth > 1280) setOpen(false); };
     document.addEventListener('keydown', onKey);
     window.addEventListener('resize', onResize);
     return () => { document.removeEventListener('keydown', onKey); window.removeEventListener('resize', onResize); };
@@ -41,7 +41,7 @@ export default function Header() {
           <nav className="nav__links" aria-label="Primary">
             {nav.map((n) => (<a key={n.href} href={n.href} aria-current={active(n.href) ? 'page' : undefined}>{n.label}</a>))}
           </nav>
-          <Button small href="/contact/" className="nav__cta">Talk to an engineer</Button>
+          <Button small href="/contact/" className="nav__cta">Start a project</Button>
           <button ref={btn} className="nav__burger" aria-expanded={open} aria-controls="mobile-menu" aria-label={open ? 'Close menu' : 'Open menu'} onClick={() => setOpen((o) => !o)}>
             <span></span><span></span><span></span>
           </button>
@@ -57,7 +57,7 @@ export default function Header() {
                 </m.a>
               ))}
               <m.a href="/contact/" initial={reduce ? false : { opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={reduce ? { duration: 0 } : { duration: 0.6, delay: 0.08 + nav.length * 0.06, ease: [0.2, 0.8, 0.2, 1] }} style={{ color: 'var(--yellow)' }}>
-                <small>→</small>Talk to an engineer
+                <small>→</small>Start a project
               </m.a>
             </nav>
             <div className="menu__foot">
