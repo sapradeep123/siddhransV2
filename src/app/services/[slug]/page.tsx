@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { Reveal, Stagger, StaggerItem } from '@/components/motion';
 import { Button, Eyebrow, Photo, PhotoCard, PageHero, Pill, SecHead } from '@/components/ui';
+import PlatformBlocks from '@/components/PlatformBlocks';
 import { SignalChain, Steps, VlsiFlow } from '@/components/diagrams';
 import { SampleNote, ShowAgents, ShowDocs, ShowPredict, ShowVision } from '@/components/home/showcases';
 import { pillarMeta, serviceBySlug, serviceStatusLabel, services, type ServiceStatus } from '@/content/services';
@@ -91,6 +92,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           </div>
         </section>
       )}
+
+      <PlatformBlocks slug={s.slug} />
 
       <section className="sec sec--mist" aria-labelledby="h-steps">
         <div className="container">

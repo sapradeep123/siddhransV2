@@ -12,7 +12,7 @@ export const SampleNote = ({ children = 'Concept interface · invented sample da
   <p className="sc-note">{children}</p>
 );
 
-const Win = ({ title, status, tone = 'amber', label, children }: { title: string; status: string; tone?: 'amber' | 'green'; label: string; children: ReactNode }) => (
+export const Win = ({ title, status, tone = 'amber', label, children }: { title: string; status: string; tone?: 'amber' | 'green'; label: string; children: ReactNode }) => (
   <div className="sc" role="img" aria-label={label}>
     <div className="sc-win" aria-hidden="true">
       <div className="sc-bar"><i /><i /><i /><b>{title}</b><span className={`sc-st sc-st--${tone}`}>{status}</span></div>

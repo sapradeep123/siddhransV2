@@ -304,3 +304,29 @@ test.describe('content guardrails (claims that must never appear publicly)', () 
     expect(text).not.toMatch(/deployed at|installed at|our clients?|for our customer/i);
   });
 });
+
+test.describe('platform blocks on service pages', () => {
+  const EXPECT: Record<string, string[]> = {
+    '/services/enterprise-software-engineering/': ['Inventre', 'ERPNext', 'Cyberlabs', 'GCSE Path'],
+    '/services/data-analytics-integration/': ['Projection versus actuals', 'ERPNext'],
+    '/services/ai-ml-intelligent-automation/': ['Khubera', 'Vackya', 'Recruiti 360'],
+    '/services/rpa-business-automation/': ['vendor billing automation', 'Department notices'],
+  };
+  for (const [path, names] of Object.entries(EXPECT)) {
+    test(`shows its platforms, labelled as concept UI: ${path}`, async ({ page }) => {
+      await page.goto(path);
+      const sec = page.locator('#platforms');
+      await expect(sec).toBeAttached();
+      const text = await sec.innerText();
+      for (const n of names) expect(text.toLowerCase(), n).toContain(n.toLowerCase());
+      const notes = await sec.locator('.sc-note').allTextContents();
+      expect(notes.length).toBeGreaterThan(0);
+      for (const t of notes) expect(t).toBe('Concept UI · illustrative data');
+      expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true);
+    });
+  }
+  test('homepage links to the platform blocks', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.getByRole('link', { name: /Inventre/ }).first()).toHaveAttribute('href', '/services/enterprise-software-engineering/#inventre');
+  });
+});
