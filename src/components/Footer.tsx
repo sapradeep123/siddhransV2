@@ -58,7 +58,7 @@ export default function Footer() {
         <div className="fbar">
           <span>© {new Date().getFullYear()} {site.name}</span>
           <span className="fbar__links"><a href="/privacy/">Privacy Policy</a><a href="/image-credits/">Image Credits</a></span>
-          <span className="fbar__note">Photographs are licensed stock images and concept visuals are AI-generated; they are not Siddhrans project photographs. Interface visuals are concept designs.</span>
+          <span className="fbar__note">Photographs are licensed stock images and concept visuals are AI-generated; they are representative because equipment from completed work is typically handed to clients or confidential. Image type does not indicate project status. Interface visuals are concept designs.</span>
         </div>
       </div>
     </footer>

@@ -15,7 +15,7 @@ What the public site says is limited to the supplied company profile and clearly
 | 8 | Leadership | Names and titles only, as in the profile | Biographies or photographs only if supplied with permission |
 
 ## Engineering use cases (Bheeshmaa-derived material)
-The 20 entries on `/engineering-use-cases/` come from the supplied deck, which says its sources are historical Bheeshmaa documents. The site presents them only as reference examples with three labels: **Designed system**, **Proposed solution**, **Capability example**, never as Siddhrans-delivered projects. The earlier "Reference prototype" label was removed so nothing reads as an existing Siddhrans prototype.
+The 20 entries on `/engineering-use-cases/` come from the supplied deck, which says its sources are historical Bheeshmaa documents. CORRECTED: Siddhrans has designed, developed and delivered engineering solutions for clients; equipment is often handed over or confidential, so images are representative. The site now uses five statuses (Developed & Delivered, Prototype Developed / Tested, Designed Solution, Proposed Solution, Engineering Capability) and keeps project status separate from image provenance. No entry is marked Delivered or Prototype until the company confirms it: see `docs/USE_CASE_STATUS.md`.
 
 Please confirm you are entitled to publish these as capability examples, in particular:
 - Contactless powder mixing, Secure laboratory access (source claims development; no evidence supplied)

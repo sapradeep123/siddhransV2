@@ -21,7 +21,7 @@ const EXPLORER = [
 
 const TRACKS = [
   { id: 'pump', label: 'Condition monitoring', pill: <Pill kind="design">Designed system</Pill>, photo: 'ref-pump-installation' as const, ct: false, cap: 'Pump installation', chain: ['Current, vibration, temperature', 'Anomaly model', 'Technician alert'], text: 'Detect abnormal motor load earlier and guide maintenance.' },
-  { id: 'vision', label: 'Vision inspection', pill: <Pill kind="cap">Capability example</Pill>, photo: 'ref-label-mismatch' as const, ct: true, cap: 'Label-inspection output', chain: ['Camera', 'Detection model', 'Pass or flag'], text: 'Check labels and product on the line, with results people can review.' },
+  { id: 'vision', label: 'Vision inspection', pill: <Pill kind="cap">Engineering capability</Pill>, photo: 'ref-label-mismatch' as const, ct: true, cap: 'Label-inspection output', chain: ['Camera', 'Detection model', 'Pass or flag'], text: 'Check labels and product on the line, with results people can review.' },
   { id: 'util', label: 'Smart utilities', pill: <Pill kind="prop">Proposed solution</Pill>, photo: 'ref-gas-meter-phone' as const, ct: false, cap: 'Gas-meter reading by phone', chain: ['Pulse reader', 'Low-power controller', 'NB-IoT', 'Utility platform'], text: 'Digital readings from meters that are already installed.' },
 ];
 
@@ -75,7 +75,7 @@ export default function Home() {
             </article>
             <article className="v4-fc">
               <div className="v4-fc__v v4-fc__v--sc"><ShowVision /><SampleNote>Concept interface · illustrative overlay on a licensed stock photograph, not an inspection record</SampleNote></div>
-              <div className="v4-fc__t"><div className="v4-fc__h"><h3>Vision &amp; industrial inspection</h3><Pill kind="design">Capability example</Pill></div><p>Detect, locate and check features on the line, with a clear pass, flag or review outcome and a person making the final call.</p><ul className="v4-tags"><li>Detection</li><li>Inspection</li><li>Human review</li></ul></div>
+              <div className="v4-fc__t"><div className="v4-fc__h"><h3>Vision &amp; industrial inspection</h3><Pill kind="design">Engineering capability</Pill></div><p>Detect, locate and check features on the line, with a clear pass, flag or review outcome and a person making the final call.</p><ul className="v4-tags"><li>Detection</li><li>Inspection</li><li>Human review</li></ul></div>
             </article>
             <article className="v4-fc">
               <div className="v4-fc__v v4-fc__v--sc"><ShowPredict /><SampleNote /></div>

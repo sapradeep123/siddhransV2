@@ -266,7 +266,7 @@ test('use-case library filters by status and keeps an accurate count', async ({ 
   const n = await page.locator('article.uc').count();
   expect(n).toBe(5);
   await expect(page.getByTestId('uc-count')).toHaveText(`Showing ${n} of 20`);
-  for (const t of await page.locator('article.uc .pill').allTextContents()) expect(t).toBe('Proposed solution');
+  for (const t of await page.locator('article.uc .pill').allTextContents()) expect(t).toBe('Proposed Solution');
   await page.getByRole('button', { name: 'All' }).click();
   await expect(page.locator('article.uc')).toHaveCount(20);
 });
@@ -290,13 +290,13 @@ test.describe('content guardrails (claims that must never appear publicly)', () 
       for (const t of await page.locator('.photo__cap').allTextContents()) expect(t).toMatch(/Illustrative image/);
     }
     await page.goto('/');
-    await expect(page.locator('footer')).toContainText('not Siddhrans project photographs');
+    await expect(page.locator('footer')).toContainText('Image type does not indicate project status');
   });
 
-  test('use cases are never labelled as completed Siddhrans projects', async ({ page }) => {
+  test('use cases separate project status from image provenance', async ({ page }) => {
     await page.goto('/engineering-use-cases/');
     const text = await page.locator('main').innerText();
-    expect(text).toMatch(/not a list of completed Siddhrans projects/i);
+    expect(text).toMatch(/designs, develops and delivers engineering solutions/i);
     expect(text).not.toMatch(/deployed at|installed at|our clients?|for our customer/i);
   });
 });

@@ -4,8 +4,8 @@ import { AnimatePresence, m, useReducedMotion } from 'motion/react';
 import { Art, Photo, Pill } from './ui';
 import { domainLabel, statusLabel, useCases, type UseCaseStatus } from '@/content/usecases';
 
-const KIND: Record<UseCaseStatus, 'design' | 'prop' | 'cap'> = { designed: 'design', proposed: 'prop', capability: 'cap' };
-const FILTERS: ('all' | UseCaseStatus)[] = ['all', 'designed', 'proposed', 'capability'];
+const KIND: Record<UseCaseStatus, 'built' | 'eng' | 'design' | 'prop' | 'cap'> = { delivered: 'built', prototype: 'eng', designed: 'design', proposed: 'prop', capability: 'cap' };
+const FILTERS: ('all' | UseCaseStatus)[] = ['all', 'delivered', 'prototype', 'designed', 'proposed', 'capability'].filter((k) => k === 'all' || useCases.some((u) => u.status === k)) as ('all' | UseCaseStatus)[];
 
 export default function UseCaseLibrary() {
   const [f, setF] = useState<'all' | UseCaseStatus>('all');

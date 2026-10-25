@@ -1,19 +1,25 @@
-// Engineering use cases: reference material, NOT a list of completed Siddhrans projects.
+// Engineering use cases drawn from Siddhrans engineering records.
+// Project status (this file) is separate from image provenance (src/content/images.ts): an illustrative photograph says nothing about
+// whether the solution was delivered. Delivered equipment is often handed to the client or confidential, so images are representative.
+// Per-entry status below is the classification the existing records support; none is marked 'delivered' or 'prototype' until the company confirms it.
 // Source: supplied engineering deck (slides 3-22, derived from historical Bheeshmaa documents).
 // Unverified figures (40%, 97%, 15-20%, ROI, "sold to a US company", compliance claims) are intentionally omitted.
-// Public labels are limited to three: nothing here may read as a delivered Siddhrans project.
 import type { PhotoName } from './images';
 
-export type UseCaseStatus = 'designed' | 'proposed' | 'capability';
+export type UseCaseStatus = 'delivered' | 'prototype' | 'designed' | 'proposed' | 'capability';
 export const statusLabel: Record<UseCaseStatus, string> = {
-  designed: 'Designed system',
-  proposed: 'Proposed solution',
-  capability: 'Capability example',
+  delivered: 'Developed & Delivered',
+  prototype: 'Prototype Developed / Tested',
+  designed: 'Designed Solution',
+  proposed: 'Proposed Solution',
+  capability: 'Engineering Capability',
 };
 export const statusHelp: Record<UseCaseStatus, string> = {
-  designed: 'A solution that has been designed; production-scale validation is not claimed.',
-  proposed: 'A planned architecture or pilot. No completed rollout is implied.',
-  capability: 'An illustration of what we can engineer, not a statement of completed delivery.',
+  delivered: 'Engineered by Siddhrans and handed over to a client.',
+  prototype: 'A working prototype built and tested by Siddhrans.',
+  designed: 'A solution Siddhrans has designed; production-scale validation is not claimed.',
+  proposed: 'A planned architecture or pilot proposed to address a need.',
+  capability: 'An area where Siddhrans has engineering experience and can design, build and support solutions.',
 };
 
 export type Domain = 'industrial' | 'medical' | 'utilities' | 'logistics' | 'safety' | 'ai' | 'aerospace';

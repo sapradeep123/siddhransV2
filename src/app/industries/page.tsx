@@ -14,11 +14,11 @@ interface Industry { id: string; title: string; photo?: PhotoName; pos?: string;
 const industries: Industry[] = [
   { id: 'education', title: 'Education & training', photo: 'lecture-hall', pos: '50% 40%', delivered: ['Siddhrans LMS (including online training programmes)'], solutions: [] },
   { id: 'talent', title: 'Talent & placement', photo: 'interview-panel', pos: '50% 40%', delivered: ['Talent Sandalwood', 'Talent Workforce', 'Talent Sports Force'], solutions: [] },
-  { id: 'healthcare', title: 'Healthcare & medical electronics', photo: 'ai-ecg-handheld', pos: '30% 50%', delivered: ['Dialysis management system'], solutions: ['Wearable PPG health sensor (capability example)', 'Handheld Bluetooth ECG (capability example)', 'Medical-kit & asset readiness (proposed solution)'] },
-  { id: 'logistics', title: 'Logistics & cold chain', photo: 'ai-coldchain-truck', pos: '50% 50%', delivered: ['Cargo management system'], solutions: ['Cold-chain condition monitoring (capability example)', 'Smart warehouse & logistics (capability example)'] },
-  { id: 'manufacturing', title: 'Manufacturing & pharma', photo: 'ai-vision-capsules', pos: '50% 50%', delivered: [], solutions: ['Vibration & machine-health monitoring (designed system)', 'Smart-factory quality intelligence (designed system)', 'Contactless powder mixing (capability example)', 'Secure laboratory access & occupancy (capability example)'] },
+  { id: 'healthcare', title: 'Healthcare & medical electronics', photo: 'ai-ecg-handheld', pos: '30% 50%', delivered: ['Dialysis management system'], solutions: ['Wearable PPG health sensor (engineering capability)', 'Handheld Bluetooth ECG (engineering capability)', 'Medical-kit & asset readiness (proposed solution)'] },
+  { id: 'logistics', title: 'Logistics & cold chain', photo: 'ai-coldchain-truck', pos: '50% 50%', delivered: ['Cargo management system'], solutions: ['Cold-chain condition monitoring (engineering capability)', 'Smart warehouse & logistics (engineering capability)'] },
+  { id: 'manufacturing', title: 'Manufacturing & pharma', photo: 'ai-vision-capsules', pos: '50% 50%', delivered: [], solutions: ['Vibration & machine-health monitoring (designed solution)', 'Smart-factory quality intelligence (designed solution)', 'Contactless powder mixing (engineering capability)', 'Secure laboratory access & occupancy (engineering capability)'] },
   { id: 'energy', title: 'Energy, utilities & buildings', photo: 'ai-iot-chiller', pos: '50% 50%', delivered: [], solutions: ['Gas-meter digitisation retrofit (proposed solution)', 'IoT HVAC energy management (proposed solution)', 'Theatre air-cooler optimisation (proposed solution)'] },
-  { id: 'water', title: 'Water & environment', photo: 'ref-water-sensor-boat', pos: '50% 50%', delivered: [], solutions: ['Water-quality monitoring (capability example)', 'Industrial safety & environmental alerts (capability example)'] },
+  { id: 'water', title: 'Water & environment', photo: 'ref-water-sensor-boat', pos: '50% 50%', delivered: [], solutions: ['Water-quality monitoring (engineering capability)', 'Industrial safety & environmental alerts (engineering capability)'] },
   { id: 'retail', title: 'Retail, events & business operations', delivered: ['GST Billing', 'Point of Sale', 'Restaurant', 'Catering', 'Gym Master', 'Salon', 'Film Event', 'Inventory management', 'Project Management System'], solutions: [] },
 ];
 
@@ -32,7 +32,7 @@ export default function Industries() {
       </PageHero>
       <section className="sec sec--white" aria-labelledby="h-ind">
         <div className="container">
-          <Reveal><SecHead row eyebrow="Industries" title={<span id="h-ind">Where the engineering applies.</span>} lede="“Systems built” are named in the company profile. “Engineering solutions” are reference examples, labelled by status, and are not presented as completed Siddhrans projects." /></Reveal>
+          <Reveal><SecHead row eyebrow="Industries" title={<span id="h-ind">Where the engineering applies.</span>} lede="“Systems built” are named in the company profile. “Engineering solutions” are Siddhrans engineering work, each labelled with its project status." /></Reveal>
           {industries.map((i, k) => (
             <div className={`frow${k % 2 ? ' frow--flip' : ''}`} id={i.id} key={i.id}>
               <Reveal className="frow__media">
@@ -47,7 +47,7 @@ export default function Industries() {
               </Reveal>
             </div>
           ))}
-          <p className="fine" style={{ marginTop: 22 }}>Images are licensed stock photographs, supplied reference photographs or AI-generated concept visuals used for illustration, not Siddhrans project photographs. The point-of-sale interface is a concept design with placeholder data. See <a href="/engineering-use-cases/" style={{ textDecoration: 'underline' }}>engineering use cases</a>.</p>
+          <p className="fine" style={{ marginTop: 22 }}>Images are licensed stock photographs, supplied reference photographs or AI-generated concept visuals used for illustration. They are representative because equipment from completed work is typically handed to clients or confidential, and they do not indicate project status. The point-of-sale interface is a concept design with placeholder data. See <a href="/engineering-use-cases/" style={{ textDecoration: 'underline' }}>engineering use cases</a>.</p>
         </div>
       </section>
     </>

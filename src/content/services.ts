@@ -99,7 +99,7 @@ export const services: Service[] = [
     steps: [['Signal', 'Sensors and cameras produce the raw data.'], ['Features', 'Filter and extract what matters on the device or gateway.'], ['Model', 'Rules or machine-learning models, trained on real data.'], ['Decision', 'Local action, alert or hand-off to the backend.'], ['Oversight', 'People review exceptions and validate results.']],
     listTitle: 'What we engineer',
     list: ['Signal-pattern analysis and deviation detection on sensor data', 'Machine-health and anomaly detection from vibration and current', 'Computer-vision inspection and counting at the line', 'Object detection and classification from camera feeds', 'Model selection and validation with domain engineers', 'Edge-to-backend data paths with human oversight'],
-    note: 'Status: engineering capability. Edge AI examples on this site are designed systems, proposed solutions or capability examples; no production deployment is claimed and figures from source material are not republished.',
+    note: 'Status: engineering capability. Edge AI examples on this site carry their own project status; images may be representative, and no deployment results or figures from source material are republished.',
     cta: 'Tell us which signal or camera feed you want to understand.',
   },
   {
