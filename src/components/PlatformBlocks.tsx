@@ -20,7 +20,7 @@ export default function PlatformBlocks({ slug }: { slug: string }) {
         {sec.blocks.map((b, i) => (
           <article className={`pfb${i % 2 ? ' pfb--r' : ''}`} key={b.id} id={b.id} aria-labelledby={`h-${b.id}`}>
             <div className="pfb__t">
-              <div><Pill kind="eng">{b.tag}</Pill></div>
+              <div className="pfb__pills"><Pill kind="built">Developed &amp; delivered</Pill><span className="mono">{b.tag}</span></div>
               <h3 id={`h-${b.id}`}>{b.title}</h3>
               <p>{b.text}</p>
               <ul>{b.points.map((p) => <li key={p}>{p}</li>)}</ul>

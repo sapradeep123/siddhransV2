@@ -1,3 +1,4 @@
+import { platformSections } from '@/content/platforms';
 import type { Metadata } from 'next';
 import Lifecycle from '@/components/Lifecycle';
 import { ParallaxFrame, Reveal } from '@/components/motion';
@@ -39,6 +40,7 @@ export default function ServicesPage() {
                       <h3 className="h-lg">{s.title}</h3>
                       <p className="lede" style={{ margin: '14px 0 18px' }}>{s.intro}</p>
                       <div style={{ margin: '0 0 24px' }}><Pill kind={KIND[s.status]}>{serviceStatusLabel[s.status]}</Pill></div>
+                      {platformSections[s.slug] && s.slug !== 'data-analytics-integration' && <div className="frow__pl" aria-label={`Platforms and automations in ${s.short}`}><span>Delivered</span>{platformSections[s.slug].blocks.map((b) => <a key={b.id} href={`/services/${s.slug}/#${b.id}`}>{b.name}</a>)}</div>}
                       <ul className="tickgrid tickgrid--one" style={{ marginBottom: 28 }}>{s.list.slice(0, 4).map((x) => <li key={x}>{x.split(':')[0]}</li>)}</ul>
                       <a className="linkarrow" href={`/services/${s.slug}/`}>Explore {s.short} <svg viewBox="0 0 18 12" aria-hidden="true"><path d="M0 6h16M11 1l5 5-5 5" /></svg></a>
                     </Reveal>

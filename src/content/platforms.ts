@@ -91,3 +91,8 @@ export const platformSections: Record<string, PlatformSection> = {
     ],
   },
 };
+
+/** Flat list for the Services and Products & Solutions pages. Delivered by Siddhrans (owner-confirmed). Not part of the fifteen-system portfolio count. */
+export const platformList = Object.entries(platformSections).flatMap(([slug, sec]) =>
+  slug === 'data-analytics-integration' ? [] : sec.blocks.map((b) => ({ id: b.id, name: b.name, tag: b.tag, text: b.text, slug, href: `/services/${slug}/#${b.id}` })),
+);

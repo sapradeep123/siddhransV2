@@ -108,14 +108,14 @@ export default function Home() {
             <div className="v4-aiapp"><b>AI-enabled applications</b><span>Add copilots, search and document intelligence to platforms like these.</span><Pill kind="cap">Engineering capability</Pill></div>
           </div>
           <div className="v4-plat" aria-label="Selected software platforms">
-            <a href="/services/enterprise-software-engineering/#inventre"><em>Software platform</em><b>Inventre</b><span>Inventory, procurement, warehouse and billing flows.</span></a>
-            <a href="/services/enterprise-software-engineering/#cyberlabs"><em>Software platform</em><b>Cyberlabs</b><span>Cyber range, drills and courses.</span></a>
-            <a href="/services/enterprise-software-engineering/#gcse"><em>Software platform</em><b>GCSE Path</b><span>An LMS for GCSE students in London.</span></a>
-            <a href="/services/enterprise-software-engineering/#erpnext"><em>ERP</em><b>ERPNext</b><span>Implementation with a fast communication layer.</span></a>
-            <a href="/services/ai-ml-intelligent-automation/#khubera"><em>AI platform</em><b>Khubera</b><span>Multi-agent decisions for shareholders.</span></a>
-            <a href="/services/ai-ml-intelligent-automation/#vackya"><em>AI platform</em><b>Vackya</b><span>Voice bot for leads and operations.</span></a>
-            <a href="/services/ai-ml-intelligent-automation/#recruiti"><em>AI platform</em><b>Recruiti 360</b><span>Recruitment, end to end.</span></a>
-            <a href="/services/rpa-business-automation/#billing"><em>Automation</em><b>Vendor billing &amp; notices</b><span>OCR, matching and document dispatch.</span></a>
+            <a href="/services/enterprise-software-engineering/#inventre"><em>Developed &amp; delivered</em><b>Inventre</b><span>Inventory, procurement, warehouse and billing flows.</span></a>
+            <a href="/services/enterprise-software-engineering/#cyberlabs"><em>Developed &amp; delivered</em><b>Cyberlabs</b><span>Cyber range, drills and courses.</span></a>
+            <a href="/services/enterprise-software-engineering/#gcse"><em>Developed &amp; delivered</em><b>GCSE Path</b><span>An LMS for GCSE students in London.</span></a>
+            <a href="/services/enterprise-software-engineering/#erpnext"><em>Developed &amp; delivered</em><b>ERPNext</b><span>Implementation with a fast communication layer.</span></a>
+            <a href="/services/ai-ml-intelligent-automation/#khubera"><em>Developed &amp; delivered</em><b>Khubera</b><span>Multi-agent decisions for shareholders.</span></a>
+            <a href="/services/ai-ml-intelligent-automation/#vackya"><em>Developed &amp; delivered</em><b>Vackya</b><span>Voice bot for leads and operations.</span></a>
+            <a href="/services/ai-ml-intelligent-automation/#recruiti"><em>Developed &amp; delivered</em><b>Recruiti 360</b><span>Recruitment, end to end.</span></a>
+            <a href="/services/rpa-business-automation/#billing"><em>Developed &amp; delivered</em><b>Vendor billing &amp; notices</b><span>OCR, matching and document dispatch.</span></a>
           </div>
           <div className="v4-cs">
             <a className="v4-cs__c" href="/case-studies/#lms"><span className="mono">Case study</span><b>Siddhrans LMS</b><span>Training delivery, structured end to end: programmes, content, assessments and results in one platform.</span><em>Read the case study <Arrow /></em></a>

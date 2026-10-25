@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import ProductExplorer from '@/components/ProductExplorer';
 import { Laptop, LmsUI, Phone, PhoneTalentUI } from '@/components/concept';
 import { Reveal, Stagger, StaggerItem } from '@/components/motion';
+import { platformList } from '@/content/platforms';
 import { Button, Crumbs, Eyebrow, PhotoCard, Pill, SecHead } from '@/components/ui';
 
 export const metadata: Metadata = {
@@ -38,6 +39,17 @@ export default function Products() {
         <div className="container">
           <Reveal id="showcase"><SecHead row eyebrow="Product showcase" title={<span id="h-sy">Fifteen named systems, four families.</span>} lede="Choose a family to see the kind of interface and workflow it provides. Every interface is a concept design with placeholder data, shown to illustrate the software, not a screenshot of a delivered product." /></Reveal>
           <Reveal delay={0.05}><ProductExplorer /></Reveal>
+        </div>
+      </section>
+
+      <section className="sec sec--mist" id="platforms" aria-labelledby="h-pl">
+        <div className="container">
+          <Reveal><SecHead row eyebrow="More platforms and automations" title={<span id="h-pl">Further platforms we developed and delivered.</span>} lede="Inventory and ERP, cyber training and education, AI decision, voice and recruitment platforms, and delivered business automation. Each links to its service page, where its concept UI is shown with illustrative data." /></Reveal>
+          <Stagger className="pl-grid">
+            {platformList.map((p) => (
+              <StaggerItem key={p.id}><a className="pl-card" href={p.href}><div><Pill kind="built">Developed &amp; delivered</Pill></div><h3>{p.name}</h3><span className="mono">{p.tag}</span><p>{p.text}</p><em>See the platform →</em></a></StaggerItem>
+            ))}
+          </Stagger>
         </div>
       </section>
 

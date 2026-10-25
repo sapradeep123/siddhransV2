@@ -330,3 +330,25 @@ test.describe('platform blocks on service pages', () => {
     await expect(page.getByRole('link', { name: /Inventre/ }).first()).toHaveAttribute('href', '/services/enterprise-software-engineering/#inventre');
   });
 });
+
+test.describe('delivered platforms are discoverable and labelled consistently', () => {
+  const NAMES = ['Inventre', 'ERPNext', 'Cyberlabs', 'GCSE Path', 'Khubera', 'Vackya', 'Recruiti 360'];
+  test('products page lists the platforms and keeps the fifteen-system count', async ({ page }) => {
+    await page.goto('/products/');
+    const sec = page.locator('#platforms');
+    const t = await sec.innerText();
+    for (const n of NAMES) expect(t).toContain(n);
+    expect(await sec.locator('.pill').allTextContents()).toEqual(expect.arrayContaining(['Developed & delivered']));
+    for (const p of await sec.locator('.pill').allTextContents()) expect(p).toBe('Developed & delivered');
+    await expect(page.locator('main')).toContainText('Fifteen named systems');
+  });
+  test('services page links to the platforms', async ({ page }) => {
+    await page.goto('/services/');
+    for (const n of NAMES) await expect(page.locator('.frow__pl').getByRole('link', { name: n, exact: true })).toHaveAttribute('href', /\/services\/.+\/#/);
+  });
+  test('service-page blocks say Developed & delivered, screenshots say Concept UI', async ({ page }) => {
+    await page.goto('/services/enterprise-software-engineering/');
+    for (const p of await page.locator('#platforms .pfb__pills .pill').allTextContents()) expect(p).toBe('Developed & delivered');
+    for (const n of await page.locator('#platforms .sc-note').allTextContents()) expect(n).toBe('Concept UI · illustrative data');
+  });
+});
