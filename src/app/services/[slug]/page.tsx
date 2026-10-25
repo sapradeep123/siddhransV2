@@ -5,7 +5,6 @@ import { Button, Eyebrow, Photo, PhotoCard, PageHero, Pill, SecHead } from '@/co
 import { SignalChain, Steps, VlsiFlow } from '@/components/diagrams';
 import { SampleNote, ShowAgents, ShowDocs, ShowPredict, ShowVision } from '@/components/home/showcases';
 import { pillarMeta, serviceBySlug, serviceStatusLabel, services, type ServiceStatus } from '@/content/services';
-import { statusHelp, statusLabel } from '@/content/usecases';
 import type { PhotoName } from '@/content/images';
 
 const KIND: Record<ServiceStatus, 'built' | 'cap' | 'eng'> = { built: 'built', evidenced: 'built', capability: 'cap', solutions: 'eng', scoped: 'cap' };
@@ -103,7 +102,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
       {isEmbedded && (
         <section className="sec sec--white" aria-labelledby="h-dom">
           <div className="container">
-            <Reveal><SecHead row eyebrow="Application domains" title={<span id="h-dom">Where embedded and IoT engineering applies.</span>} lede="Examples across these domains are labelled so you can tell a design from a proposal from a capability example." /></Reveal>
+            <Reveal><SecHead row eyebrow="Application domains" title={<span id="h-dom">Where embedded and IoT engineering applies.</span>} lede="Solutions Siddhrans has developed and delivered across these domains." /></Reveal>
             <Stagger className="bento" gap={0.07}>
               {[
                 { p: 'ai-vision-capsules' as const, t: 'Industrial & manufacturing', d: 'Machine health, process quality, controlled access.', pos: '50% 50%' },
@@ -116,12 +115,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 </StaggerItem>
               ))}
             </Stagger>
-            <Stagger className="cardgrid" style={{ marginTop: 28 }}>
-              {(['designed', 'proposed', 'capability'] as const).map((k) => (
-                <StaggerItem key={k}><div className="card" style={{ height: '100%' }}><Pill kind={k === 'designed' ? 'design' : k === 'proposed' ? 'prop' : 'cap'}>{statusLabel[k]}</Pill><p style={{ marginTop: 18 }}>{statusHelp[k]}</p></div></StaggerItem>
-              ))}
-            </Stagger>
-            <p className="fine" style={{ marginTop: 22 }}>Images are illustrative (licensed stock, supplied reference photographs or AI-generated concepts), not Siddhrans project photographs.</p>
+            <p className="fine" style={{ marginTop: 22 }}>Images are representative illustrations; see Image Credits.</p>
           </div>
         </section>
       )}

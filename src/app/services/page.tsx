@@ -23,7 +23,7 @@ export default function ServicesPage() {
 
       <section className="sec sec--white" id="disciplines" aria-labelledby="h-s">
         <div className="container">
-          <Reveal><SecHead row eyebrow="Services" title={<span id="h-s">What we do, and how we describe it.</span>} lede="Each label tells you what stands behind the work: systems built, engineering capability, engineering solutions, or design support scoped per engagement." /></Reveal>
+          <Reveal><SecHead row eyebrow="Services" title={<span id="h-s">What we do, and how we describe it.</span>} lede="Software we have built, engineering solutions we have developed and delivered, capabilities across AI, cloud and security, and design support scoped per engagement." /></Reveal>
           {pillarOrder.map((pl) => {
             const list = services.filter((x) => x.pillar === pl);
             return (
@@ -47,7 +47,7 @@ export default function ServicesPage() {
               </div>
             );
           })}
-          <p className="fine" style={{ marginTop: 28 }}>VLSI and semiconductor work is described as design support scoped per engagement; no fabricated silicon is claimed. AI and automation are engineering capability, not production deployments we cannot evidence. Photographs are illustrative stock images; concept images are AI-generated.</p>
+          <p className="fine" style={{ marginTop: 28 }}>VLSI and semiconductor work is described as design support scoped per engagement; no fabricated silicon is claimed. Client handover of a working solution is not described as large-scale deployment or manufacturing. Images are representative illustrations.</p>
         </div>
       </section>
 

@@ -14,7 +14,7 @@ const PRINCIPLES: [string, string, string][] = [
   ['Secure', 'Secure what matters', 'Treat protection as layers of concrete controls, not a product badge.'],
   ['Automate', 'Automate what slows you down', 'Apply AI and workflow where they earn their place, with people in the loop.'],
   ['Modernise', 'Modernise what holds you back', 'Upgrade legacy applications, servers and infrastructure safely.'],
-  ['Evidence', 'Say only what we can evidence', 'We label delivered software, engineering capability and proposed solutions separately.'],
+  ['Evidence', 'Say only what we can evidence', 'We publish what we built and delivered, and leave out client names, results and figures we cannot evidence.'],
   ['Accountable', 'Stay accountable', 'The team that built the system is the team best placed to run it.'],
 ];
 
@@ -68,14 +68,14 @@ export default function About() {
 
       <div className="bandphoto">
         <Photo name="hw-bench-soldering" sizes="100vw" pos="50% 55%" />
-        <span className="photo__cap"><b>Illustrative image</b> · Electronics bench</span>
+        <span className="photo__cap"><b>Representative illustration</b> · Electronics bench</span>
       </div>
 
       <section className="sec sec--navy on-dark" id="evidence" aria-labelledby="h-ev">
         <div className="container">
-          <Reveal><SecHead row eyebrow="How we label our work" title={<span id="h-ev">Every claim carries a label.</span>} lede="We keep project status and image provenance separate, so you can see what stands behind each statement and which images are representative." /></Reveal>
+          <Reveal><SecHead row eyebrow="How we label our work" title={<span id="h-ev">What we deliver, and how we show it.</span>} lede="What we delivered, what we can do, and which images are illustrations are kept distinct." /></Reveal>
           <Stagger className="cardgrid">
-            {([['built', 'Developed & delivered', 'Software and engineering solutions Siddhrans has delivered to clients. Software named in our company profile; engineering projects are marked individually as their delivery is confirmed.'], ['cap', 'Engineering capability', 'Areas where we have engineering experience and can design, build and support solutions.'], ['eng', 'Prototype developed / tested', 'Working prototypes built and tested by Siddhrans.'], ['cap', 'Scoped per engagement', 'Design support described by its scope, such as VLSI design support. No tape-out, fabrication or foundry is claimed.'], ['design', 'Designed solution', 'A solution Siddhrans has designed; production-scale validation is not claimed.'], ['prop', 'Proposed solution', 'A planned architecture or pilot proposed to address a need.'], ['concept', 'Illustrative image', 'A representative image or interface. Equipment from delivered projects is often handed to clients or confidential, so an illustrative image does not mean the project itself is conceptual.']] as const).map(([k, t, d]) => (
+            {([['built', 'Developed & delivered', 'Software and engineering solutions built and handed over to clients, including firmware, source code, hardware or prototypes and technical documentation. Delivery is not manufacturing or large-scale deployment, which clients take on.'], ['cap', 'Engineering capability', 'Areas where we have engineering experience and can design, build and support solutions.'], ['cap', 'Scoped per engagement', 'Design support described by its scope, such as VLSI design support. No tape-out, fabrication or foundry is claimed.'], ['concept', 'Representative illustration', 'Delivered equipment is typically handed to clients or confidential, so images are licensed stock or AI-generated illustrations. Details are on the Image Credits page.']] as const).map(([k, t, d]) => (
               <StaggerItem key={t}><div className="tl" style={{ height: '100%' }}><Pill kind={k}>{t}</Pill><p style={{ marginTop: 14 }}>{d}</p></div></StaggerItem>
             ))}
           </Stagger>

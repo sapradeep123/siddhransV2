@@ -67,7 +67,7 @@ export function PhotoCard({ name, sizes, priority, pos, className = '', style, c
   return (
     <div className={`photo ${shade ? 'shade' : ''} ${className}`.trim()} style={style}>
       <Photo name={name} sizes={sizes} priority={priority} pos={pos} alt={alt} />
-      {cap && <span className="photo__cap"><b>Illustrative image</b> · {photoCaption[name]}</span>}
+      {cap && <span className="photo__cap"><b>Representative illustration</b> · {photoCaption[name]}</span>}
     </div>
   );
 }
@@ -103,7 +103,7 @@ export function PageHero({ photo, pos, crumbs, children }: { photo: PhotoName; p
   return (
     <header className="phero">
       <PhotoCard name={photo} priority pos={pos} sizes="100vw" alt="" cap={false} />
-      <span className="photo__cap hero-cap"><b>Illustrative image</b> · {photoCaption[photo]}</span>
+      <span className="photo__cap hero-cap"><b>Representative illustration</b> · {photoCaption[photo]}</span>
       <div className="container">
         <Crumbs items={crumbs} />
         {children}

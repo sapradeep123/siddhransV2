@@ -18,7 +18,7 @@ const Chapter = ({ id, photo, pos, kicker, title, lede }: { id: string; photo: P
   return (
   <header className="chapter-hero" id={id}>
     <PhotoCard name={photo} priority pos={pos} sizes="100vw" alt="" cap={false} />
-    <span className="photo__cap hero-cap"><b>Illustrative image</b> · {photoCaption[photo]}</span>
+    <span className="photo__cap hero-cap"><b>Representative illustration</b> · {photoCaption[photo]}</span>
     <div className="container chapter-hero__in">
       {id === 'lms' && <Crumbs items={[{ href: '/', label: 'Home' }, { label: 'Case Studies' }]} />}
       <div style={{ margin: id === 'lms' ? '20px 0 18px' : '0 0 18px', display: 'flex', gap: 10, flexWrap: 'wrap' }}><Pill kind="built">Systems built</Pill><span className="pill pill--concept">{kicker}</span></div>
@@ -87,7 +87,7 @@ export default function CaseStudies() {
               <ol className="checks"><li>Programmes, batches and content in one system</li><li>Assessment and result workflows in the same platform</li><li>Reporting over training operations</li><li>A platform basis for examination-grade solutions</li></ol>
               <p className="fine" style={{ marginTop: 22 }}>No client names or performance figures are published for this platform.</p>
             </Reveal>
-            <Reveal delay={0.1}><div className="ph-frame" style={{ aspectRatio: '4/3' }}><ParallaxFrame amount={6}><Photo name="tablet-study" sizes="(min-width:1180px) 40vw, 100vw" pos="55% 40%" /></ParallaxFrame><span className="photo__cap"><b>Illustrative image</b> · Classroom tablet</span></div></Reveal>
+            <Reveal delay={0.1}><div className="ph-frame" style={{ aspectRatio: '4/3' }}><ParallaxFrame amount={6}><Photo name="tablet-study" sizes="(min-width:1180px) 40vw, 100vw" pos="55% 40%" /></ParallaxFrame><span className="photo__cap"><b>Representative illustration</b> · Classroom tablet</span></div></Reveal>
           </div>
         </div>
       </section>
@@ -151,7 +151,7 @@ export default function CaseStudies() {
               <ol className="checks"><li>Structured talent records in place of paper</li><li>Searchable discovery across each sector</li><li>One engineering base, three distinct markets</li></ol>
               <p className="fine" style={{ marginTop: 22 }}>No client names or performance figures are published for these platforms.</p>
             </Reveal>
-            <Reveal delay={0.1}><div className="ph-frame" style={{ aspectRatio: '4/3' }}><ParallaxFrame amount={6}><Photo name="film-crew" sizes="(min-width:1180px) 40vw, 100vw" pos="50% 40%" /></ParallaxFrame><span className="photo__cap"><b>Illustrative image</b> · Film crew</span></div></Reveal>
+            <Reveal delay={0.1}><div className="ph-frame" style={{ aspectRatio: '4/3' }}><ParallaxFrame amount={6}><Photo name="film-crew" sizes="(min-width:1180px) 40vw, 100vw" pos="50% 40%" /></ParallaxFrame><span className="photo__cap"><b>Representative illustration</b> · Film crew</span></div></Reveal>
           </div>
         </div>
       </section>

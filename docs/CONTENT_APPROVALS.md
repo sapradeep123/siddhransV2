@@ -14,8 +14,10 @@ What the public site says is limited to the supplied company profile and clearly
 | 7 | Street address | None published (none in the sources) | Provide if wanted |
 | 8 | Leadership | Names and titles only, as in the profile | Biographies or photographs only if supplied with permission |
 
-## Engineering use cases (Bheeshmaa-derived material)
-The 20 entries on `/engineering-use-cases/` come from the supplied deck, which says its sources are historical Bheeshmaa documents. CORRECTED: Siddhrans has designed, developed and delivered engineering solutions for clients; equipment is often handed over or confidential, so images are representative. The site now uses five statuses (Developed & Delivered, Prototype Developed / Tested, Designed Solution, Proposed Solution, Engineering Capability) and keeps project status separate from image provenance. No entry is marked Delivered or Prototype until the company confirms it: see `docs/USE_CASE_STATUS.md`.
+## Engineering use cases (owner-confirmed)
+The business owner confirmed that Siddhrans developed, tested and delivered all 20 listed engineering solutions to clients (hardware or prototypes, firmware, source code, software, designs, documentation, depending on engagement). All 20 are shown as **Developed & Delivered** and filtered by industry and technology. Delivery is not manufacturing or large-scale commercial deployment, which clients took on, and the site does not say otherwise. Images are representative (stock, supplied or AI-generated) because deliverables were handed over or are confidential.
+
+Flagged for technical review (descriptions kept, delivery status unchanged): the vehicle-detection "number-plate reading" step; the outcome wording for "Theatre air-cooler optimisation" (reduce electricity and water use) and "Adaptive drone endurance" (pursue longer flight time), which read as results rather than design goals; "Exam-environment" integrated solution on the Products page is still labelled Proposed solution because it is not one of the 20.
 
 Please confirm you are entitled to publish these as capability examples, in particular:
 - Contactless powder mixing, Secure laboratory access (source claims development; no evidence supplied)

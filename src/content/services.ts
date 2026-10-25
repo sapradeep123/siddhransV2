@@ -9,7 +9,7 @@ export const serviceStatusLabel: Record<ServiceStatus, string> = {
   built: 'Systems built',
   capability: 'Engineering capability',
   evidenced: 'Evidenced in built systems',
-  solutions: 'Engineering solutions',
+  solutions: 'Developed & delivered',
   scoped: 'Scoped per engagement',
 };
 
@@ -55,7 +55,7 @@ export const services: Service[] = [
     steps: [['Requirements', 'Interfaces, power budget, environment, form factor and cost target.'], ['Schematic', 'Circuit capture and component selection.'], ['PCB layout', 'Placement, routing, stack-up and design-for-manufacture checks.'], ['Assembly support', 'Fabrication files, bill of materials and prototype build.'], ['Bring-up', 'Power-up, debug and test of the first boards.']],
     listTitle: 'What we engineer',
     list: ['Hardware architecture: sensing chain, controller, power, interfaces, form factor', 'Schematic design and component selection', 'Sensor, microcontroller and wireless-module boards', 'Power supply, battery and low-power design', 'PCB layout with design-for-manufacture and design-for-test in mind', 'Prototype assembly support and board bring-up', 'Debug headers, test points and production-test planning'],
-    note: 'Status: engineering solutions. Board designs shown on this site are reference examples. This page describes design and engineering services; it does not claim a manufacturing facility, certifications or production volumes.',
+    note: 'Status: engineering solutions. Schematics, board layouts and associated technical deliverables developed and delivered for client applications. This page describes design and engineering services; it does not claim a manufacturing facility, certifications or production volumes.',
     cta: 'Have a board to design, revise or bring up?',
   },
   {
@@ -66,7 +66,7 @@ export const services: Service[] = [
     steps: [['Bring-up', 'Clocks, power, peripherals and a first sign of life.'], ['Drivers', 'Sensors, displays, storage and communication interfaces.'], ['Application', 'Signal processing, control logic and state handling.'], ['Connectivity', 'Wireless links and a secure path to the backend.'], ['Test', 'Bench and field testing against the specification.']],
     listTitle: 'What we engineer',
     list: ['Firmware for low-power microcontrollers, including ESP32 and Arduino-class boards', 'Sensor drivers and signal processing', 'Local control logic and thresholds close to the machine', 'Wireless: Bluetooth LE, Wi-Fi, GSM, LoRaWAN, NB-IoT and LTE-M', 'Power management for battery-operated devices', 'Data logging and device-to-backend communication', 'Debugging and test on the real board'],
-    note: 'Status: engineering solutions. Firmware examples on this site are reference material, not a list of shipped products.',
+    note: 'Status: engineering solutions. Engineering solutions developed, tested and delivered for client applications, including firmware, embedded integration and associated technical deliverables.',
     cta: 'Tell us about the device your firmware needs to run on.',
   },
   {
@@ -88,18 +88,18 @@ export const services: Service[] = [
     steps: [['Concept', 'Outcome, environment and constraints.'], ['Architecture', 'Sensing, controller, power and connectivity.'], ['Schematic & PCB', 'Circuit and board design.'], ['Firmware', 'Code that runs on the board.'], ['Prototype', 'Assemble and prove on real equipment.'], ['Validate', 'Test, calibrate and iterate.']],
     listTitle: 'What we engineer',
     list: ['Concept and feasibility for sensing and control products', 'Hardware and firmware co-design', 'Working prototypes for field trials', 'Bench validation and calibration with domain engineers', 'Test planning and documentation', 'Companion mobile, web and cloud applications', 'Hand-over of design files and documentation'],
-    note: 'Status: engineering solutions. The wearable and medical-electronics images on this site are AI-generated concept visuals, not photographs of delivered products.',
+    note: 'Status: engineering solutions. Working prototypes, firmware and hardware designs developed and delivered for client products, from concept to tested prototype. Images are AI-generated illustrations; manufacturing and certification are the client\'s responsibility.',
     cta: 'Have a product idea that needs a working prototype?',
   },
   {
     slug: 'edge-ai-intelligent-electronics', track: 'electronics', n: '06', pillar: 'embedded', title: 'Edge AI & Intelligent Electronics', short: 'Edge AI',
     intro: 'Put the intelligence where the signal is. We apply pattern analysis, machine learning and computer vision close to sensors, cameras and machines, validated with the engineers who know the process.',
-    status: 'capability', photo: 'ai-vision-capsules', tileBlurb: 'Vision, anomaly detection and ML close to the machine.',
+    status: 'solutions', photo: 'ai-vision-capsules', tileBlurb: 'Vision, anomaly detection and ML close to the machine.',
     stepsTitle: 'How edge intelligence is put together',
     steps: [['Signal', 'Sensors and cameras produce the raw data.'], ['Features', 'Filter and extract what matters on the device or gateway.'], ['Model', 'Rules or machine-learning models, trained on real data.'], ['Decision', 'Local action, alert or hand-off to the backend.'], ['Oversight', 'People review exceptions and validate results.']],
     listTitle: 'What we engineer',
     list: ['Signal-pattern analysis and deviation detection on sensor data', 'Machine-health and anomaly detection from vibration and current', 'Computer-vision inspection and counting at the line', 'Object detection and classification from camera feeds', 'Model selection and validation with domain engineers', 'Edge-to-backend data paths with human oversight'],
-    note: 'Status: engineering capability. Edge AI examples on this site carry their own project status; images may be representative, and no deployment results or figures from source material are republished.',
+    note: 'Status: engineering solutions. Computer-vision, sensing and edge-intelligence solutions developed and delivered for client applications. Accuracy figures and deployment results are not published.',
     cta: 'Tell us which signal or camera feed you want to understand.',
   },
   {
@@ -121,7 +121,7 @@ export const services: Service[] = [
     steps: [['Data & documents', 'Enterprise sources feed the system.'], ['Retrieval & models', 'Knowledge retrieval plus machine learning.'], ['Agents & copilots', 'Task execution for multi-step work.'], ['Workflow action', 'Results flow into systems and approvals.'], ['Human oversight', 'Exceptions and control stay with people.']],
     listTitle: 'What we engineer with AI',
     list: ['Generative AI applications for business tasks', 'AI assistants & role-specific copilots', 'Multi-agent solutions for multi-step work', 'Intelligent document processing', 'Natural-language interfaces to systems', 'Enterprise knowledge retrieval', 'Predictive analytics & decision support', 'AI-enabled workflow, with people in the loop'],
-    note: 'Status: engineering capability, designed, prototyped and applied on engagement on top of our delivered software and automation platforms. We do not claim production AI deployments we cannot evidence.',
+    note: 'Status: engineering capability, with AI and ML solutions delivered for clients (computer vision, NLP and data enrichment) and applied on top of our delivered software and automation platforms. Copilot and agent interfaces shown are concept designs with sample data.',
     cta: 'Discuss where AI could earn its place in your workflow.',
   },
   {
@@ -176,7 +176,7 @@ export const services: Service[] = [
     steps: [['Define', 'Measurable outcome, environment and constraints.'], ['Prototype', 'Prove the sensing and control on real equipment.'], ['Validate', 'Calibrate with domain engineers; test before trusting.'], ['Integrate', 'Connect to your systems and secure the data path.'], ['Operate', 'Monitor, support and improve in production.']],
     listTitle: 'What we engineer',
     list: ['Sensor integration: level, weight, vibration, temperature, humidity, pressure, particle, air and water quality, optical and pulse sensing', 'Controllers & firmware: low-power embedded controllers, ESP32 and Arduino-class boards, signal processing, local control logic', 'Wireless & telemetry: Bluetooth LE, Wi-Fi, GSM, LoRaWAN, NB-IoT and LTE-M, with RFID, NFC and beacon identification', 'Gateways & edge logic: thresholds and rules close to the equipment', 'Backends & dashboards: secure APIs, web and mobile dashboards, alerting, audit logs, reporting', 'Analytics & ML: pattern analysis and deviation detection, validated with domain engineers'],
-    note: 'Examples on this site are engineering reference material shown to illustrate capability. They are labelled as designed systems, proposed solutions or capability examples, and are not presented as completed Siddhrans projects.',
+    note: 'Sensing, controller, connectivity and dashboard solutions developed, tested and delivered for client applications. Clients took the solution on for integration, scale-up and commercialisation.',
     cta: 'Have a machine, process or site you want to instrument?',
   },
   {

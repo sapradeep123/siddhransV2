@@ -98,15 +98,15 @@ const processedAlt: Record<ProcessedName, string> = {
   'ref-safety-sos': 'Worker-safety SOS icon beside a green warning beacon in a factory',
   'ref-access-watch': 'Stylised illustration of a worker wearing a smartwatch touching a keypad access reader',
 };
-// Every caption starts "Illustrative image"; the second part says what kind of image it is.
+// Every caption starts "Representative illustration"; the second part says what kind of image it is.
 const processedCaption: Record<ProcessedName, string> = {
   'hw-pcb-inspection': 'PCB inspection', 'hw-pcb-aoi': 'Circuit-board close-up', 'hw-solder-board': 'Board assembly', 'hw-bench-soldering': 'Electronics bench',
   'ref-water-sensor-boat': 'Water-quality sensing prototype', 'ref-water-field-sites': 'Water-monitoring field hardware',
-  'ai-wearable-pulse': 'AI-generated concept · wearable pulse sensor', 'ai-ecg-handheld': 'AI-generated concept · handheld ECG',
-  'ai-iot-chiller': 'AI-generated concept · chiller monitoring', 'ai-iot-warehouse': 'AI-generated concept · warehouse IoT',
-  'ai-coldchain-truck': 'AI-generated concept · cold chain', 'ai-cleanroom-access': 'AI-generated concept · cleanroom access',
-  'ai-vision-capsules': 'AI-generated concept · vision inspection', 'ai-powder-mixing': 'AI-generated concept · powder mixing',
-  'ai-drone-endurance': 'AI-generated concept · drone power', 'gpt-medical-kit': 'AI-generated concept · medical kit',
+  'ai-wearable-pulse': 'AI-generated illustration · wearable pulse sensor', 'ai-ecg-handheld': 'AI-generated illustration · handheld ECG',
+  'ai-iot-chiller': 'AI-generated illustration · chiller monitoring', 'ai-iot-warehouse': 'AI-generated illustration · warehouse IoT',
+  'ai-coldchain-truck': 'AI-generated illustration · cold chain', 'ai-cleanroom-access': 'AI-generated illustration · cleanroom access',
+  'ai-vision-capsules': 'AI-generated illustration · vision inspection', 'ai-powder-mixing': 'AI-generated illustration · powder mixing',
+  'ai-drone-endurance': 'AI-generated illustration · drone power', 'gpt-medical-kit': 'AI-generated illustration · medical kit',
   'ref-pump-infographic': 'Pump condition-monitoring concept', 'ref-pump-installation': 'Pump installation', 'ref-esp32-breadboard': 'ESP32 sensing prototype',
   'ref-motor-vibration-board': 'Motor vibration-sensing prototype', 'ref-iot-architecture': 'Monitoring architecture', 'ref-gas-meter-phone': 'Gas-meter reading by phone',
   'ref-gas-meter-standalone': 'Gas meter', 'ref-label-mismatch': 'Label-inspection output', 'ref-vehicle-detection': 'Vehicle-detection output',

@@ -20,9 +20,9 @@ const EXPLORER = [
 ];
 
 const TRACKS = [
-  { id: 'pump', label: 'Condition monitoring', pill: <Pill kind="design">Designed system</Pill>, photo: 'ref-pump-installation' as const, ct: false, cap: 'Pump installation', chain: ['Current, vibration, temperature', 'Anomaly model', 'Technician alert'], text: 'Detect abnormal motor load earlier and guide maintenance.' },
-  { id: 'vision', label: 'Vision inspection', pill: <Pill kind="cap">Engineering capability</Pill>, photo: 'ref-label-mismatch' as const, ct: true, cap: 'Label-inspection output', chain: ['Camera', 'Detection model', 'Pass or flag'], text: 'Check labels and product on the line, with results people can review.' },
-  { id: 'util', label: 'Smart utilities', pill: <Pill kind="prop">Proposed solution</Pill>, photo: 'ref-gas-meter-phone' as const, ct: false, cap: 'Gas-meter reading by phone', chain: ['Pulse reader', 'Low-power controller', 'NB-IoT', 'Utility platform'], text: 'Digital readings from meters that are already installed.' },
+  { id: 'pump', label: 'Condition monitoring', pill: <Pill kind="built">Developed &amp; delivered</Pill>, photo: 'ref-pump-installation' as const, ct: false, cap: 'Pump installation', chain: ['Current, vibration, temperature', 'Anomaly model', 'Technician alert'], text: 'Detect abnormal motor load earlier and guide maintenance.' },
+  { id: 'vision', label: 'Vision inspection', pill: <Pill kind="built">Developed &amp; delivered</Pill>, photo: 'ref-label-mismatch' as const, ct: true, cap: 'Label-inspection output', chain: ['Camera', 'Detection model', 'Pass or flag'], text: 'Check labels and product on the line, with results people can review.' },
+  { id: 'util', label: 'Smart utilities', pill: <Pill kind="built">Developed &amp; delivered</Pill>, photo: 'ref-gas-meter-phone' as const, ct: false, cap: 'Gas-meter reading by phone', chain: ['Pulse reader', 'Low-power controller', 'NB-IoT', 'Utility platform'], text: 'Digital readings from meters that are already installed.' },
 ];
 
 export default function Home() {
@@ -136,7 +136,7 @@ export default function Home() {
               id: t.id, label: t.label,
               node: (
                 <div className="v4-trk__pn">
-                  <div className={`v4-trk__im${t.ct ? ' ct' : ''}`}><Photo name={t.photo} sizes="(min-width:1180px) 46vw, 100vw" /><span className="photo__cap"><b>Illustrative image</b> · {t.cap}</span></div>
+                  <div className={`v4-trk__im${t.ct ? ' ct' : ''}`}><Photo name={t.photo} sizes="(min-width:1180px) 46vw, 100vw" /><span className="photo__cap"><b>Representative illustration</b> · {t.cap}</span></div>
                   <div className="v4-trk__tx"><div>{t.pill}</div><h3>{t.label}</h3><p>{t.text}</p><div className="v4-chain" aria-label="Signal chain">{t.chain.map((c, k) => <span key={c}>{k > 0 && <em aria-hidden="true">→</em>}{c}</span>)}</div></div>
                 </div>
               ),
@@ -145,12 +145,12 @@ export default function Home() {
           <details className="v4-arch">
             <summary>See the monitoring architecture <span>CT clamp → temperature sensors → ESP32 → cooler dashboard → technician</span></summary>
             <div className="figscroll" tabIndex={0} role="region" aria-label="Monitoring architecture diagram (scrolls sideways on small screens)"><Photo name="ref-iot-architecture" eager sizes="(min-width:1180px) 1047px, 100vw" /></div>
-            <p className="fine">Illustrative image · Monitoring architecture.</p>
+            <p className="fine">Representative illustration · Monitoring architecture.</p>
           </details>
           <div className="v4-cta">
             <Button href="/services/embedded-systems-industrial-iot/" variant="yellow">Industrial IoT &amp; Edge AI</Button>
             <Button href="/engineering-use-cases/" variant="ghost">Engineering use cases</Button>
-            <span className="fine">Reference material, not completed Siddhrans projects.</span>
+            <span className="fine">Engineering solutions developed and delivered for client applications.</span>
           </div>
         </div>
       </section>
@@ -172,7 +172,7 @@ export default function Home() {
           </Reveal>
           <Reveal delay={0.08}>
             <div className="v4-strip">
-              <figure><Photo name="hw-pcb-inspection" sizes="(min-width:1180px) 16vw, 40vw" pos="60% 70%" /><figcaption className="photo__cap"><b>Illustrative image</b> · PCB inspection</figcaption></figure>
+              <figure><Photo name="hw-pcb-inspection" sizes="(min-width:1180px) 16vw, 40vw" pos="60% 70%" /><figcaption className="photo__cap"><b>Representative illustration</b> · PCB inspection</figcaption></figure>
               <figure className="ct"><Photo name="ref-esp32-breadboard" sizes="(min-width:1180px) 16vw, 40vw" alt="" /></figure>
               <figure className="ct"><Photo name="ref-motor-vibration-board" eager sizes="(min-width:1180px) 16vw, 40vw" alt="" /></figure>
             </div>

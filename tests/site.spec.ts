@@ -258,17 +258,21 @@ test.describe('contact form', () => {
   });
 });
 
-test('use-case library filters by status and keeps an accurate count', async ({ page }) => {
+test('use-case library filters by industry and technology and keeps an accurate count', async ({ page }) => {
   await page.goto('/engineering-use-cases/');
   await expect(page.getByTestId('uc-count')).toHaveText('Showing 20 of 20');
-  await page.getByRole('button', { name: 'Proposed solution' }).click();
-  await expect(page.getByRole('button', { name: 'Proposed solution' })).toHaveAttribute('aria-pressed', 'true');
+  await page.getByRole('button', { name: 'Computer vision' }).click();
+  await expect(page.getByRole('button', { name: 'Computer vision' })).toHaveAttribute('aria-pressed', 'true');
   const n = await page.locator('article.uc').count();
-  expect(n).toBe(5);
+  expect(n).toBeGreaterThan(0);
+  expect(n).toBeLessThan(20);
   await expect(page.getByTestId('uc-count')).toHaveText(`Showing ${n} of 20`);
-  for (const t of await page.locator('article.uc .pill').allTextContents()) expect(t).toBe('Proposed Solution');
-  await page.getByRole('button', { name: 'All' }).click();
+  await page.getByRole('button', { name: 'All technologies' }).click();
+  await page.getByRole('button', { name: 'Medical & healthcare' }).click();
+  expect(await page.locator('article.uc').count()).toBeGreaterThan(0);
+  await page.getByRole('button', { name: 'All industries' }).click();
   await expect(page.locator('article.uc')).toHaveCount(20);
+  for (const t of await page.locator('article.uc .pill').allTextContents()) expect(t).toBe('Developed & Delivered');
 });
 
 test.describe('content guardrails (claims that must never appear publicly)', () => {
@@ -287,13 +291,13 @@ test.describe('content guardrails (claims that must never appear publicly)', () 
     for (const p of ['/', '/services/', '/about/', '/products/', '/case-studies/', '/services/embedded-systems-industrial-iot/']) {
       await page.goto(p);
       expect(await page.locator('.photo__cap').count(), p).toBeGreaterThan(0);
-      for (const t of await page.locator('.photo__cap').allTextContents()) expect(t).toMatch(/Illustrative image/);
+      for (const t of await page.locator('.photo__cap').allTextContents()) expect(t).toMatch(/Representative illustration/);
     }
     await page.goto('/');
-    await expect(page.locator('footer')).toContainText('Image type does not indicate project status');
+    await expect(page.locator('footer')).toContainText('representative illustrations');
   });
 
-  test('use cases separate project status from image provenance', async ({ page }) => {
+  test('use cases are presented as delivered engineering work, not hypothetical', async ({ page }) => {
     await page.goto('/engineering-use-cases/');
     const text = await page.locator('main').innerText();
     expect(text).toMatch(/designs, develops and delivers engineering solutions/i);

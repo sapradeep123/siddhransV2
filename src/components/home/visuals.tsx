@@ -19,7 +19,7 @@ export function HeroVisual() {
       <div className="v4-hv__pump">
         <Photo name="ref-pump-installation" priority sizes="(min-width:1180px) 22vw, 50vw" alt="Industrial pump and motor sets on a plant floor" />
         <div className="v4-al">P-204 · vibration above baseline<small>Illustrative data</small></div>
-        <span className="photo__cap v4-hv__cap"><b>Illustrative image</b> · Pump installation</span>
+        <span className="photo__cap v4-hv__cap"><b>Representative illustration</b> · Pump installation</span>
       </div>
       <div className="v4-hv__esp"><Photo name="ref-esp32-breadboard" sizes="(min-width:1180px) 20vw, 40vw" alt="" /></div>
       <ul className="v4-layers" aria-label="Application, intelligence and machines"><li><b>Applications</b>Enterprise software</li><li><b>Intelligence</b>AI &amp; ML</li><li><b>Machines</b>Sensors &amp; firmware</li></ul>
